@@ -1,0 +1,121 @@
+.navbar-brand{
+    color: #828EFF;
+}
+.navbar-nav .nav-link{
+    color: #595959;
+}
+.navbar-nav.nav-link a:hover{
+    color: #828EFF;
+}
+
+button.btn{
+    border-radius: 12px 12px 12px 12px;
+}
+#btn-resume{
+    border: 2px solid #4CD47D;
+    color: #4CD47D;
+    font-weight: bold;
+}
+#btn-auth{
+    margin: 0px 0px 0px 12px;
+    color: #fff;
+    background: #828EFF;
+}
+#btn-resume:hover{
+    opacity: 0.7;
+}
+#btn-auth:hover{
+    opacity: 0.7;
+}
+
+.container{
+    border: 1px solid grey;
+}
+.nav-link{
+    font-size: 14px;
+}
+.col{
+    display: flex;
+    justify-content: center;
+}
+.header-information{
+    color: #fff;
+    top: 55px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.header-container{
+    padding: 0px 55px 0px 55px;
+    background: #828EFF;
+    border-radius: 32px;
+}
+.header-photo-container{
+    padding: 25px 25px 0px 25px;
+    background: rgba(255, 151, 151, 0.8);
+    border-radius: 32px;
+}
+.responsive{
+    width: 100%;
+}
+.header-title h1{
+    font-size: 65px;
+}
+.header-title h3{
+    font-size: 35px;
+}
+
+@media screen and (max-width: 1201px) {
+    .header-title h1{
+        font-size: 45px;
+    }
+    .header-title h3{
+        font-size: 20px;
+    }
+}
+
+#searchField{
+    border: none;
+}
+
+@media screen and (max-width: 992px) {
+    .header-title h1{
+        font-size: 30px;
+    }
+    .header-title h3{
+        font-size: 15px;
+    }
+    #searchField{
+        height: 40px;
+    }
+    #btn-search > img{
+        height: 25px;
+    }
+    .header-information{
+        top: 40px;
+    }
+    .header-photo-container{
+        padding: 15px 15px 0px 15px;
+        /* border-radius: 32px; */
+    }
+    .header-container{
+        padding: 0px 40px 0px 40px;
+        border-radius: 32px; */
+    }
+}
+/* @media screen and (max-width: 760px) {
+    .search-container{
+        height: 15px;
+    }
+} */
+
+.search-container{
+    margin: 20px 25px 0px 0px;
+}
+#btn-search{
+    background: #4CD47D;
+    border-radius: 0px 5px 5px 0px;
+}
+#btn-search > img{
+    width: 25px;
+}
