@@ -1,19 +1,6 @@
 <?php
 
-// namespace App\models;
-
-// use App\services\Connection;
-
-// class Category
-// {
-//     public static function pdo($config = CONFIG_CONNECTION)
-//     {
-//         return Connection::make($config)
-//     }
-// }
-
 namespace App\models;
-
 use App\services\Connection;
 
 class Category
