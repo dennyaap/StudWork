@@ -59,9 +59,10 @@
 </div> -->
 
 <div class="categories">
+    <a href="/views/admin-panel/index.view.php">fdfdf</a>
     <div class="container">
         <div class="categories-container">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="row row-cols-1 row-cols-md-3 g-4" id="categoriesContainer">
                 <div class="col">
                     <div class="card category-card">
                         <div class="category-color"></div>
@@ -93,3 +94,6 @@
         </div>
     </div>
 </div>
+
+<script src="/app/public/js/fetch.js"></script>
+<script src="/app/public/js/category.js"></script>

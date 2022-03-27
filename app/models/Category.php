@@ -12,7 +12,8 @@ class Category
     public static function getCategoriesJSON()
     {
         $stmt = self::pdo()->query('SELECT * FROM categories');
-        return $stmt->fetchAll();
+        $res = $stmt->fetchAll();
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
     public static function showCategory($id)
     {
