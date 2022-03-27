@@ -363,18 +363,17 @@
                         class="fas fa-tachometer-alt me-2"></i>Категории</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-project-diagram me-2"></i>Вакансии</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-chart-line me-2"></i>Резюме</a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-regular fa-clipboard me-2"></i></i>Резюме</a>
 
                 <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
-                        class="fas fa-power-off me-2"></i>Выйти</a>
+                        class="fas fa-arrow-left me-2"></i>Выйти</a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4 container">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
                     <h2 class="fs-2 m-0">Категории</h2>
@@ -391,7 +390,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i>John Doe
+                                <i class="fas fa-user me-2"></i>Viktor Sunset
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -403,11 +402,53 @@
                 </div>
             </nav>
 
-            <div class="container-fluid px-4">
-                <div class="row my-5">
-                    <div class="col">
-                        
+            <div class="container px-4 categories">
+                <div class="row d-flex gap-3">
+                <div class="col categories-container edit-panel">
+                  <h2>Добавить</h2>
+                <form>
+  <!-- Email input -->
+  <div class="form-outline mb-4 d-flex">
+    <input type="email" id="form1Example1" class="form-control" placeholder="Название"/>
+    <button type="submit" class="btn" id="btnAdd"><i class="fas fa-solid fa-plus"></i></button>
+  </div>
+
+</form>
                     </div>
+                    <div class="col categories-container">
+                      <h2>Список</h2>
+                    <table class="table table-striped">
+    <thead class="table-dark ">
+      <tr>
+        <th>№</th>
+        <th>Название</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Продавец</td>
+        <td><i class="fas fa-solid fa-pen"></i></td>
+        <td><i class="fas fa-solid fa-trash"></i></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Программист</td>
+        <td><i class="fas fa-solid fa-pen"></i></td>
+        <td><i class="fas fa-solid fa-trash"></i></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Учитель</td>
+        <td><i class="fas fa-solid fa-pen"></i></td>
+        <td><i class="fas fa-solid fa-trash"></i></td>
+      </tr>
+    </tbody>
+  </table>
+                    </div>
+                    
                 </div>
 
             </div>
@@ -415,16 +456,8 @@
     </div>
     <!-- /#page-content-wrapper -->
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        var el = document.getElementById("wrapper");
-        var toggleButton = document.getElementById("menu-toggle");
-
-        toggleButton.onclick = function () {
-            el.classList.toggle("toggled");
-        };
-    </script>
+    <script src="/app/public/js/admin-panel.js"></script>
 </body>
 
 </html>
