@@ -1,0 +1,25 @@
+.categories{
+    margin: 122px 0px 0px 0px;
+}
+.category-color{
+    background: #828EFF;
+    width: 16px;
+    border-radius: 8px 0px 0px 8px;
+}
+.category-card{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    border-radius: 8px 8px 8px 8px;
+    border: none;
+    box-shadow: 0 0 7px rgba(0,0,0,0.2);
+    min-width: 100%;
+
+    color:#828EFF;
+    color:#82ffee;
+    color:#a4d36e;
+    color:#f582ff;
+    color:#ff8282;
+    color:#ffe282;
+    color:#ff5656;
+}

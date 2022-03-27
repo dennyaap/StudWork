@@ -9,7 +9,7 @@ class Category
     {
         return Connection::make($config);
     }
-    public static function showCategories()
+    public static function getCategoriesJSON()
     {
         $stmt = self::pdo()->query('SELECT * FROM categories');
         return $stmt->fetchAll();
