@@ -406,47 +406,30 @@
                 <div class="row d-flex gap-3">
                 <div class="col categories-container edit-panel">
                   <h2>Добавить</h2>
-                <form>
-  <!-- Email input -->
-  <div class="form-outline mb-4 d-flex">
-    <input type="email" id="form1Example1" class="form-control" placeholder="Название"/>
-    <button type="submit" class="btn" id="btnAdd"><i class="fas fa-solid fa-plus"></i></button>
-  </div>
+                    <form id="form">
+                    <!-- Email input -->
+                      <div class="form-outline mb-4 d-flex">
+                        <input type="еуче" id="categoryInput" class="form-control" placeholder="Название"/>
+                        <button type="submit" class="btn" id="btnAdd"><i class="fas fa-solid fa-plus"></i></button>
+                      </div>
 
-</form>
-                    </div>
-                    <div class="col categories-container">
-                      <h2>Список</h2>
-                    <table class="table table-striped">
-    <thead class="table-dark ">
-      <tr>
-        <th>№</th>
-        <th>Название</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Продавец</td>
-        <td><i class="fas fa-solid fa-pen"></i></td>
-        <td><i class="fas fa-solid fa-trash"></i></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Программист</td>
-        <td><i class="fas fa-solid fa-pen"></i></td>
-        <td><i class="fas fa-solid fa-trash"></i></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Учитель</td>
-        <td><i class="fas fa-solid fa-pen"></i></td>
-        <td><i class="fas fa-solid fa-trash"></i></td>
-      </tr>
-    </tbody>
-  </table>
+                    </form>
+                </div>
+                <div class="col categories-container">
+                  <h2>Список</h2>
+              <table class="table table-striped">
+                      <thead class="table-dark ">
+                        <tr>
+                          <th>№</th>
+                          <th>Название</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody id="categoriesContainer">
+                        
+                      </tbody>
+                    </table>
                     </div>
                     
                 </div>
@@ -457,6 +440,7 @@
     <!-- /#page-content-wrapper -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/app/public/js/fetch.js"></script>
     <script src="/app/public/js/admin-panel.js"></script>
 </body>
 

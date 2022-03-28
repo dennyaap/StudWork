@@ -26,4 +26,16 @@ class Category
         );
         return $stmt->fetchAll();
     }
+
+    public static function createCategory($data){
+        $stmt = self::pdo()->prepare("INSERT INTO categories (name)
+        VALUES (:name)");
+        $stmt->execute(
+            [
+                'name' => $data,
+            ]
+        );
+
+        return self::getCategoriesJSON();
+    }
 }
