@@ -7,7 +7,7 @@ async function getData(route)
     return res;
 }
 
-async function getDataJSON(route, data){
+async function postData(route, data){
     let response = await fetch(route, {
         method: 'POST',
         headers: {

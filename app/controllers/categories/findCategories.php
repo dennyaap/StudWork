@@ -8,5 +8,5 @@ if($stream != null){
     $data = json_decode($stream)->data;
     Category::createCategory($data);
 } else {
-    Category::getCategoriesJSON();
+    Category::getCategories();
 }

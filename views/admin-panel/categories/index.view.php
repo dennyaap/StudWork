@@ -349,7 +349,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="/app/public/css/admin-panel.css" />
-    <title>Bootstap 5 Responsive Admin Dashboard</title>
+    <title>StudWork</title>
 </head>
 
 <body>
@@ -406,14 +406,19 @@
                 <div class="row d-flex gap-3">
                 <div class="col categories-container edit-panel">
                   <h2>Добавить</h2>
-                    <form id="form">
+                    <div id="form">
                     <!-- Email input -->
                       <div class="form-outline mb-4 d-flex">
-                        <input type="еуче" id="categoryInput" class="form-control" placeholder="Название"/>
-                        <button type="submit" class="btn" id="btnAdd"><i class="fas fa-solid fa-plus"></i></button>
+                        <input type="text" id="categoryInput" class="form-control" placeholder="Название"/>
+                        <button class="btn" id="btnAdd"><i class="fas fa-solid fa-plus"></i></button>
                       </div>
-
-                    </form>
+                      <div class="alert alert-success" role="alert" id="successAlert">
+                      Запись была добавлена!
+                      </div>
+                     <div id="dangerAlertContainer">
+                      
+                     </div>
+                    </div>
                 </div>
                 <div class="col categories-container">
                   <h2>Список</h2>
@@ -441,7 +446,9 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/app/public/js/fetch.js"></script>
-    <script src="/app/public/js/admin-panel.js"></script>
+    <script src="/app/public/js/admin-panel/Alert.js"></script>
+    <script src="/app/public/js/admin-panel/Validation.js"></script>
+    <script src="/app/public/js/admin-panel/admin-panel.js"></script>
 </body>
 
 </html>

@@ -59,7 +59,7 @@
 </div> -->
 
 <div class="categories">
-    <a href="/views/admin-panel/index.view.php">fdfdf</a>
+    <a href="/views/admin-panel/categories/index.view.php">fdfdf</a>
     <div class="container">
         <div class="categories-container">
             <div class="row row-cols-1 row-cols-md-3 g-4" id="categoriesContainer">
