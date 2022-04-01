@@ -1,10 +1,15 @@
 class Validation{
     //проверка на существовании такого названия
-    static checkValidation(element){
+    static async checkValidation(element){
         let errors = [];
-        let text = element.value;
-        if(text == ''){
+        let categoryName = element.value;
+        let result = await Category.checkCategory(categoryName);
+       
+        if(categoryName == ''){
             errors.push('Заполните поле!')
+        }
+        else if(result){
+            errors.push('Данная категория уже существует!')
         }
         return errors;
     }

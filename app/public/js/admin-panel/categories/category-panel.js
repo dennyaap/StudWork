@@ -23,8 +23,8 @@ successAlertElement.style.display = 'none';
 //проверка на существовании такого названия
 
 async function addCategory(){
-    errors = Validation.checkValidation(textElement);;
-    
+    errors = await Validation.checkValidation(textElement);
+
     if(errors.length !== 0){
         errorsText = '';
         errors.forEach(error =>{
@@ -76,10 +76,29 @@ function outOnPage(data)
 }
 
 function createCard({id, name}){
-    return `<tr>
+    return `<tr class="category-id" data-id="${id}">
     <td>${id}</td>
     <td>${name}</td>
-    <td><i class="fas fa-solid fa-pen"></i></td>
+    <td><button type="button" onclick="showEditCategory(this)" class="btn" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap"><i class="fas fa-solid fa-pen"></i></button></td>
     <td><i class="fas fa-solid fa-trash"></i></td>
   </tr>`
 }
+
+let categoryNameElement = document.getElementById('category-name');
+let btnAccept = document.getElementById('btnAccept');
+
+let selectCategory = {}
+
+
+async function showEditCategory(e){
+    let currentCategoryId = e.closest('.category-id').dataset.id;
+    selectCategory = await Category.findCategory(currentCategoryId)
+    let categoryName = selectCategory.name;
+    categoryNameElement.value = categoryName;
+}
+
+btnAccept.addEventListener('click', async () =>{
+    let newCategoryName = categoryNameElement.value;
+    await Category.editCategory({'id' : selectCategory.id, 'name' : newCategoryName});
+    getCategories();
+})

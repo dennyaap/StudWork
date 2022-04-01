@@ -15,7 +15,16 @@ async function postData(route, data){
         },
         body: JSON.stringify({data})
     });
-    console.log(response);
 
     return await response.json();
+}
+async function postDataCategory(route, data){
+    let response = await fetch(route, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({data})
+    });
+    console.log(response);
 }

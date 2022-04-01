@@ -38,4 +38,39 @@ class Category
 
         return self::getCategories();
     }
+    public static function checkCategory($name){
+        $stmt = self::pdo()->prepare('SELECT name
+        FROM categories
+        WHERE name = :name');
+        $stmt->execute(
+            [
+                'name' => $name
+            ]
+        );
+        $res = $stmt->fetch();
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
+    }
+    public static function getCategory($id){
+        $stmt = self::pdo()->prepare('SELECT * FROM categories
+        WHERE id = :id');
+        $stmt->execute(
+            [
+                'id' => $id
+            ]
+        );
+        $res = $stmt->fetch();
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
+    }
+    public static function editCategory($data){
+        $stmt = self::pdo()->prepare('UPDATE categories
+        SET name = :name
+        WHERE id = :id');
+
+        $stmt->execute(
+            [
+                'id' => $data->id,
+                'name' => $data->name
+            ]
+        );
+    }
 }

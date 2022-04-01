@@ -14,4 +14,5 @@ class Vacancy
         $stmt = self::pdo()->query('SELECT * FROM vacancies');
         return $stmt->fetchAll();
     }
+    
 }

@@ -353,6 +353,33 @@
 </head>
 
 <body>
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Редактировать</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="category-name" class="col-form-label">Название категории</label>
+                <input type="text" class="form-control" id="category-name">
+              </div>
+              <!-- <div class="mb-3">
+                <label for="message-text" class="col-form-label">Сообщение:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div> -->
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-primary" id="btnAccept">Принять</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
@@ -438,7 +465,6 @@
                     </div>
                     
                 </div>
-
             </div>
         </div>
     </div>
@@ -448,7 +474,8 @@
     <script src="/app/public/js/fetch.js"></script>
     <script src="/app/public/js/admin-panel/Alert.js"></script>
     <script src="/app/public/js/admin-panel/Validation.js"></script>
-    <script src="/app/public/js/admin-panel/admin-panel.js"></script>
+    <script src="/app/public/js/admin-panel/Category.js"></script>
+    <script src="/app/public/js/admin-panel/categories/category-panel.js"></script>
 </body>
 
 </html>
