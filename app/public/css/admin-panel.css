@@ -117,3 +117,30 @@
       color: #FF9797;
       cursor: pointer;
   }
+  .td-center{
+    text-align: center;
+  }
+  #categoryInput{
+    border-radius: 5px 0px 0px 5px;
+  }
+  #btnAdd{
+    border-radius: 0px 5px 5px 0px;
+  }
+  #btnDeleteCategory{
+    background:#FF9797;
+  }
+  .btn-secondary{
+    border: none;
+  }
+  .btn-primary{
+    border: none;
+  }
+  #btnClose{
+   
+  }
+  #btnAccept{
+    background:#828EFF;
+  }
+  h2{
+    margin: 0px 0px 20px 0px;
+  }

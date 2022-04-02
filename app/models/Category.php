@@ -73,4 +73,14 @@ class Category
             ]
         );
     }
+    public static function deleteCategory($id){
+        $stmt = self::pdo()->prepare('DELETE FROM categories
+        WHERE id = :id');
+
+        $stmt->execute(
+            [
+                'id' => $id,
+            ]
+        );
+    }
 }

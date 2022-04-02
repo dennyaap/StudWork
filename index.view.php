@@ -63,33 +63,7 @@
     <div class="container">
         <div class="categories-container">
             <div class="row row-cols-1 row-cols-md-3 g-4" id="categoriesContainer">
-                <div class="col">
-                    <div class="card category-card">
-                        <div class="category-color"></div>
-                        <div class="card-body">
-                            <h5 class="card-title">Category title</h5>
-                            <p class="card-text">smth</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card category-card">
-                        <div class="category-color"></div>
-                        <div class="card-body">
-                            <h5 class="card-title">Category title</h5>
-                            <p class="card-text">smth</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card category-card">
-                        <div class="category-color"></div>
-                        <div class="card-body">
-                            <h5 class="card-title">Category title</h5>
-                            <p class="card-text">text</p>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>

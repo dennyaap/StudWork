@@ -17,4 +17,10 @@ class Category{
         let result = await postDataCategory(route, category);
         return result;
     }
+    static async deleteCategory(id){
+        let route = '/app/controllers/categories/deleteCategory.php';
+
+        let result = await postDataCategory(route, id);
+        return result;
+    }
 }

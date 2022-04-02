@@ -347,7 +347,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" href="/app/public/css/admin-panel.css" />
     <title>StudWork</title>
 </head>
@@ -373,8 +373,29 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnClose">Закрыть</button>
             <button type="button" class="btn btn-primary" id="btnAccept">Принять</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Удаление</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Вы действительно хотите удалить категорию «<span id="category-name-delete"></span>»?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-primary" id="btnDeleteCategory" data-bs-dismiss="modal">Удалить</button>
           </div>
         </div>
       </div>
@@ -387,10 +408,10 @@
                     class="fas fa-user-secret me-2"></i>StudWork</div>
             <div class="list-group list-group-flush my-3">
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                        class="fas fa-tachometer-alt me-2"></i>Категории</a>
+                        class="fas fa-align-left me-2"></i>Категории</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-project-diagram me-2"></i>Вакансии</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-regular fa-clipboard me-2"></i></i>Резюме</a>
+                        class="fas fa-regular fa-clipboard me-2"></i>Вакансии</a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-regular fa-clipboard-user me-2"></i>Резюме</a>
 
                 <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                         class="fas fa-arrow-left me-2"></i>Выйти</a>
@@ -452,7 +473,7 @@
               <table class="table table-striped">
                       <thead class="table-dark ">
                         <tr>
-                          <th>№</th>
+                          <th class="td-center">N</th>
                           <th>Название</th>
                           <th></th>
                           <th></th>
