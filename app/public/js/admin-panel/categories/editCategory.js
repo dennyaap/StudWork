@@ -33,6 +33,7 @@ btnAccept.addEventListener('click', async () =>{
         await Category.editCategory({'id' : selectCategory.id, 'name' : textElementEdit.value});
         successAlertElementEdit.style.display = '';
         setTimeout(()=> successAlertElementEdit.style.display = 'none', 1000);
+        clearElement(dangerAlertContainerEdit);
         renderCategories();
     }
 })
