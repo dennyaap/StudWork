@@ -144,3 +144,17 @@
   h2{
     margin: 0px 0px 20px 0px;
   }
+  #avatar{
+    margin: 0px 0px 0px 10px;
+    width: 45px;
+  }
+  .edit-panel{
+    min-width: 500px;
+  }
+  .add-panel{
+    min-width: 350px;
+  }
+  thead{
+    color: #fff;
+    background: #212529;
+  }

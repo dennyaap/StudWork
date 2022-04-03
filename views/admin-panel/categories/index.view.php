@@ -80,33 +80,24 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4 container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-3 px-3 container">
                 <div class="d-flex align-items-center">
-                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Категории</h2>
+                    <i class="fas fa-align-left primary-text fs-3 me-3" id="menu-toggle"></i>
+                    <h2 class="fs-3 m-0">Категории</h2>
                 </div>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+               
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i>Viktor Sunset
+                <ul class="navbar-nav ms-auto">
+                <a class="nav-link fw-bold" href="#"
+                               >
+                               Viktor Rain
+                                <!-- <i class="fas fa-user me-2"></i>Viktor Sunset -->
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" class="rounded-circle" id="avatar"
+  alt="Avatar" />
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Logout</a></li>
-                            </ul>
-                        </li>
+                            
                     </ul>
-                </div>
             </nav>
 
             <div class="container px-4 categories">
@@ -127,10 +118,10 @@
                      </div>
                     </div>
                 </div>
-                <div class="col categories-container">
+                <div class="col categories-container add-panel">
                   <h2>Список</h2>
               <table class="table table-striped">
-                      <thead class="table-dark ">
+                      <thead>
                         <tr>
                           <th class="td-center">N</th>
                           <th>Название</th>
