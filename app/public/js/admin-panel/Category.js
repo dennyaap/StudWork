@@ -2,7 +2,7 @@ class Category{
     static async checkCategory(name){
         let route = '/app/controllers/categories/checkCategory.php';
 
-        let result = await postData(route, name);
+        let result = await postDataResponse(route, name);
         return result;
     }
     static async findCategory(id){

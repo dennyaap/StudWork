@@ -22,17 +22,19 @@ let successAlertElement = document.getElementById('successAlert');
 successAlertElement.style.display = 'none';
 //проверка на существовании такого названия
 
+function renderDangerAlert(container, errors){
+    let errorsText = '';
+        
+    errors.forEach(error =>{
+        errorsText += Alert.createDangerAlert(error);
+    });
+    container.innerHTML = errorsText;
+}
 //добавление новой категории
 async function addCategory(){
     let errors = await Validation.checkValidation(textElement);
-
     if(errors.length !== 0){
-        let errorsText = '';
-        
-        errors.forEach(error =>{
-            errorsText += Alert.createDangerAlert(error);
-        });
-        dangerAlertContainer.innerHTML = errorsText;
+        renderDangerAlert(dangerAlertContainer, errors);
     } 
     else 
     {
@@ -81,22 +83,4 @@ function outOnPage(data)
 }
 
 
-let categoryNameElement = document.getElementById('category-name');
-let categoryNameDeleteElement = document.getElementById('category-name-delete');
-
-let selectCategory = {}
-
-async function showEditCategory(e){
-    selectCategory = await getSelectCategory(e);
-    categoryNameElement.value = selectCategory.name;
-}
-
-async function showDeleteCategory(e){
-    selectCategory = await getSelectCategory(e);
-    categoryNameDeleteElement.textContent = selectCategory.name;
-}
-
-async function getSelectCategory(e){
-    return await Category.findCategory(e.closest('.category-id').dataset.id);
-}
 

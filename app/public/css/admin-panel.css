@@ -89,6 +89,9 @@
     font-weight: bold;
     border: none;
   }
+  .edit-panel{
+    min-width: 200px;
+  }
   @media (min-width: 768px) {
     #sidebar-wrapper {
       margin-left: 0;
@@ -101,6 +104,9 @@
   
     #wrapper.toggled #sidebar-wrapper {
       margin-left: -15rem;
+    }
+    .edit-panel{
+      min-width: 500px;
     }
   }
 
@@ -148,9 +154,7 @@
     margin: 0px 0px 0px 10px;
     width: 45px;
   }
-  .edit-panel{
-    min-width: 500px;
-  }
+ 
   .add-panel{
     min-width: 350px;
   }

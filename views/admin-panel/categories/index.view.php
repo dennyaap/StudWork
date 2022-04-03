@@ -23,12 +23,15 @@
             <form>
               <div class="mb-3">
                 <label for="category-name" class="col-form-label">Название категории</label>
-                <input type="text" class="form-control" id="category-name">
+                <input type="text" class="form-control" id="categoryNameEdit">
               </div>
-              <!-- <div class="mb-3">
-                <label for="message-text" class="col-form-label">Сообщение:</label>
-                <textarea class="form-control" id="message-text"></textarea>
-              </div> -->
+               <div class="alert alert-success" role="alert" id="successAlertEdit">
+                      Запись была добавлена!
+                      </div>
+                    
+                      <div id="dangerAlertContainerEdit">
+                      
+                      </div>
             </form>
           </div>
           <div class="modal-footer">
