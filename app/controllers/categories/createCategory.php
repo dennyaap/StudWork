@@ -7,6 +7,4 @@ $stream = file_get_contents("php://input");
 if($stream != null){
     $data = json_decode($stream)->data;
     Category::createCategory($data);
-} else {
-    Category::getCategories();
 }

@@ -22,6 +22,7 @@ let successAlertElement = document.getElementById('successAlert');
 successAlertElement.style.display = 'none';
 //проверка на существовании такого названия
 
+//добавление новой категории
 async function addCategory(){
     let errors = await Validation.checkValidation(textElement);
 
@@ -36,35 +37,34 @@ async function addCategory(){
     else 
     {
         text = textElement.value;
-        clear(textElement);
+        clearElement(textElement);
         successAlertElement.style.display = '';
         let categories = [];
         categories.push(text);
-        clear(dangerAlertContainer);
+        clearElement(dangerAlertContainer);
         setTimeout(()=> successAlertElement.style.display = 'none', 1000);
         textElement.value = '';
         
-        await getCategories(text);
+        await renderCategories(text);
     }
 }
-function clear(element){
+function clearElement(element){
     element.textContent = '';
 }
 
 
-getCategories();
+renderCategories();
 
-async function getCategories(data = null)
+async function renderCategories(data = null)
 {
-    let route = '/app/controllers/categories/findCategories.php';
+    let routeGetData = '/app/controllers/categories/getCategories.php';
+    let routePostData = '/app/controllers/categories/createCategory.php';
     let categories = [];
 
     if(data){
-        categories = await postData(route, data);
-
-    } else {
-        categories = await getData(route);
-    }
+        await postData(routePostData, data);
+    } 
+    categories = await getData(routeGetData);
     outOnPage(categories);
 }
 
@@ -75,49 +75,28 @@ function outOnPage(data)
 
     data.forEach(category => {
         numberCategory++;
-        text += createCard(category, numberCategory);
+        text += Card.createCard(category, numberCategory);
     });
     categoriesContainer.innerHTML = text;
 }
 
-function createCard({id, name}, numberCategory){
-    return `<tr class="category-id" data-id="${id}">
-    <td class="td-center">${numberCategory}</td>
-    <td>${name}</td>
-    <td onclick="showEditCategory(this)" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap"><i class="fas fa-solid fa-pen"></i></onclick=></td>
-    <td onclick="showDeleteCategory(this)" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-solid fa-trash"></i></td>
-  </tr>`
-}
 
 let categoryNameElement = document.getElementById('category-name');
 let categoryNameDeleteElement = document.getElementById('category-name-delete');
 
 let selectCategory = {}
 
-
 async function showEditCategory(e){
-    let currentCategoryId = e.closest('.category-id').dataset.id;
-    selectCategory = await Category.findCategory(currentCategoryId)
-    let categoryName = selectCategory.name;
-    categoryNameElement.value = categoryName;
+    selectCategory = await getSelectCategory(e);
+    categoryNameElement.value = selectCategory.name;
 }
 
 async function showDeleteCategory(e){
-    let currentCategoryId = e.closest('.category-id').dataset.id;
-    selectCategory = await Category.findCategory(currentCategoryId)
-    let categoryName = selectCategory.name;
-    categoryNameDeleteElement.textContent = categoryName;
+    selectCategory = await getSelectCategory(e);
+    categoryNameDeleteElement.textContent = selectCategory.name;
 }
 
-let btnAccept = document.getElementById('btnAccept');
-btnAccept.addEventListener('click', async () =>{
-    let newCategoryName = categoryNameElement.value;
-    await Category.editCategory({'id' : selectCategory.id, 'name' : newCategoryName});
-    getCategories();
-})
-let btnDeleteCategory = document.getElementById('btnDeleteCategory')
-btnDeleteCategory.addEventListener('click', async () =>{
-    let newCategoryName = categoryNameElement.value;
-    await Category.deleteCategory(selectCategory.id);
-    getCategories();
-})
+async function getSelectCategory(e){
+    return await Category.findCategory(e.closest('.category-id').dataset.id);
+}
+

@@ -35,8 +35,6 @@ class Category
                 'name' => $data,
             ]
         );
-
-        return self::getCategories();
     }
     public static function checkCategory($name){
         $stmt = self::pdo()->prepare('SELECT name
