@@ -59,8 +59,8 @@ renderCategories();
 
 async function renderCategories(data = null)
 {
-    let routeGetData = '/app/controllers/categories/getCategories.php';
-    let routePostData = '/app/controllers/categories/createCategory.php';
+    let routeGetData = '/app/controllers/admin-panel/categories/getCategories.php';
+    let routePostData = '/app/controllers/admin-panel/categories/createCategory.php';
     let categories = [];
 
     if(data){

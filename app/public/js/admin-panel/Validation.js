@@ -13,4 +13,18 @@ class Validation{
         }
         return errors;
     }
+    static async checkErrorsAuth(email, password){
+        let errors = [];
+        
+        if(email == '' || password == ''){
+            errors.push('Введите логин и пароль');
+        }
+        else if(password <= 8){
+            errors.push('Пароль должен содержать минимум 8 символов')
+        }
+        else if(!await Autorisation.checkUser(email, password)){
+            errors.push('Неверный логин или пароль');
+        }
+        return errors;
+    }
 }

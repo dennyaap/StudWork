@@ -26,7 +26,7 @@
                 <input type="text" class="form-control" id="categoryNameEdit">
               </div>
                <div class="alert alert-success" role="alert" id="successAlertEdit">
-                      Запись была добавлена!
+                      Запись была переименована!
                       </div>
                     
                       <div id="dangerAlertContainerEdit">
