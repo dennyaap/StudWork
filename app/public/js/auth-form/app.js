@@ -15,6 +15,7 @@ sign_in_btn.addEventListener("click", () => {
 let studentEmailElement = document.getElementById('studentEmail');
 let studentPasswordElement = document.getElementById('studentPassword');
 let studentBtnAuthElement = document.getElementById('studentAuthBtn');
+let studentDangerAlertContainer = document.getElementById('dangerAlertStudentContainer');
 
 studentBtnAuthElement.addEventListener('click', async (e) =>{
   e.preventDefault();
@@ -25,9 +26,12 @@ async function checkAuth(){
     let password = studentPasswordElement.value;
 
     let errors = await Validation.checkErrorsAuth(email, password);
+
+    let errorsText = '';
     if(errors.length != 0){
-      console.log(errors);
+      errorsText += Alert.createDangerAlert(errors);
     } else {
       console.log('isAuth');
     }
+    studentDangerAlertContainer.innerHTML = errorsText;
 }

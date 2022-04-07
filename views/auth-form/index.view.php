@@ -28,10 +28,8 @@
             <p class="social-text">Зарегистрироваться</p>
 
             
-            <div class="alert-container">
-              <div class="alert alert-danger" role="alert" id="dangerAlertContainer">
-              Неверный логин или пароль.
-              </div>
+            <div class="alert-container" id="dangerAlertStudentContainer">
+              
             </div>
             <!-- <div class="social-media">
               <a href="#" class="social-icon">
@@ -111,6 +109,7 @@
     </div>
     
     <script src="/app/public/js/fetch.js"></script>
+    <script src="/app/public/js/admin-panel/Alert.js"></script>
     <script src="/app/public/js/admin-panel/Validation.js"></script>
     <script src="/app/public/js/Autorisation.js"></script>
     <script src="/app/public/js/auth-form/app.js"></script>
