@@ -39,6 +39,7 @@ class Student
             'email' => $email
         ]);
         $res = $stmt->fetch();
-        echo json_encode($res, JSON_UNESCAPED_UNICODE);
+
+        return $res;
     }
 }

@@ -28,7 +28,8 @@ async function checkAuth(){
     if(errors.length != 0){
       errorsText += Alert.createDangerAlert(errors);
     } else {
-      console.log('isAuth');
+    //   console.log('isAuth');
+        Autorisation.isAutorisation(email);
     }
     studentDangerAlertContainer.innerHTML = errorsText;
 }

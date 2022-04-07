@@ -1,7 +1,11 @@
 <?php
-include_once $_SERVER['DOCUMENT_SERVER'] . '/app/services/Utils.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/app/services/Utils.php';
 
-if(!Utils::isAuthorizated()){
+use App\services\Utils;
+
+if(!Utils::isAutorisation()){
     header('Location: /views/auth-form/index.view.php');
     die();
+} else {
+    header('Location: /');
 }
