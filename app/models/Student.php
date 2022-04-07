@@ -1,10 +1,10 @@
 <?php
-namespace App\services;
+namespace App\models;
 use App\services\Connection;
 
 session_start();
 
-class Utils
+class Student
 {
     public static function pdo($config = CONFIG_CONNECTION)
     {
@@ -13,7 +13,7 @@ class Utils
     public static function isAuthorizated(){
         return $_SESSION['isAuth'] ?? false;
     }
-    public static function checkUser($user){
+    public static function checkStudent($user){
         $isAuth = False;
         $stmt = self::pdo()->prepare("SELECT email, password FROM users 
         WHERE email = :email AND password = :password");
@@ -34,7 +34,7 @@ class Utils
         // return $verifyPassword;
     }
     public static function getUser($email){
-        $stmt = self::pdo()->prepare('SELECT * FROM users WHERE email = :email')
+        $stmt = self::pdo()->prepare('SELECT * FROM users WHERE email = :email');
         $stmt->execute([
             'email' => $email
         ]);

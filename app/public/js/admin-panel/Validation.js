@@ -15,11 +15,16 @@ class Validation{
     }
     static async checkErrorsAuth(email, password){
         let errors = '';
+
+        let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         
         if(email == '' || password == ''){
             errors = 'Введите логин и пароль';
         }
-        else if(password <= 8){
+        else if(!email.match(mailformat)){
+            errors = 'Неправильно введен E-mail. Пример: email@example.com'
+        }
+        else if(password.length <= 8){
             errors = 'Пароль должен содержать минимум 8 символов';
         }
         else if(!await Autorisation.checkUser(email, password)){

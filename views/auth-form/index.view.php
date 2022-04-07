@@ -14,7 +14,7 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          <form action="" class="sign-in-form">
             <h2 class="title">Войти</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -24,7 +24,10 @@
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Пароль" id="studentPassword"/>
             </div>
-            <input type="submit" value="Войти" class="btn solid" id="studentAuthBtn"/>
+            
+           
+            <button type="submit" class="btn solid" id="studentAuthBtn"><div class="loading" id="studentSpinner"></div><div id="studentBtnText">Войти</div></button>
+
             <p class="social-text">Зарегистрироваться</p>
 
             
@@ -45,6 +48,7 @@
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </div> -->
+
           </form>
           <form action="#" class="sign-up-form">
             <h2 class="title">Войти</h2>
@@ -113,5 +117,6 @@
     <script src="/app/public/js/admin-panel/Validation.js"></script>
     <script src="/app/public/js/Autorisation.js"></script>
     <script src="/app/public/js/auth-form/app.js"></script>
+    <script src="/app/public/js/auth-form/student-auth.js"></script>
   </body>
 </html>
