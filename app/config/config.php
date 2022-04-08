@@ -1,5 +1,4 @@
 <?php
-
 const CONFIG_CONNECTION = [
     'host' => 'localhost',
     'dbname' => 'studwork',
@@ -10,3 +9,6 @@ const CONFIG_CONNECTION = [
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
     ]
 ];
+
+session_start();
+// $_SESSION['isAuth'] = False;

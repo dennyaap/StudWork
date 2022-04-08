@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <nav class="navbar navbar-expand-sm navbar-light">
   <div class="container navbar-container">
     <a href="#" class="navbar-brand"><img id="logo" src="/app/public/images/logo.svg" alt=""></a>
@@ -19,7 +20,22 @@
 
       <div class="buttons">
         <button class="btn" id="btn-resume">Создать резюме</button>
-        <button class="btn" id="btn-auth">Войти</button>
+
+        <?php if (!isset($_SESSION['isAuth'])) : ?>
+          <a href="/app/controllers/auth-form/"><button class="btn" id="btn-auth">Войти</button></a>
+        <?php else : ?>
+        <ul class="navbar-nav ms-auto">
+                <a class="nav-link fw-bold" href="#"
+                               >
+                               <?= $_SESSION['user'] ?>
+                                <!-- <i class="fas fa-user me-2"></i>Viktor Sunset -->
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" class="rounded-circle" id="avatar"
+  alt="Avatar" />
+                            </a>
+                            
+                    </ul>
+        <?php endif ?>
+        
       </div>
     </div>
   </div>

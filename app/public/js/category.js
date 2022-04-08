@@ -6,7 +6,7 @@ getCategories();
 
 async function getCategories()
 {
-    let route = '/app/controllers/categories/findCategories.php';
+    let route = '/app/controllers/main-page/getCategories.php';
     let categories = await getData(route);
     outOnPage(categories);
 }
