@@ -28,11 +28,12 @@ class Category
     }
 
     public static function createCategory($data){
-        $stmt = self::pdo()->prepare("INSERT INTO categories (name)
-        VALUES (:name)");
+        $stmt = self::pdo()->prepare("INSERT INTO categories (name, color)
+        VALUES (:name, :color)");
         $stmt->execute(
             [
-                'name' => $data,
+                'name' => $data->name,
+                'color' => $data->color
             ]
         );
     }
@@ -61,13 +62,14 @@ class Category
     }
     public static function editCategory($data){
         $stmt = self::pdo()->prepare('UPDATE categories
-        SET name = :name
+        SET name = :name, color = :color
         WHERE id = :id');
 
         $stmt->execute(
             [
                 'id' => $data->id,
-                'name' => $data->name
+                'name' => $data->name,
+                'color' => $data->color
             ]
         );
     }

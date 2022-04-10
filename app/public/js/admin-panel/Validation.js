@@ -13,6 +13,15 @@ class Validation{
         }
         return errors;
     }
+    static async checkEditValidation(element){
+        let errors = [];
+        let categoryName = element.value;
+       
+        if(categoryName == ''){
+            errors.push('Заполните поле!')
+        }
+        return errors;
+    }
     static async checkErrorsAuth(email, password){
         let errors = '';
 

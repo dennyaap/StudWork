@@ -25,12 +25,14 @@ async function getSelectCategory(e){
 
 let btnAccept = document.getElementById('btnAccept');
 
+let paletteColorEditElement = document.getElementById('paletteColorEdit');
+
 btnAccept.addEventListener('click', async () =>{
-    let errors = await Validation.checkValidation(textElementEdit);
+    let errors = await Validation.checkEditValidation(textElementEdit);
     if(errors.length !== 0){
         renderDangerAlert(dangerAlertContainerEdit, errors);
     } else {
-        await Category.editCategory({'id' : selectCategory.id, 'name' : textElementEdit.value});
+        await Category.editCategory({'id' : selectCategory.id, 'name' : textElementEdit.value, 'color' : paletteColorEditElement.value});
         successAlertElementEdit.style.display = '';
         setTimeout(()=> successAlertElementEdit.style.display = 'none', 1000);
         clearElement(dangerAlertContainerEdit);

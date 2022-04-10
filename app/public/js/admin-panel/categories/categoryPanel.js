@@ -30,6 +30,7 @@ function renderDangerAlert(container, errors){
     });
     container.innerHTML = errorsText;
 }
+let paletteColorElement = document.getElementById('paletteColor');
 //добавление новой категории
 async function addCategory(){
     let errors = await Validation.checkValidation(textElement);
@@ -47,7 +48,7 @@ async function addCategory(){
         setTimeout(()=> successAlertElement.style.display = 'none', 1000);
         textElement.value = '';
         
-        await renderCategories(text);
+        await renderCategories({'name' : text, 'color' : paletteColorElement.value});
     }
 }
 function clearElement(element){

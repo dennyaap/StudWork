@@ -23,6 +23,10 @@
             <form>
               <div class="mb-3">
                 <label for="category-name" class="col-form-label">Название категории</label>
+                <label>
+  <input type="color" value="#8C97FE" id="paletteColorEdit">
+  
+</label>
                 <input type="text" class="form-control" id="categoryNameEdit">
               </div>
                <div class="alert alert-success" role="alert" id="successAlertEdit">
@@ -111,7 +115,7 @@
                     <!-- Email input -->
                       <div class="form-outline mb-4 d-flex">
                       <label>
-  <input type="color" value="#8C97FE">
+  <input type="color" value="#8C97FE" id="paletteColor">
   
 </label>
                         <input type="text" id="categoryInput" class="form-control" placeholder="Название"/>
@@ -123,9 +127,7 @@
                      <div id="dangerAlertContainer">
                       
                      </div>
-                     <div class="palette-container">
-                       <div class="palette-color" id="paletteColor"></div>
-                     </div>
+                     
                     </div>
                     
                 </div>
