@@ -110,6 +110,10 @@
                     <div id="form">
                     <!-- Email input -->
                       <div class="form-outline mb-4 d-flex">
+                      <label>
+  <input type="color" value="#8C97FE">
+  
+</label>
                         <input type="text" id="categoryInput" class="form-control" placeholder="Название"/>
                         <button class="btn" id="btnAdd"><i class="fas fa-solid fa-plus"></i></button>
                       </div>
@@ -119,13 +123,18 @@
                      <div id="dangerAlertContainer">
                       
                      </div>
+                     <div class="palette-container">
+                       <div class="palette-color" id="paletteColor"></div>
+                     </div>
                     </div>
+                    
                 </div>
                 <div class="col categories-container add-panel">
                   <h2>Список</h2>
               <table class="table table-striped">
                       <thead>
                         <tr>
+                          <th></th>
                           <th class="td-center">N</th>
                           <th>Название</th>
                           <th></th>

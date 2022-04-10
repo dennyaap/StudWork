@@ -20,10 +20,10 @@ function outOnPage(data)
     categoriesContainer.innerHTML = text;
 }
 
-function createCard({id, name}){
+function createCard({id, name, color}){
     return `<div class="col">
     <div class="card category-card" id="${id}">
-        <div class="category-color"></div>
+        <div class="category-color" style="background: ${color}"></div>
         <div class="card-body">
             <h5 class="card-title">${name}</h5>
             <p class="card-text">smth</p>

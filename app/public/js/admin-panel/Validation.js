@@ -24,9 +24,6 @@ class Validation{
         else if(!email.match(mailformat)){
             errors = 'Неправильно введен E-mail. Пример: email@example.com'
         }
-        else if(password.length <= 8){
-            errors = 'Пароль должен содержать минимум 8 символов';
-        }
         else if(!await Autorisation.checkUser(email, password)){
             errors = 'Неверный логин или пароль';
         }

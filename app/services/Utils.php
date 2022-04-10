@@ -11,7 +11,7 @@ class Utils
     public static function isAutorisation(){
         return $_SESSION['isAuth'] ?? false;
     }
-    public static function setUser($email){
-        $_SESSION['user'] = Student::getStudent($email);
+    public static function setUser($data){
+        $_SESSION['user'] = $data;
     }
 }

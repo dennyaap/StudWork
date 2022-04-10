@@ -15,7 +15,7 @@
       <div class="forms-container">
         <div class="signin-signup">
           <form action="" class="sign-in-form">
-            <h2 class="title">Войти</h2>
+            <h2 class="title">Студент</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="email" placeholder="E-mail" id="studentEmail"/>
@@ -51,7 +51,7 @@
 
           </form>
           <form action="#" class="sign-up-form">
-            <h2 class="title">Войти</h2>
+            <h2 class="title">Работодатель</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" placeholder="E-mail" />
@@ -87,7 +87,7 @@
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
-            <h3>Вы работадель ?</h3>
+            <h3>Вы работодатель ?</h3>
             <p>
               Находите первоклассных амбициозных сотрудников
             </p>
