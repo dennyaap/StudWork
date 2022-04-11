@@ -1,10 +1,10 @@
 class Validation{
     //проверка на существовании такого названия
-    static async checkValidation(element){
+    static async checkValidation(text){
         let errors = [];
-        let categoryName = element.value;
+        let categoryName = text;
         let result = await Category.checkCategory(categoryName);
-       
+        console.log(text);
         if(categoryName == ''){
             errors.push('Заполните поле!')
         }

@@ -116,13 +116,13 @@
                     <!-- Email input -->
                       <div class="form-outline mb-4 d-flex">
                       <label>
-  <input type="color" value="#8C97FE" id="paletteColor">
+  <input type="color" v-bind:value="paletteColor" id="paletteColor">
   
 </label>
-                        <input type="text" id="categoryInput" class="form-control" placeholder="Название"/>
-                        <button class="btn" id="btnAdd"><i class="fas fa-solid fa-plus"></i></button>
+                        <input type="text" id="categoryInput" class="form-control" placeholder="Название" v-bind:value="textElement"/>
+                        <button class="btn" id="btnAdd" @click="addCategory"><i class="fas fa-solid fa-plus"></i></button>
                       </div>
-                      <div class="alert alert-success" role="alert" id="successAlert">
+                      <div class="alert alert-success" role="alert" id="successAlert" v-show="showAlertSuccessElement">
                       Запись была добавлена!
                       </div>
                      <div id="dangerAlertContainer">
