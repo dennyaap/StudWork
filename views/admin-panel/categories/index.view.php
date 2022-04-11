@@ -12,6 +12,7 @@
 </head>
 
 <body>
+<div id="app">
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -93,7 +94,7 @@
                     <h2 class="fs-3 m-0">Категории</h2>
                 </div>
 
-               
+                
 
                 <ul class="navbar-nav ms-auto">
                 <a class="nav-link fw-bold" href="#"
@@ -155,7 +156,9 @@
     </div>
     <!-- /#page-content-wrapper -->
     </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
     <script src="/app/public/js/fetch.js"></script>
     <script src="/app/public/js/admin-panel/Card.js"></script>
     <script src="/app/public/js/admin-panel/Alert.js"></script>
