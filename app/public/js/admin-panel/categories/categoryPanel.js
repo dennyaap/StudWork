@@ -1,10 +1,4 @@
-//закрытие и открытие левого меню
-let el = document.getElementById("wrapper");
-let toggleButton = document.getElementById("menu-toggle");
 
-toggleButton.addEventListener('click', () => {
-    el.classList.toggle("toggled");
-});
 
 
 //вставка записи в таблицу с категориями
@@ -86,8 +80,9 @@ toggleButton.addEventListener('click', () => {
 const App = {
     data() {
         return {
-            textElement: '',
-            paletteColor: '',
+            isToggledNavbar: false,
+            nameCategory: '',
+            paletteColor: '#828EFF',
             showAlertSuccessElement: false
         }
     },
@@ -105,23 +100,22 @@ const App = {
             this.outOnPage(categories);
         },
         async addCategory(){
-            console.log(this.textElement);
-            let errors = await Validation.checkValidation(this.textElement);
+            let errors = await Validation.checkValidation(this.nameCategory);
             if(errors.length !== 0){
                 this.renderDangerAlert(dangerAlertContainer, errors);
             } 
             else 
             {
-                text = this.textElement;
-                this.clearElement(this.textElement);
-                showAlertSuccessElement = true;
-                let categories = [];
-                categories.push(text);
+                let nameCategory = this.nameCategory;
+                this.showAlertSuccessElement = true;
+                // let categories = [];
+                // categories.push(text);
                 this.clearElement(dangerAlertContainer);
-                setTimeout(()=> showAlertSuccessElement = false, 1000);
-                this.textElement = '';
+                setTimeout(()=> this.showAlertSuccessElement = false, 1000);
+                this.nameCategory = '';
+
                 
-                await this.renderCategories({'name' : text, 'color' : this.paletteColor});
+                await this.renderCategories({'name' : nameCategory, 'color' : this.paletteColor});
             }
         },
         renderDangerAlert(container, errors){
@@ -145,6 +139,18 @@ const App = {
             });
             categoriesContainer.innerHTML = text;
         },
+        toggledNavbar(){
+            this.isToggledNavbar = !this.isToggledNavbar;
+        }
+        // navbarOn(){
+        //     //закрытие и открытие левого меню
+        //     let el = document.getElementById("wrapper");
+        //     let toggleButton = document.getElementById("menu-toggle");
+
+        //     toggleButton.addEventListener('click', () => {
+        //         el.classList.toggle("toggled");
+        //     });
+        // }
     },
     created: function(){
         this.renderCategories();

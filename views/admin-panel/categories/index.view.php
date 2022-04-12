@@ -68,7 +68,7 @@
       </div>
     </div>
     
-    <div class="d-flex" id="wrapper">
+    <div class="d-flex" :class="{toggled: isToggledNavbar}" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
@@ -89,8 +89,8 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-3 px-3 container">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-align-left primary-text fs-3 me-3" id="menu-toggle"></i>
+                <div class="d-flex align-items-center" @click="toggledNavbar">
+                    <i class="fas fa-align-left primary-text fs-3 me-3" id="menu-toggle" @click="toggledNavbar"></i>
                     <h2 class="fs-3 m-0">Категории</h2>
                 </div>
 
@@ -116,10 +116,10 @@
                     <!-- Email input -->
                       <div class="form-outline mb-4 d-flex">
                       <label>
-  <input type="color" v-bind:value="paletteColor" id="paletteColor">
+  <input type="color" v-model="paletteColor" id="paletteColor">
   
 </label>
-                        <input type="text" id="categoryInput" class="form-control" placeholder="Название" v-bind:value="textElement"/>
+                        <input type="text" id="categoryInput" class="form-control" placeholder="Название" v-model="nameCategory"/>
                         <button class="btn" id="btnAdd" @click="addCategory"><i class="fas fa-solid fa-plus"></i></button>
                       </div>
                       <div class="alert alert-success" role="alert" id="successAlert" v-show="showAlertSuccessElement">
