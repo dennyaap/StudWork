@@ -1,156 +1,85 @@
-
-
-
-//вставка записи в таблицу с категориями
-// let textElement = document.getElementById('categoryInput');
-// let btnAdd = document.getElementById('btnAdd');
-// let container = document.getElementById('tableContainer');
-
-
-// btnAdd.addEventListener('click', async () =>{
-//     await addCategory();
-// });
-
-// let dangerAlertContainer = document.getElementById('dangerAlertContainer');
-// let successAlertElement = document.getElementById('successAlert');
-// successAlertElement.style.display = 'none';
-// //проверка на существовании такого названия
-
-// function renderDangerAlert(container, errors){
-//     let errorsText = '';
-        
-//     errors.forEach(error =>{
-//         errorsText += Alert.createDangerAlert(error);
-//     });
-//     container.innerHTML = errorsText;
-// }
-// let paletteColorElement = document.getElementById('paletteColor');
-//добавление новой категории
-// async function addCategory(){
-//     let errors = await Validation.checkValidation(textElement);
-//     if(errors.length !== 0){
-//         renderDangerAlert(dangerAlertContainer, errors);
-//     } 
-//     else 
-//     {
-//         text = textElement.value;
-//         clearElement(textElement);
-//         successAlertElement.style.display = '';
-//         let categories = [];
-//         categories.push(text);
-//         clearElement(dangerAlertContainer);
-//         setTimeout(()=> successAlertElement.style.display = 'none', 1000);
-//         textElement.value = '';
-        
-//         await renderCategories({'name' : text, 'color' : paletteColorElement.value});
-//     }
-// }
-// function clearElement(element){
-//     element.textContent = '';
-// }
-
-
-// renderCategories();
-
-// async function renderCategories(data = null)
-// {
-//     let routeGetData = '/app/controllers/admin-panel/categories/getCategories.php';
-//     let routePostData = '/app/controllers/admin-panel/categories/createCategory.php';
-//     let categories = [];
-
-//     if(data){
-//         await postData(routePostData, data);
-//     } 
-//     categories = await getData(routeGetData);
-//     outOnPage(categories);
-// }
-
-// function outOnPage(data)
-// {
-//     let text = '';
-//     let numberCategory = 0;
-
-//     data.forEach(category => {
-//         numberCategory++;
-//         text += Card.createCard(category, numberCategory);
-//     });
-//     categoriesContainer.innerHTML = text;
-// }
-
 const App = {
     data() {
         return {
             isToggledNavbar: false,
             nameCategory: '',
             paletteColor: '#828EFF',
-            showAlertSuccessElement: false
+            showAlertSuccessElement: false,
+            categories: [],
+            selectCategory: '',
+            categoryNameEdit: '',
+            paletteColorEdit: '#828EFF',
+            showSuccessAlertEdit: false,
+            dangerAlertContainerCreate: '',
+            dangerAlertContainerEdit: '',
+            categoryNameDelete: '',
         }
     },
     methods: {
+        //создание категории
         async renderCategories(data = null)
         {
             let routeGetData = '/app/controllers/admin-panel/categories/getCategories.php';
             let routePostData = '/app/controllers/admin-panel/categories/createCategory.php';
-            let categories = [];
 
             if(data){
                 await postData(routePostData, data);
             } 
-            categories = await getData(routeGetData);
-            this.outOnPage(categories);
+            this.categories = await getData(routeGetData);
         },
         async addCategory(){
-            let errors = await Validation.checkValidation(this.nameCategory);
-            if(errors.length !== 0){
-                this.renderDangerAlert(dangerAlertContainer, errors);
+            let error = await Validation.checkValidation(this.nameCategory);
+            if(error.length !== 0){
+                this.showDangerAlertContainer = true;
+                this.dangerAlertContainerCreate = Alert.createDangerAlert(error);
             } 
             else 
             {
                 let nameCategory = this.nameCategory;
-                this.showAlertSuccessElement = true;
-                // let categories = [];
-                // categories.push(text);
-                this.clearElement(dangerAlertContainer);
+                
+                this.dangerAlertContainerCreate = '';
                 setTimeout(()=> this.showAlertSuccessElement = false, 1000);
                 this.nameCategory = '';
 
-                
                 await this.renderCategories({'name' : nameCategory, 'color' : this.paletteColor});
             }
         },
-        renderDangerAlert(container, errors){
-            let errorsText = '';
-                
-            errors.forEach(error =>{
-                errorsText += Alert.createDangerAlert(error);
-            });
-            container.innerHTML = errorsText;
-        },
-        clearElement(element){
-            element.textContent = '';
-        },
-        outOnPage(data){
-            let text = '';
-            let numberCategory = 0;
-
-            data.forEach(category => {
-                numberCategory++;
-                text += Card.createCard(category, numberCategory);
-            });
-            categoriesContainer.innerHTML = text;
-        },
         toggledNavbar(){
             this.isToggledNavbar = !this.isToggledNavbar;
+        },
+        //редактирование категории
+        async showEditCategory(e){
+            this.selectCategory = await this.getSelectCategory(e);
+            this.categoryNameEdit = this.selectCategory.name;
+            this.paletteColorEdit = this.selectCategory.color;
+        },
+        async showDeleteCategory(e){
+            this.selectCategory = await this.getSelectCategory(e);
+            this.categoryNameDelete = this.selectCategory.name;
+        },
+        async getSelectCategory(e){
+            return await Category.findCategory(e.target.closest('.category-id').dataset.id);
+        },
+        async acceptEditCategory(){
+            let error = await Validation.checkEditValidation(this.categoryNameEdit);
+            console.log(this.paletteColorEdit)
+            if(error.length !== 0){
+                console.log(Alert.createDangerAlert(error));
+                this.dangerAlertContainerEdit = Alert.createDangerAlert(error);
+                
+            } else {
+                await Category.editCategory({'id' : this.selectCategory.id, 'name' : this.categoryNameEdit, 'color' : this.paletteColorEdit});
+                
+                this.showSuccessAlertEdit = true;
+                setTimeout(()=>  this.showSuccessAlertEdit = false, 1000);
+                this.dangerAlertContainerEdit = '';
+                this.renderCategories();
+            }
+        },
+        async acceptDeleteCategory(){
+            await Category.deleteCategory(this.selectCategory.id);
+            this.renderCategories();
         }
-        // navbarOn(){
-        //     //закрытие и открытие левого меню
-        //     let el = document.getElementById("wrapper");
-        //     let toggleButton = document.getElementById("menu-toggle");
-
-        //     toggleButton.addEventListener('click', () => {
-        //         el.classList.toggle("toggled");
-        //     });
-        // }
     },
     created: function(){
         this.renderCategories();

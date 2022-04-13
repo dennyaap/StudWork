@@ -13,14 +13,13 @@ class Validation{
         }
         return errors;
     }
-    static async checkEditValidation(element){
-        let errors = [];
-        let categoryName = element.value;
+    static async checkEditValidation(categoryName){
+        let error = '';
        
         if(categoryName == ''){
-            errors.push('Заполните поле!')
+            error ='Заполните поле!';
         }
-        return errors;
+        return error;
     }
     static async checkErrorsAuth(email, password){
         let errors = '';
