@@ -1,10 +1,10 @@
 class Validation{
     //проверка на существовании такого названия
-    static async checkValidation(text){
+    static async checkValidation(name){
         let errors = [];
-        let categoryName = text;
+        let categoryName = name;
         let result = await Category.checkCategory(categoryName);
-        console.log(text);
+        
         if(categoryName == ''){
             errors.push('Заполните поле!')
         }
@@ -13,10 +13,10 @@ class Validation{
         }
         return errors;
     }
-    static async checkEditValidation(categoryName){
+    static async checkEditValidation(name){
         let error = '';
        
-        if(categoryName == ''){
+        if(name == ''){
             error ='Заполните поле!';
         }
         return error;
@@ -37,16 +37,29 @@ class Validation{
         }
         return errors;
     }
-    static async checkValidationSkill(text){
+    static async checkValidationSkill(name){
         let errors = [];
-        let skillName = text;
+        let skillName = name;
         let result = await Skill.checkSkill(skillName);
-        console.log(text);
+       
         if(skillName == ''){
             errors.push('Заполните поле!')
         }
         else if(result){
             errors.push('Данный навык уже существует!')
+        }
+        return errors;
+    }
+    static async checkValidationLanguage(name){
+        let errors = [];
+        let languageName = name;
+        let result = await Language.checkLanguage(languageName);
+      
+        if(languageName == ''){
+            errors.push('Заполните поле!')
+        }
+        else if(result){
+            errors.push('Данный язык уже существует!')
         }
         return errors;
     }

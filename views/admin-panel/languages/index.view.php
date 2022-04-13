@@ -23,12 +23,9 @@
           <div class="modal-body">
             <form>
               <div class="mb-3">
-                <label for="category-name" class="col-form-label">Название категории</label>
-                <label>
-  <input type="color" v-model="paletteColorEdit" id="paletteColorEdit">
-  
-</label>
-                <input type="text" v-model="categoryNameEdit" class="form-control" id="categoryNameEdit">
+                <label for="category-name" class="col-form-label">Название навыка</label>
+                
+                <input type="text" v-model="languageNameEdit" class="form-control" id="categoryNameEdit">
               </div>
                <div class="alert alert-success" role="alert" id="successAlertEdit" v-show="showSuccessAlertEdit">
                       Изменения были пременены!
@@ -41,7 +38,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnClose">Закрыть</button>
-            <button type="button" class="btn btn-primary" id="btnAccept" @click="acceptEditCategory">Принять</button>
+            <button type="button" class="btn btn-primary" id="btnAccept" @click="acceptEditLanguage">Принять</button>
           </div>
         </div>
       </div>
@@ -58,11 +55,11 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            Вы действительно хотите удалить категорию «<span id="category-name-delete">{{ categoryNameDelete }}</span>»?
+            Вы действительно хотите удалить навык «<span id="category-name-delete">{{ languageNameDelete }}</span>»?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-            <button type="button" class="btn btn-primary" id="btnDeleteCategory" data-bs-dismiss="modal" @click="acceptDeleteCategory(this)">Удалить</button>
+            <button type="button" class="btn btn-primary" id="btnDeleteCategory" data-bs-dismiss="modal" @click="acceptDeleteLanguage(this)">Удалить</button>
           </div>
         </div>
       </div>
@@ -74,9 +71,9 @@
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class="fas fa-user-secret me-2"></i>StudWork</div>
             <div class="list-group list-group-flush my-3">
-                <a href="/app/controllers/admin-panel/categories/" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                <a href="/app/controllers/admin-panel/categories/" class="list-group-item list-group-item-action bg-transparent second-text"><i
                         class="fas fa-align-left me-2"></i>Категории</a>
-                <a href="/app/controllers/admin-panel/skills/" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-regular fa-clipboard me-2"></i>Навыки</a>
                 <a href="/app/controllers/admin-panel/languages/" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-regular fa-clipboard-user me-2"></i>Языки</a>
 
@@ -115,12 +112,9 @@
                     <div id="form">
                     <!-- Email input -->
                       <div class="form-outline mb-4 d-flex">
-                      <label>
-  <input type="color" v-model="paletteColor" id="paletteColor">
-  
-</label>
-                        <input type="text" id="categoryInput" class="form-control" placeholder="Название" v-model="nameCategory"/>
-                        <button class="btn" id="btnAdd" @click="addCategory"><i class="fas fa-solid fa-plus"></i></button>
+                      
+                        <input type="text" id="categoryInput" class="form-control" placeholder="Название" v-model="nameLanguage"/>
+                        <button class="btn" id="btnAdd" @click="addLanguage"><i class="fas fa-solid fa-plus"></i></button>
                       </div>
                       <div class="alert alert-success" role="alert" id="successAlert" v-show="showAlertSuccessElement">
                       Запись была добавлена!
@@ -137,7 +131,6 @@
               <table class="table table-striped">
                       <thead>
                         <tr>
-                          <th></th>
                           <th class="td-center">N</th>
                           <th>Название</th>
                           <th></th>
@@ -145,12 +138,11 @@
                         </tr>
                       </thead>
                       <tbody id="categoriesContainer">
-                        <tr class="category-id" v-for="(category, index) in categories" :data-id="category.id">
-                          <td :style="{background: category.color }" class="category-color"></td>
+                        <tr class="language-id" v-for="(language, index) in languages" :data-id="language.id">
                           <td class="td-center">{{ index + 1 }}</td>
-                          <td>{{ category.name }}</td>
-                          <td @click="showEditCategory" class="td-center" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap"><i class="fas fa-solid fa-pen"></i></onclick=></td>
-                          <td @click="showDeleteCategory" class="td-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-solid fa-trash"></i></td>
+                          <td>{{ language.name }}</td>
+                          <td @click="showEditLanguage" class="td-center" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap"><i class="fas fa-solid fa-pen"></i></onclick=></td>
+                          <td @click="showDeleteLanguage" class="td-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-solid fa-trash"></i></td>
                         </tr>
                       </tbody>
                     </table>
@@ -166,11 +158,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="/app/public/js/fetch.js"></script>
-    <script src="/app/public/js/admin-panel/categories/Card.js"></script>
+    <script src="/app/public/js/admin-panel/languages/Card.js"></script>
     <script src="/app/public/js/admin-panel/Alert.js"></script>
     <script src="/app/public/js/admin-panel/Validation.js"></script>
-    <script src="/app/public/js/admin-panel/categories/Category.js"></script>
-    <script src="/app/public/js/admin-panel/categories/categoryPanel.js"></script>
+    <script src="/app/public/js/admin-panel/languages/Language.js"></script>
+    <script src="/app/public/js/admin-panel/languages/app.js"></script>
 </body>
 
 </html>

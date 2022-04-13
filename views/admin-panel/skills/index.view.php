@@ -77,7 +77,7 @@
                         class="fas fa-regular fa-clipboard me-2"></i>Навыки</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-regular fa-clipboard-user me-2"></i>Резюме</a>
 
-                <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                <a href="index.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                         class="fas fa-arrow-left me-2"></i>Выйти</a>
             </div>
         </div>
