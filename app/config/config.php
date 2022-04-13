@@ -11,4 +11,9 @@ const CONFIG_CONNECTION = [
 ];
 
 session_start();
-// $_SESSION['isAuth'] = False;
+
+$routes = [
+    ['name' => 'Категории', 'link' => '/app/controllers/admin-panel/categories/', 'icon' => 'fa-align-left'],
+    ['name' => 'Навыки', 'link' => '/app/controllers/admin-panel/skills/', 'icon' => 'fa-regular fa-clipboard'],
+    ['name' => 'Языки', 'link' => '/app/controllers/admin-panel/languages/', 'icon' => 'fa-regular fa-clipboard-user'] 
+];

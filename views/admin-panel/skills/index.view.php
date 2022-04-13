@@ -67,20 +67,7 @@
     
     <div class="d-flex" :class="{toggled: isToggledNavbar}" id="wrapper">
         <!-- Sidebar -->
-        <div class="bg-white" id="sidebar-wrapper">
-            <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
-                    class="fas fa-user-secret me-2"></i>StudWork</div>
-            <div class="list-group list-group-flush my-3">
-                <a href="/app/controllers/admin-panel/categories/" class="list-group-item list-group-item-action bg-transparent second-text"><i
-                        class="fas fa-align-left me-2"></i>Категории</a>
-                <a href="/app/controllers/admin-panel/skills/" class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                        class="fas fa-regular fa-clipboard me-2"></i>Навыки</a>
-                <a href="/app/controllers/admin-panel/languages/" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-regular fa-clipboard-user me-2"></i>Языки</a>
-
-                <a href="index.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
-                        class="fas fa-arrow-left me-2"></i>Выйти</a>
-            </div>
-        </div>
+        <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/app/components/admin-sidebar_component.php' ?>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
