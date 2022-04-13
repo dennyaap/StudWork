@@ -37,4 +37,17 @@ class Validation{
         }
         return errors;
     }
+    static async checkValidationSkill(text){
+        let errors = [];
+        let skillName = text;
+        let result = await Skill.checkSkill(skillName);
+        console.log(text);
+        if(skillName == ''){
+            errors.push('Заполните поле!')
+        }
+        else if(result){
+            errors.push('Данный навык уже существует!')
+        }
+        return errors;
+    }
 }

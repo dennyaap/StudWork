@@ -36,7 +36,7 @@ const App = {
             else 
             {
                 let nameCategory = this.nameCategory;
-                
+                this.showAlertSuccessElement = true;
                 this.dangerAlertContainerCreate = '';
                 setTimeout(()=> this.showAlertSuccessElement = false, 1000);
                 this.nameCategory = '';
