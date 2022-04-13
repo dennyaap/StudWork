@@ -55,7 +55,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            Вы действительно хотите удалить категорию «<span id="category-name-delete">{{ skillNameDelete }}</span>»?
+            Вы действительно хотите удалить навык «<span id="category-name-delete">{{ skillNameDelete }}</span>»?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
@@ -74,7 +74,7 @@
                 <a href="/app/controllers/admin-panel/categories/" class="list-group-item list-group-item-action bg-transparent second-text"><i
                         class="fas fa-align-left me-2"></i>Категории</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                        class="fas fa-regular fa-clipboard me-2"></i>Вакансии</a>
+                        class="fas fa-regular fa-clipboard me-2"></i>Навыки</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-regular fa-clipboard-user me-2"></i>Резюме</a>
 
                 <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
@@ -88,7 +88,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-3 px-3 container">
               <i class="fas fa-align-left primary-text fs-3 me-3" id="menu-toggle" @click="toggledNavbar"></i>
                 <div class="d-flex align-items-center" @click="toggledNavbar">
-                    <h2 class="fs-3 m-0">Навыки</h2>
+                    <h2 class="fs-3 m-0"><?= $title ?></h2>
                 </div>
 
                 

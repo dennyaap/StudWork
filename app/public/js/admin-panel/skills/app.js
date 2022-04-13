@@ -26,7 +26,7 @@ const App = {
             this.skills = await getData(routeGetData);
         },
         async addSkill(){
-            let error = await Validation.checkValidation(this.nameSkill);
+            let error = await Validation.checkValidationSkill(this.nameSkill);
             if(error.length !== 0){
                 this.showDangerAlertContainer = true;
                 this.dangerAlertContainerCreate = Alert.createDangerAlert(error);
