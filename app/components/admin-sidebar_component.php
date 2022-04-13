@@ -4,6 +4,6 @@
         <?php foreach ($routes as $route) : ?>
             <a href="<?= $route['link'] ?>" class="list-group-item list-group-item-action bg-transparent second-text <?php if ($route['name'] == $title) : ?>active<?php endif ?>"><i class="fas <?= $route['icon'] ?> me-2"></i><?= $route['name'] ?></a>
         <?php endforeach ?>
-        <a href="index.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i class="fas fa-arrow-left me-2"></i>Выйти</a>
+        <a href="/index.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i class="fas fa-arrow-left me-2"></i>Выйти</a>
      </div>
 </div>
