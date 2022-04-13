@@ -170,7 +170,7 @@
     <script src="/app/public/js/admin-panel/Alert.js"></script>
     <script src="/app/public/js/admin-panel/Validation.js"></script>
     <script src="/app/public/js/admin-panel/categories/Category.js"></script>
-    <script src="/app/public/js/admin-panel/categories/categoryPanel.js"></script>
+    <script src="/app/public/js/admin-panel/categories/app.js"></script>
 </body>
 
 </html>

@@ -59,9 +59,8 @@ const App = {
         },
         async acceptEditSkill(){
             let error = await Validation.checkEditValidationSkill(this.skillNameEdit);
-            console.log(this.paletteColorEdit)
+            
             if(error.length !== 0){
-                console.log(Alert.createDangerAlert(error));
                 this.dangerAlertContainerEdit = Alert.createDangerAlert(error);
                 
             } else {

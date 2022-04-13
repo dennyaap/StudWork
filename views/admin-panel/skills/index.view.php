@@ -73,9 +73,9 @@
             <div class="list-group list-group-flush my-3">
                 <a href="/app/controllers/admin-panel/categories/" class="list-group-item list-group-item-action bg-transparent second-text"><i
                         class="fas fa-align-left me-2"></i>Категории</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                <a href="/app/controllers/admin-panel/skills/" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-regular fa-clipboard me-2"></i>Навыки</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-regular fa-clipboard-user me-2"></i>Резюме</a>
+                <a href="/app/controllers/admin-panel/languages/" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-regular fa-clipboard-user me-2"></i>Языки</a>
 
                 <a href="index.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                         class="fas fa-arrow-left me-2"></i>Выйти</a>
