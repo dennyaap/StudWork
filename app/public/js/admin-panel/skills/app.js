@@ -58,7 +58,7 @@ const App = {
             return await Skill.findSkill(e.target.closest('.skill-id').dataset.id);
         },
         async acceptEditSkill(){
-            let error = await Validation.checkEditValidationSkill(this.skillNameEdit);
+            let error = await Validation.checkEditValidation(this.skillNameEdit);
             
             if(error.length !== 0){
                 this.dangerAlertContainerEdit = Alert.createDangerAlert(error);

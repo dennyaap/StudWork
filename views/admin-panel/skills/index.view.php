@@ -73,10 +73,7 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-3 px-3 container">
-              <i class="fas fa-align-left primary-text fs-3 me-3" id="menu-toggle" @click="toggledNavbar"></i>
-                <div class="d-flex align-items-center" @click="toggledNavbar">
-                    <h2 class="fs-3 m-0"><?= $title ?></h2>
-                </div>
+            <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/app/components/admin-title_component.php' ?>
 
                 
 
