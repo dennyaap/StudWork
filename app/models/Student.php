@@ -24,23 +24,26 @@ class Student
         $data = $stmt->fetch();
         if(empty($data)){
             self::createStudentAccount($student);
+        } else{
+            $find = true;
         }
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
     }
     public static function authStudent($user){
         $find = false;
-        $stmt = self::pdo()->prepare("SELECT * FROM users 
-        WHERE email = :email AND password = :password");
+        $stmt = self::pdo()->prepare("SELECT email, password FROM users 
+        WHERE email = :email");
         $stmt-> execute([
-            'email' => $user->email,
-            'password' => $user->password
+            'email' => $user->email
             ]);
         $data = $stmt->fetch();
         
         if($data){
-            $_SESSION['isAuth'] = true;
-            Utils::setUser($data);
-            $find = true;
+           if(password_verify($user->password, $data->password)){
+                $_SESSION['isAuth'] = true;
+                Utils::setUser($data);
+                $find = true;
+           }
         }
         echo json_encode($find, JSON_UNESCAPED_UNICODE);
         // if(!empty($data)){
@@ -57,7 +60,7 @@ class Student
             'surname' => $student->surname,
             'patronomyc' => $student->patronomyc,
             'email' => $student->email,
-            'password' => $student->password,
+            'password' => password_hash($student->password, PASSWORD_BCRYPT),
             'gender' => $student->gender
             ]);
     }

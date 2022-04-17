@@ -20,7 +20,7 @@ const App = {
         employerPhone: '',
         employerEmail: '',
         employerPassword: '',
-        employerGender: '',
+        employerGender: 'м',
         showEmployerBtnText: true,
         showEmployerLoader: false,
         employerErrors: [],

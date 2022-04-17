@@ -24,23 +24,26 @@ class Employer
         $data = $stmt->fetch();
         if(empty($data)){
             self::createEmployerAccount($employer);
+        } else {
+            $find = true;
         }
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
     }
     public static function authEmployer($employer){
         $find = false;
         $stmt = self::pdo()->prepare("SELECT * FROM employers 
-        WHERE email = :email AND password = :password");
+        WHERE email = :email");
         $stmt-> execute([
-            'email' => $employer->email,
-            'password' => $employer->password
+            'email' => $employer->email
             ]);
         $data = $stmt->fetch();
         
         if($data){
-            $_SESSION['isAuth'] = true;
-            Utils::setUser($data);
-            $find = true;
+            if(password_verify($employer->password, $data->password)){
+                $_SESSION['isAuth'] = true;
+                Utils::setUser($data);
+                $find = true;
+            }
         }
         echo json_encode($find, JSON_UNESCAPED_UNICODE);
         // if(!empty($data)){
@@ -59,7 +62,7 @@ class Employer
             'name_organization' => $employer->nameOrganization,
             'phone' => $employer->phone,
             'email' => $employer->email,
-            'password' => $employer->password,
+            'password' => password_hash($employer->password, PASSWORD_BCRYPT),
             'gender' => $employer->gender
             ]);
     }
