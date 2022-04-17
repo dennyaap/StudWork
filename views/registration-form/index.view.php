@@ -7,7 +7,9 @@
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
+    
     <link rel="stylesheet" href="/app/public/css/auth-form/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/app/public/css/registration-form/gender_component.css" />
     <title><?= $title ?></title>
   </head>
@@ -30,15 +32,6 @@
               <i class="fas fa-user"></i>
               <input type="text" placeholder="Отчество" id="studentatronomyc" v-model="studentPatronomyc"/>
             </div>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="email" placeholder="E-mail" id="studentEmail" v-model="studentEmail"/>
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Пароль" id="studentPassword" v-model="studentPassword"/>
-            </div>
-            
             <div class="form_radio">
             <div class="form_radio_btn">
 	<input id="maleRadio" type="radio" name="radio" value="м" v-model="gender" checked>
@@ -50,6 +43,16 @@
 	<label for="femaleRadio">Ж</label>
 </div>
             </div>
+            <div class="input-field">
+              <i class="fas fa-solid fa-envelope"></i>
+              <input type="email" placeholder="E-mail" id="studentEmail" v-model="studentEmail"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Пароль" id="studentPassword" v-model="studentPassword"/>
+            </div>
+            
+            
            
             <button type="submit" class="btn solid" id="studentAuthBtn" @click="createAccount"><div class="loading" id="studentSpinner" v-show="showStudentLoader"></div><div v-show="showStudentBtnText">Создать</div></button>
 
@@ -79,19 +82,55 @@
           </form>
           <form action="#" class="sign-up-form">
             <h2 class="title">Работодатель</h2>
+            
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="E-mail" />
+              <input type="text" placeholder="Имя" v-model="employerName"/>
             </div>
-            <!-- <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
-            </div> -->
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Фамилия" v-model="employerSurname"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Отчество" v-model="employerPatronomyc"/>
+            </div>
+            <div class="form_radio">
+            <div class="form_radio_btn">
+	<input id="maleRadio1" type="radio" name="radio" value="м" v-model="employerGender" checked>
+	<label for="maleRadio1">М</label>
+</div>
+ 
+<div class="form_radio_btn">
+	<input id="femaleRadio2" type="radio" name="radio" v-model="employerGender" value="ж">
+	<label for="femaleRadio2">Ж</label>
+</div>
+            </div>
+            <div class="input-field">
+            <i class="fa-solid fa-building"></i>
+              <input type="text" placeholder="Название организации" v-model="employerNameOrganization"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-solid fa-phone"></i>
+              <input type="text" placeholder="Телефон" v-model="employerPhone"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-solid fa-envelope"></i>
+              <input type="email" placeholder="E-mail" v-model="employerEmail"/>
+            </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Пароль" />
+              <input type="password" placeholder="Пароль" v-model="employerPassword"/>
             </div>
-            <input type="submit" class="btn" value="Создать" />
+
+            <div class="alert-container" id="dangerAlertEmployerContainer" v-show="dangerAlertEmployerContainer">
+              <div class="alert alert-danger" role="alert" id="alert" v-for="error in employerErrors">
+                  {{error}}   
+              </div>
+            </div>
+            
+            
+            <button type="submit" class="btn solid" id="employerAuthBtn" @click="createEmployerAccount"><div class="loading" id="studentSpinner" v-show="showEmployerLoader"></div><div v-show="showEmployerBtnText">Создать</div></button>
             <p class="social-text">Уже есть учетная запись?</p>
             <!-- <div class="social-media">
               <a href="#" class="social-icon">

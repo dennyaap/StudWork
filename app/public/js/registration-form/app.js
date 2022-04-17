@@ -12,7 +12,19 @@ const App = {
         errors: [],
         dangerAlertStudentContainer: false,
         authMode: false,
-        gender: 'м'
+        gender: 'м',
+        employerName: '',
+        employerSurname: '',
+        employerPatronomyc: '',
+        employerNameOrganization: '',
+        employerPhone: '',
+        employerEmail: '',
+        employerPassword: '',
+        employerGender: '',
+        showEmployerBtnText: true,
+        showEmployerLoader: false,
+        employerErrors: [],
+        dangerAlertEmployerContainer: false
       }
   },
   methods: {
@@ -35,6 +47,26 @@ const App = {
       } else {
         this.showStudentBtnText = true;
         this.showStudentLoader = false;
+      }
+    },
+    async createEmployerAccount(e){
+      e.preventDefault();
+
+      this.employerErrors = await Validation.checkErrorsRegistrationEmployer(this.employerName, this.employerSurname, this.employerPatronomyc, this.employerEmail, this.employerNameOrganization, this.employerPhone, this.employerPassword, this.employerGender);
+      if(this.employerErrors.length != 0){
+        this.dangerAlertEmployerContainer = true
+      } else {
+        await Autorisation.authEmployer(this.employerEmail, this.employerPassword);
+        document.location.href = "/";
+      }
+    },
+    isEmployerLoader(flag){
+      if(flag){
+        this.showEmployerBtnText = false;
+        this.showEmployerLoader = true;
+      } else {
+        this.showEmployerBtnText = true;
+        this.showEmployerLoader = false;
       }
     },
     changeAuthMode(){

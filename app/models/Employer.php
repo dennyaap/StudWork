@@ -50,24 +50,17 @@ class Employer
         // return $verifyPassword;
     }
     public static function createEmployerAccount($employer){
-        $stmt = self::pdo()->prepare("INSERT employers(name, surname, patronomyc, email, password, gender)
-        VALUES(:name, :surname, :patronomyc, :email, :password, :gender)");
+        $stmt = self::pdo()->prepare("INSERT employers(name, surname, patronomyc, name_organization, phone, email, password, gender)
+        VALUES(:name, :surname, :patronomyc, :name_organization, :phone, :email, :password, :gender)");
         $stmt-> execute([
             'name' => $employer->name,
             'surname' => $employer->surname,
             'patronomyc' => $employer->patronomyc,
+            'name_organization' => $employer->nameOrganization,
+            'phone' => $employer->phone,
             'email' => $employer->email,
             'password' => $employer->password,
             'gender' => $employer->gender
             ]);
     }
-    // public static function getUser($email){
-    //     $stmt = self::pdo()->prepare('SELECT * FROM users WHERE email = :email');
-    //     $stmt->execute([
-    //         'email' => $email
-    //     ]);
-    //     $res = $stmt->fetch();
-
-    //     return $res;
-    // }
 }

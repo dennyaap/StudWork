@@ -101,4 +101,32 @@ class Validation{
         }
         return errors;
     }
+    static async checkErrorsRegistrationEmployer(name, surname, patronomyc, email, nameOrganization, phone, password, gender){
+        let errors = [];
+
+        let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        
+        if(name == '' || surname == '' || patronomyc == ''){
+            errors.push('Введите ФИО');
+        }
+        else if(nameOrganization == ''){
+            errors.push('Введите название организации');
+        }
+        else if(phone == ''){
+            errors.push('Введите номер телефона');
+        }
+        else if(email == '' || password == ''){
+            errors.push('Введите E-mail и пароль');
+        }
+        else if(!email.match(mailformat)){
+            errors.push('Неправильно введен E-mail. Пример: email@example.com')
+        }
+        else if(password.length <= 8){
+            errors.push('Пароль должен содержать не менее 8 символов')
+        }
+        else if(await Registration.searchEmployer(name, surname, patronomyc, nameOrganization, phone, email, password, gender)){
+            errors.push('Пользователь с таким E-mail уже существует')
+        }
+        return errors;
+    }
 }
