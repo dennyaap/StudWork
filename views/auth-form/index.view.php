@@ -55,9 +55,11 @@
           </form>
           <form action="#" class="sign-up-form">
             <h2 class="title">Работодатель</h2>
+            
+            
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="E-mail" />
+              <input type="text" placeholder="E-mail" v-model="employerEmail"/>
             </div>
             <!-- <div class="input-field">
               <i class="fas fa-envelope"></i>
@@ -65,10 +67,16 @@
             </div> -->
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Пароль" />
+              <input type="password" placeholder="Пароль" v-model="employerPassword"/>
             </div>
-            <input type="submit" class="btn" value="Войти" />
+            <button type="submit" class="btn solid" id="employerAuthBtn" @click="checkAuthEmployer"><div class="loading" id="employerSpinner" v-show="showEmployerLoader"></div><div v-show="showEmployerBtnText">Войти</div></button>
             <p class="social-text">Зарегистрироваться</p>
+
+            <div class="alert-container" id="dangerAlertEmployerContainer" v-show="dangerAlertEmployerContainer">
+              <div class="alert alert-danger" role="alert" id="alert" v-for="error in errorsEmployer">
+                  {{error}}   
+              </div>
+            </div>
             <!-- <div class="social-media">
               <a href="#" class="social-icon">
                 <i class="fab fa-facebook-f"></i>

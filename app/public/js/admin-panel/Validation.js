@@ -21,6 +21,22 @@ class Validation{
         }
         return error;
     }
+    static async checkErrorsAuthEmployer(email, password){
+        let errors = [];
+
+        let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        
+        if(email == '' || password == ''){
+            errors.push('Введите логин и пароль')
+        }
+        else if(!email.match(mailformat)){
+            errors.push('Неправильно введен E-mail. Пример: email@example.com')
+        }
+        else if(!await Autorisation.authEmployer(email, password)){
+            errors.push('Неверный логин или пароль');
+        }
+        return errors;
+    }
     static async checkErrorsAuth(email, password){
         let errors = [];
 

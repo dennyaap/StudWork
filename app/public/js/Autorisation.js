@@ -5,13 +5,10 @@ class Autorisation{
         let result = await postDataResponse( route , { 'email' : email, 'password' : password } );
         return result;
     }
-    // static async searchStudent(email){
-    //     let route = '/app/controllers/auth-form/searchStudent.php';
-    //     let result = await postDataResponse( route , email);
-    //     return result;
-    // }
-    // static async isAutorisation(email){
-    //     let route = '/app/controllers/auth-form/isAutorisation.php';
-    //     await postData(route , email);
-    // }
+    static async authEmployer(email, password){
+        let route = '/app/controllers/auth-form/authEmployer.php';
+
+        let result = await postDataResponse( route , { 'email' : email, 'password' : password } );
+        return result;
+    }
 }

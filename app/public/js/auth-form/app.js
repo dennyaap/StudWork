@@ -8,6 +8,14 @@ const App = {
           showStudentBtnText: true,
           errors: [],
           dangerAlertStudentContainer: false,
+          authMode: false,
+          employerEmail: '',
+          employerPassword: '',
+          employerDangerAlertContainer: '',
+          showEmployerLoader: false,
+          showEmployerBtnText: true,
+          errorsEmployer: [],
+          dangerAlertEmployerContainer: false,
           authMode: false
         }
     },
@@ -15,7 +23,7 @@ const App = {
       async checkAuth(e){
         e.preventDefault();
       
-        this.isLoader(true);
+        this.isStudentLoader(true);
   
         let userEmail = this.studentEmail;
         let userPassword = this.studentPassword;
@@ -28,9 +36,9 @@ const App = {
             document.location.href = "/";
         }
   
-        this.isLoader(false);
+        this.isStudentLoader(false);
       },
-      isLoader(flag){
+      isStudentLoader(flag){
         if(flag){
           this.showStudentBtnText = false;
           this.showStudentLoader = true;
@@ -41,7 +49,34 @@ const App = {
       },
       changeAuthMode(){
         this.authMode = !this.authMode;
-      }
+      },
+      async checkAuthEmployer(e){
+        e.preventDefault();
+      
+        this.isEmployerLoader(true);
+  
+        let userEmail = this.employerEmail;
+        let userPassword = this.employerPassword;
+  
+        this.errorsEmployer = await Validation.checkErrorsAuthEmployer(userEmail, userPassword);
+    
+        if(this.errorsEmployer.length != 0){
+            this.dangerAlertEmployerContainer = true
+        } else {
+            document.location.href = "/";
+        }
+  
+        this.isEmployerLoader(false);
+      },
+      isEmployerLoader(flag){
+        if(flag){
+          this.showEmployerBtnText = false;
+          this.showEmployerLoader = true;
+        } else {
+          this.showEmployerBtnText = true;
+          this.showEmployerLoader = false;
+        }
+      },
     }
   }
   const app = Vue.createApp(App);
