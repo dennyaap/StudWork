@@ -1,6 +1,9 @@
 const App = {
   data() {
       return {
+        studentName: '',
+        studentSurname: '',
+        studentPatronomyc: '',
         studentEmail: '',
         studentPassword: '',
         studentDangerAlertContainer: '',
@@ -8,28 +11,22 @@ const App = {
         showStudentBtnText: true,
         errors: [],
         dangerAlertStudentContainer: false,
-        authMode: false
+        authMode: false,
+        gender: 'м'
       }
   },
   methods: {
-    async checkAuth(e){
+    async createAccount(e){
       e.preventDefault();
-    
-      this.isLoader(true);
 
-      let userEmail = this.studentEmail;
-      let userPassword = this.studentPassword;
+      this.errors = await Validation.checkErrorsRegistration(this.studentName, this.studentSurname, this.studentPatronomyc, this.studentEmail, this.studentPassword, this.gender);
 
-      this.errors = await Validation.checkErrorsRegistration(userEmail, userPassword);
-  
       if(this.errors.length != 0){
-          this.dangerAlertStudentContainer = true
+        this.dangerAlertStudentContainer = true
       } else {
-          await Autorisation.checkUser(userEmail, userPassword);
-          document.location.href = "/";
+        await Autorisation.authUser(this.studentEmail, this.studentPassword);
+        document.location.href = "/";
       }
-
-      this.isLoader(false);
     },
     isLoader(flag){
       if(flag){

@@ -1,11 +1,8 @@
 class Registration{
-    static async checkUser(email, password){
-        let route = '/app/controllers/registration-form/registationUser.php';
+    static async searchStudent(name, surname, patronomyc, email, password, gender){
+        let route = '/app/controllers/registration-form/searchStudent.php';
         
-        await postData( route , { 'email' : email, 'password' : password } );
+        let result = await postDataResponse( route , { 'name' : name, 'surname' : surname, 'patronomyc' : patronomyc, 'email' : email, 'password' : password, 'gender' : gender });
+        return result;
     }
-    // static async isAutorisation(email){
-    //     let route = '/app/controllers/auth-form/isAutorisation.php';
-    //     await postData(route , email);
-    // }
 }

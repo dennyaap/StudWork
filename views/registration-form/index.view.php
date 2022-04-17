@@ -20,6 +20,18 @@
             <h2 class="title">Студент</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
+              <input type="text" placeholder="Имя" id="studentName" v-model="studentName"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Фамилия" id="studentSurname" v-model="studentSurname"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Отчество" id="studentatronomyc" v-model="studentPatronomyc"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
               <input type="email" placeholder="E-mail" id="studentEmail" v-model="studentEmail"/>
             </div>
             <div class="input-field">
@@ -29,19 +41,19 @@
             
             <div class="form_radio">
             <div class="form_radio_btn">
-	<input id="maleRadio" type="radio" name="radio" value="м" checked>
+	<input id="maleRadio" type="radio" name="radio" value="м" v-model="gender" checked>
 	<label for="maleRadio">М</label>
 </div>
  
 <div class="form_radio_btn">
-	<input id="femaleRadio" type="radio" name="radio" value="ж">
+	<input id="femaleRadio" type="radio" name="radio" v-model="gender" value="ж">
 	<label for="femaleRadio">Ж</label>
 </div>
             </div>
            
-            <button type="submit" class="btn solid" id="studentAuthBtn" @click="checkAuth"><div class="loading" id="studentSpinner" v-show="showStudentLoader"></div><div v-show="showStudentBtnText">Войти</div></button>
+            <button type="submit" class="btn solid" id="studentAuthBtn" @click="createAccount"><div class="loading" id="studentSpinner" v-show="showStudentLoader"></div><div v-show="showStudentBtnText">Создать</div></button>
 
-            <p class="social-text">Зарегистрироваться</p>
+            <p class="social-text">Уже есть учетная запись?</p>
 
             
             <div class="alert-container" id="dangerAlertStudentContainer" v-show="dangerAlertStudentContainer">
@@ -79,7 +91,7 @@
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Пароль" />
             </div>
-            <input type="submit" class="btn" value="Войти" />
+            <input type="submit" class="btn" value="Создать" />
             <p class="social-text">Уже есть учетная запись?</p>
             <!-- <div class="social-media">
               <a href="#" class="social-icon">
@@ -107,7 +119,7 @@
               Находите первоклассных амбициозных сотрудников
             </p>
             <button class="btn transparent" id="sign-up-btn" @click="changeAuthMode">
-              Войти
+              Создать
             </button>
           </div>
           <img src="/app/public/images/auth-form/img/log.svg" class="image" alt="" />
@@ -119,7 +131,7 @@
               Начни свою карьеру уже сейчас!
             </p>
             <button class="btn transparent" id="sign-in-btn" @click="changeAuthMode">
-              Войти
+              Создать
             </button>
           </div>
           <img src="/app/public/images/auth-form/img/register.svg" class="image" alt="" />
@@ -131,6 +143,7 @@
     <script src="/app/public/js/fetch.js"></script>
     <script src="/app/public/js/admin-panel/Alert.js"></script>
     <script src="/app/public/js/admin-panel/Validation.js"></script>
+    <script src="/app/public/js/Autorisation.js"></script>
     <script src="/app/public/js/registration-form/Registration.js"></script>
     <script src="/app/public/js/registration-form/app.js"></script>
   </body>

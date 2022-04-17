@@ -25,7 +25,6 @@ const App = {
         if(this.errors.length != 0){
             this.dangerAlertStudentContainer = true
         } else {
-            await Autorisation.checkUser(userEmail, userPassword);
             document.location.href = "/";
         }
   
