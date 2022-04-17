@@ -56,7 +56,7 @@
            
             <button type="submit" class="btn solid" id="studentAuthBtn" @click="createAccount"><div class="loading" id="studentSpinner" v-show="showStudentLoader"></div><div v-show="showStudentBtnText">Создать</div></button>
 
-            <p class="social-text">Уже есть учетная запись?</p>
+            <p class="social-text"><a href="/app/controllers/auth-form/">Уже есть учетная запись?</a></p>
 
             
             <div class="alert-container" id="dangerAlertStudentContainer" v-show="dangerAlertStudentContainer">
@@ -131,7 +131,7 @@
             
             
             <button type="submit" class="btn solid" id="employerAuthBtn" @click="createEmployerAccount"><div class="loading" id="studentSpinner" v-show="showEmployerLoader"></div><div v-show="showEmployerBtnText">Создать</div></button>
-            <p class="social-text">Уже есть учетная запись?</p>
+            <p class="social-text"><a href="/app/controllers/auth-form/">Уже есть учетная запись?</a></p>
             <!-- <div class="social-media">
               <a href="#" class="social-icon">
                 <i class="fab fa-facebook-f"></i>

@@ -18,7 +18,7 @@
           <form action="" class="sign-in-form">
             <h2 class="title">Студент</h2>
             <div class="input-field">
-              <i class="fas fa-user"></i>
+              <i class="fas fa-solid fa-envelope"></i>
               <input type="email" placeholder="E-mail" id="studentEmail" v-model="studentEmail"/>
             </div>
             <div class="input-field">
@@ -29,7 +29,7 @@
            
             <button type="submit" class="btn solid" id="studentAuthBtn" @click="checkAuth"><div class="loading" id="studentSpinner" v-show="showStudentLoader"></div><div v-show="showStudentBtnText">Войти</div></button>
 
-            <p class="social-text">Зарегистрироваться</p>
+            <p class="social-text"><a href="/app/controllers/registration-form/">Зарегистроваться</a></p>
 
             
             <div class="alert-container" id="dangerAlertStudentContainer" v-show="dangerAlertStudentContainer">
@@ -58,7 +58,7 @@
             
             
             <div class="input-field">
-              <i class="fas fa-user"></i>
+              <i class="fas fa-solid fa-envelope"></i>
               <input type="text" placeholder="E-mail" v-model="employerEmail"/>
             </div>
             <!-- <div class="input-field">
@@ -70,7 +70,7 @@
               <input type="password" placeholder="Пароль" v-model="employerPassword"/>
             </div>
             <button type="submit" class="btn solid" id="employerAuthBtn" @click="checkAuthEmployer"><div class="loading" id="employerSpinner" v-show="showEmployerLoader"></div><div v-show="showEmployerBtnText">Войти</div></button>
-            <p class="social-text">Зарегистрироваться</p>
+            <p class="social-text"><a href="/app/controllers/registration-form/">Зарегистроваться</a></p>
 
             <div class="alert-container" id="dangerAlertEmployerContainer" v-show="dangerAlertEmployerContainer">
               <div class="alert alert-danger" role="alert" id="alert" v-for="error in errorsEmployer">
