@@ -7,8 +7,7 @@ const App = {
         showStudentLoader: false,
         showStudentBtnText: true,
         errors: [],
-        dangerAlertStudentContainer: false,
-        authMode: false
+        dangerAlertStudentContainer: false
       }
   },
   methods: {
@@ -20,7 +19,7 @@ const App = {
       let userEmail = this.studentEmail;
       let userPassword = this.studentPassword;
 
-      this.errors = await Validation.checkErrorsAuth(userEmail, userPassword);
+      this.errors = await Validation.checkErrorsRegistration(userEmail, userPassword);
   
       if(this.errors.length != 0){
           this.dangerAlertStudentContainer = true
@@ -39,9 +38,6 @@ const App = {
         this.showStudentBtnText = true;
         this.showStudentLoader = false;
       }
-    },
-    changeAuthMode(){
-      this.authMode = !this.authMode;
     }
   }
 }

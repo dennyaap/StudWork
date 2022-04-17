@@ -22,18 +22,18 @@ class Validation{
         return error;
     }
     static async checkErrorsAuth(email, password){
-        let errors = '';
+        let errors = [];
 
         let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         
         if(email == '' || password == ''){
-            errors = 'Введите логин и пароль';
+            errors.push('Введите логин и пароль')
         }
         else if(!email.match(mailformat)){
-            errors = 'Неправильно введен E-mail. Пример: email@example.com'
+            errors.push('Неправильно введен E-mail. Пример: email@example.com')
         }
         else if(!await Autorisation.checkUser(email, password)){
-            errors = 'Неверный логин или пароль';
+            errors.push('Неверный логин или пароль');
         }
         return errors;
     }
@@ -60,6 +60,25 @@ class Validation{
         }
         else if(result){
             errors.push('Данный язык уже существует!')
+        }
+        return errors;
+    }
+    static async checkErrorsRegistration(email, password){
+        let errors = [];
+
+        let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        
+        if(email == '' || password == ''){
+            errors.push('Введите логин и пароль')
+        }
+        else if(!email.match(mailformat)){
+            errors.push('Неправильно введен E-mail. Пример: email@example.com')
+        }
+        else if(password.length <= 8){
+            errors.push('Пароль должен содержать не менее 8 символов')
+        }
+        else if(!await Autorisation.checkUser(email, password)){
+            errors.push('Неверный логин или пароль');
         }
         return errors;
     }

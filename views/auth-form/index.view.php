@@ -11,28 +11,31 @@
     <title><?= $title ?></title>
   </head>
   <body>
-    <div class="container">
+  <div id="app"> 
+    <div class="container" :class="{ 'sign-up-mode': authMode }">
       <div class="forms-container">
         <div class="signin-signup">
           <form action="" class="sign-in-form">
             <h2 class="title">Студент</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="email" placeholder="E-mail" id="studentEmail"/>
+              <input type="email" placeholder="E-mail" id="studentEmail" v-model="studentEmail"/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Пароль" id="studentPassword"/>
+              <input type="password" placeholder="Пароль" id="studentPassword" v-model="studentPassword"/>
             </div>
             
            
-            <button type="submit" class="btn solid" id="studentAuthBtn"><div class="loading" id="studentSpinner"></div><div id="studentBtnText">Войти</div></button>
+            <button type="submit" class="btn solid" id="studentAuthBtn" @click="checkAuth"><div class="loading" id="studentSpinner" v-show="showStudentLoader"></div><div v-show="showStudentBtnText">Войти</div></button>
 
             <p class="social-text">Зарегистрироваться</p>
 
             
-            <div class="alert-container" id="dangerAlertStudentContainer">
-              
+            <div class="alert-container" id="dangerAlertStudentContainer" v-show="dangerAlertStudentContainer">
+              <div class="alert alert-danger" role="alert" id="alert" v-for="error in errors">
+                  {{error}}   
+              </div>
             </div>
             <!-- <div class="social-media">
               <a href="#" class="social-icon">
@@ -91,7 +94,7 @@
             <p>
               Находите первоклассных амбициозных сотрудников
             </p>
-            <button class="btn transparent" id="sign-up-btn">
+            <button class="btn transparent" id="sign-up-btn" @click="changeAuthMode">
               Войти
             </button>
           </div>
@@ -103,7 +106,7 @@
             <p>
               Начни свою карьеру уже сейчас!
             </p>
-            <button class="btn transparent" id="sign-in-btn">
+            <button class="btn transparent" id="sign-in-btn" @click="changeAuthMode">
               Войти
             </button>
           </div>
@@ -111,7 +114,8 @@
         </div>
       </div>
     </div>
-    
+</div>
+    <script src="https://unpkg.com/vue@next"></script>
     <script src="/app/public/js/fetch.js"></script>
     <script src="/app/public/js/admin-panel/Alert.js"></script>
     <script src="/app/public/js/admin-panel/Validation.js"></script>
