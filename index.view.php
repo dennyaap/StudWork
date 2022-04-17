@@ -1,6 +1,5 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/app/components/header_component.php' ?>
 
-
 <!-- <div class="categories">
     <div class="container">
         <div class="categories-container">
@@ -58,17 +57,28 @@
     </div>
 </div> -->
 
-<div class="categories">
-    <a href="/app/controllers/auth-form/">auth</a>
-    <a href="/app/controllers/admin-panel/categories/">admin panel</a>
-    <div class="container">
-        <div class="categories-container">
-            <div class="row row-cols-1 row-cols-md-3 g-4" id="categoriesContainer">
-                
+<div id="app">
+    <div class="categories">
+        <a href="/app/controllers/auth-form/">auth</a>
+        <a href="/app/controllers/admin-panel/categories/">admin panel</a>
+        <div class="container">
+            <div class="categories-container">
+                <div class="row row-cols-1 row-cols-md-3 g-4" id="categoriesContainer">
+                    <div class="col" v-for="category in categories">
+                        <div class="card category-card" :id="category.id">
+                            <div class="category-color" :style="{background: category.color}"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{category.name}}</h5>
+                                <p class="card-text">smth</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<script src="https://unpkg.com/vue@next"></script>
 <script src="/app/public/js/fetch.js"></script>
-<script src="/app/public/js/category.js"></script>
+<script src="/app/public/js/main-page/categories.js"></script>
