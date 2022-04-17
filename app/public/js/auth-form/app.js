@@ -1,13 +1,50 @@
-// const sign_in_btn = document.querySelector("#sign-in-btn");
-// const sign_up_btn = document.querySelector("#sign-up-btn");
-// const container = document.querySelector(".container");
-
-// sign_up_btn.addEventListener("click", () => {
-//   container.classList.add("sign-up-mode");
-// });
-
-// sign_in_btn.addEventListener("click", () => {
-//   container.classList.remove("sign-up-mode");
-// });
-
-
+const App = {
+    data() {
+        return {
+          studentEmail: '',
+          studentPassword: '',
+          studentDangerAlertContainer: '',
+          showStudentLoader: false,
+          showStudentBtnText: true,
+          errors: [],
+          dangerAlertStudentContainer: false,
+          authMode: false
+        }
+    },
+    methods: {
+      async checkAuth(e){
+        e.preventDefault();
+      
+        this.isLoader(true);
+  
+        let userEmail = this.studentEmail;
+        let userPassword = this.studentPassword;
+  
+        this.errors = await Validation.checkErrorsAuth(userEmail, userPassword);
+    
+        if(this.errors.length != 0){
+            this.dangerAlertStudentContainer = true
+        } else {
+            await Autorisation.checkUser(userEmail, userPassword);
+            document.location.href = "/";
+        }
+  
+        this.isLoader(false);
+      },
+      isLoader(flag){
+        if(flag){
+          this.showStudentBtnText = false;
+          this.showStudentLoader = true;
+        } else {
+          this.showStudentBtnText = true;
+          this.showStudentLoader = false;
+        }
+      },
+      changeAuthMode(){
+        this.authMode = !this.authMode;
+      }
+    }
+  }
+  const app = Vue.createApp(App);
+  app.mount('#app');
+  

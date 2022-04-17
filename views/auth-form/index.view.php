@@ -121,6 +121,5 @@
     <script src="/app/public/js/admin-panel/Validation.js"></script>
     <script src="/app/public/js/Autorisation.js"></script>
     <script src="/app/public/js/auth-form/app.js"></script>
-    <script src="/app/public/js/auth-form/student-auth.js"></script>
   </body>
 </html>

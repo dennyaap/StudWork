@@ -13,7 +13,7 @@
   </head>
   <body>
     <div id="app">
-    <div class="container">
+    <div class="container" :class="{ 'sign-up-mode': authMode }">
       <div class="forms-container">
         <div class="signin-signup">
           <form action="" class="sign-in-form">
@@ -106,7 +106,7 @@
             <p>
               Находите первоклассных амбициозных сотрудников
             </p>
-            <button class="btn transparent" id="sign-up-btn">
+            <button class="btn transparent" id="sign-up-btn" @click="changeAuthMode">
               Войти
             </button>
           </div>
@@ -118,7 +118,7 @@
             <p>
               Начни свою карьеру уже сейчас!
             </p>
-            <button class="btn transparent" id="sign-in-btn">
+            <button class="btn transparent" id="sign-in-btn" @click="changeAuthMode">
               Войти
             </button>
           </div>
@@ -133,6 +133,5 @@
     <script src="/app/public/js/admin-panel/Validation.js"></script>
     <script src="/app/public/js/registration-form/Registration.js"></script>
     <script src="/app/public/js/registration-form/app.js"></script>
-    <script src="/app/public/js/registration-form/student-auth.js"></script>
   </body>
 </html>
