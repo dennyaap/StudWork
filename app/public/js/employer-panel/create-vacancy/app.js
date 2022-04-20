@@ -52,18 +52,35 @@ const App = {
             isActive: false,
             searchBox: '',
             
+            categories: [],
         }
     },
     methods: {
         toggledNavbar(){
             this.isToggledNavbar = !this.isToggledNavbar;
         },
+        async renderCategories(){
+            let countRow = 5;
+            this.categories = await Category.getCategoriesLimit(countRow);
+        },
+        chooseCategory(e){
+            this.selectedCategory = e.target.getAttribute('data-categoryName');
+            this.hideCategoryList();
+        },
+        hideCategoryList(){
+            this.isActive = !this.isActive;
+        },
+        async searchLikeCategory(e){
+            let word = e.target.value;
+            this.categories = await Category.getLikeCategories(word);
+        },
         imagePreview(){
 
         },
-        selectCategory(){
-            this.isActive = !this.isActive;
-        }
+        
+    },
+    created(){
+        this.renderCategories();
     }
   }
   const app = Vue.createApp(App);

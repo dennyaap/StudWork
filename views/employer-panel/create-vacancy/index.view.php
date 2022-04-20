@@ -140,53 +140,19 @@
         <div class="select-box">
           <div class="options-container" :class="{active : isActive}">
 
-            <div class="option">
-                  <input type="radio" class="radio" id="film" name="category" />
-                  <label for="film">WEB-Разработчик</label>
+            
+            <div class="option category" v-for="category in categories" @click="chooseCategory" :id="category.id" :data-categoryName="category.name">
+                 {{ category.name }}
             </div>
+            
+          </div>
 
-            <div class="option">
-                  <input type="radio" class="radio" id="science" name="category" />
-                  <label for="science">Водитель</label>
-            </div>
-
-            <div class="option">
-                  <input type="radio" class="radio" id="art" name="category" />
-                  <label for="art">Программист</label>
-            </div>
-
-            <div class="option">
-                  <input type="radio" class="radio" id="music" name="category" />
-                  <label for="music">Программист 1C</label>
-            </div>
-
-            <div class="option">
-                  <input type="radio" class="radio" id="travel" name="category" />
-                  <label for="travel">Электрик</label>
-            </div>
-
-            <div class="option">
-                  <input type="radio" class="radio" id="sports" name="category" />
-                  <label for="sports">Сварщик</label>
-            </div>
-
-            <div class="option">
-                  <input type="radio" class="radio" id="news" name="category" />
-                  <label for="news">Преподаватель</label>
-            </div>
-
-            <div class="option">
-                  <input type="radio" class="radio" id="tutorials" name="category" />
-                  <label for="tutorials">SMM-менеджер</label>
-                </div>
-            </div>
-
-            <div class="selected" @click="selectCategory">
+            <div class="selected" @click="hideCategoryList">
                   {{ selectedCategory }}
             </div>
 
             <div class="search-box">
-                <input type="text" placeholder="Название категории..." v-model="searchBox"/>
+                <input type="text" placeholder="Название категории..." v-model="searchBox" @input="searchLikeCategory"/>
             </div>
         </div>
       </div>
@@ -256,6 +222,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="/app/public/js/fetch.js"></script>
+    <script src="/app/public/js/employer-panel/create-vacancy/Category.js"></script>
     <script src="/app/public/js/employer-panel/create-vacancy/app.js"></script>
 </body>
 

@@ -15,6 +15,22 @@ class Category
         $res = $stmt->fetchAll();
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
+    public static function getCategoriesLimit($countRow){
+        $stmt = self::pdo()->prepare("SELECT * FROM categories LIMIT :countRow OFFSET 0");
+        $stmt->bindValue(':countRow', $countRow, self::pdo()::PARAM_INT);
+        $stmt->execute();
+        $res = $stmt->fetchAll();
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
+    }
+    public static function getLikeCategories($word){
+        $stmt = self::pdo()->prepare('SELECT * FROM categories
+        WHERE name LIKE :word LIMIT 5 OFFSET 0');
+        $stmt->execute([
+            'word' => $word
+        ]);
+        $res = $stmt->fetchAll();
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
+    }
     public static function showCategory($id)
     {
         $stmt = self::pdo()->prepare('SELECT vacancies.*, categories.name as category FROM vacancies
