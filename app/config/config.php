@@ -19,3 +19,4 @@ $routes = [
     ['name' => 'Резюме', 'link' => '/app/controllers/admin-panel/skills/', 'icon' => 'fa-regular fa-clipboard-user'],
     ['name' => 'Вакансии', 'link' => '/app/controllers/admin-panel/languages/', 'icon' => 'fa-regular fa-clipboard'] 
 ];
+
