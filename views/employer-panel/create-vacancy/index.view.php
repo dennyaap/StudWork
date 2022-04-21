@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" href="/app/public/css/admin-panel.css" />
+    <link rel="stylesheet" href="/app/public/css/employer-panel/create-vacancy/main.css" />
     <link rel="stylesheet" href="/app/public/css/employer-panel/create-vacancy/scrollable.css" />
     <title><?= $title ?></title>
 </head>
@@ -97,7 +98,7 @@
             <div class="container px-4 categories">
                 <div class="row d-flex gap-3">
                   <div class="col categories-container edit-panel">
-                    <h2>Предосмотр</h2>
+                    <h2>Предпросмотр</h2>
                       <div id="form">
                       <!-- Email input -->
                         
@@ -128,14 +129,13 @@
                   <div class="col categories-container add-panel">
                     <h2>Информация</h2>
                     <div class="row mb-3">
-        <label class="col-sm-3 col-form-label" for="firstName">Название:</label>
+        <label class="col-sm-3 col-form-label" for=vacancyName">Название:</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="firstName" placeholder="" required v-model="vacancyName">
-            
+            <input type="text" class="form-control" id="vacancyName" :value="vacancyName">
         </div>
     </div>
     <div class="row mb-3">
-      <label class="col-sm-3 col-form-label" for="lastName">Категория:</label>
+      <label class="col-sm-3 col-form-label" for="categoryName">Категория:</label>
       <div class="col-sm-9">
         <div class="select-box">
           <div class="options-container" :class="{active : isActive}">
@@ -148,7 +148,7 @@
           </div>
 
             <div class="selected" @click="hideCategoryList">
-                  {{ selectedCategory }}
+                  {{ selectedCategoryName }}
             </div>
 
             <div class="search-box">
@@ -158,48 +158,41 @@
       </div>
     </div>
     <div class="row mb-3">
-        <label class="col-sm-3 col-form-label" for="lastName">Организация:</label>
+        <label class="col-sm-3 col-form-label" for="nameOrganization">Организация:</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="lastName" placeholder="" required v-model="nameOrganization">
+            <input type="text" class="form-control" id="nameOrganization" :value="nameOrganization">
         </div>
     </div>
     <div class="row mb-3">
-        <label class="col-sm-3 col-form-label" for="lastName">Фото:</label>
+        <label class="col-sm-3 col-form-label" for="photo">Фото:</label>
         <div class="col-sm-9">
         <div >
-                <input class="form-control" type="file" id="formFile" @change="imagePreview">
+                <input class="form-control" type="file" id="photo" @change="imagePreview">
                 <!-- <button onclick="clearImage()" class="btn btn-primary mt-3">Click me</button> -->
             </div>
         </div>
     </div>
     <div class="row mb-3">
-        <label class="col-sm-3 col-form-label" for="lastName">Категория:</label>
+        <label class="col-sm-3 col-form-label" for="salary">Зарплата от:</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="lastName" placeholder="" required v-model="nameOrganization">
+          <div class="d-flex justify-content-center align-items-center"><input type="text" class="form-control" :value="salary" id="salary"></div>
+          <input type="range" class="form-range" min="0" max="1000000" step="0.5" id="salary" :value="salary">
         </div>
-    </div>
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label" for="lastName">Опыт работы:</label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control" id="lastName" placeholder="" required>
-        </div>
+        
     </div>               
     <div class="row mb-3">
-        <label class="col-sm-3 col-form-label" for="lastName">График:</label>
+        <label class="col-sm-3 col-form-label" for="selectedGraph">График</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="lastName" placeholder="" required>
+        <select class="form-select" aria-label="Default select example" :value="selectedGraph" id="selectedGraph">
+          <option v-for="graph in graphList" :value="graph.id">{{ graph.name }}</option>
+</select>
         </div>
+        
     </div>     
     <div class="row mb-3">
-        <label class="col-sm-3 col-form-label" for="lastName">Тип занятости:</label>
+        <label class="col-sm-3 col-form-label" for="description">Описание:</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="lastName" placeholder="" required>
-        </div>
-    </div>   
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label" for="postalAddress">Описание:</label>
-        <div class="col-sm-9">
-            <textarea rows="3" class="form-control" id="postalAddress" placeholder="" required></textarea>
+            <textarea rows="3" class="form-control" id="description" placeholder="" required></textarea>
         </div>
     </div>
    
@@ -207,7 +200,7 @@
     
     <div class="row mb-3">
         <div class="col-sm-9 offset-sm-3">
-            <input type="submit" class="btn btn-primary" value="Создать">
+            <input type="submit" class="btn btn-primary" value="Создать" @click="addVacancy">
             <input type="reset" class="btn btn-secondary ms-2" value="Очистить">
         </div>
     </div>
@@ -222,7 +215,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="/app/public/js/fetch.js"></script>
+    <script src="/app/public/js/employer-panel/create-vacancy/Validation.js"></script>
+    <script src="/app/public/js/employer-panel/create-vacancy/Vacancy.js"></script>
     <script src="/app/public/js/employer-panel/create-vacancy/Category.js"></script>
+    <script src="/app/public/js/employer-panel/create-vacancy/Graph.js"></script>
     <script src="/app/public/js/employer-panel/create-vacancy/app.js"></script>
 </body>
 

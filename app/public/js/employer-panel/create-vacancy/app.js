@@ -48,11 +48,17 @@ const App = {
             vacancyName: '',
             nameOrganization: '',
             categoryName: '',
-            selectedCategory: 'WEB-Разработчик',
+            selectedCategoryName: 'WEB-Разработчик',
+            selectedCategoryId: 1,
             isActive: false,
             searchBox: '',
             
             categories: [],
+            
+            salary: 10000,
+            
+            graphList: [],
+            selectedGraph: 1,
         }
     },
     methods: {
@@ -60,11 +66,12 @@ const App = {
             this.isToggledNavbar = !this.isToggledNavbar;
         },
         async renderCategories(){
-            let countRow = 5;
+            let countRow = 8;
             this.categories = await Category.getCategoriesLimit(countRow);
         },
         chooseCategory(e){
-            this.selectedCategory = e.target.getAttribute('data-categoryName');
+            this.selectedCategoryName = e.target.getAttribute('data-categoryName');
+            this.selectedCategoryId = e.target.id;
             this.hideCategoryList();
         },
         hideCategoryList(){
@@ -77,10 +84,29 @@ const App = {
         imagePreview(){
 
         },
+        async renderGraphList(){
+            this.graphList = await Graph.getGraphs();
+        },
+        async addVacancy(e){
+            e.preventDefault();
+            console.log(this.vacancyName);
+            console.log(this.categoryName);
+            console.log(this.nameOrganization);
+            let errors = Validation.checkErrors(this.vacancyName, this.categoryName, this.nameOrganization);
+
+            if(errors.length != 0){
+                console.log(errors);
+            }
+            else{
+                await Vacancy.addVacancy({ 'name': this.vacancyName, 'photo': 'link', 'category_id': this.selectedCategoryId, 'salary' : this.salary, 'about': this.about, 'graph': this.selectedGraph })
+                console.log('Успешно добавлена...');
+            }
+        }
         
     },
     created(){
         this.renderCategories();
+        this.renderGraphList();
     }
   }
   const app = Vue.createApp(App);
