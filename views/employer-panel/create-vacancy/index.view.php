@@ -131,7 +131,7 @@
                     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for=vacancyName">Название:</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="vacancyName" :value="vacancyName">
+            <input type="text" class="form-control" id="vacancyName" v-model="vacancyName">
         </div>
     </div>
     <div class="row mb-3">
@@ -160,7 +160,7 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="nameOrganization">Организация:</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="nameOrganization" :value="nameOrganization">
+            <input type="text" class="form-control" id="nameOrganization" v-model="nameOrganization">
         </div>
     </div>
     <div class="row mb-3">
@@ -175,17 +175,16 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="salary">Зарплата от:</label>
         <div class="col-sm-9">
-          <div class="d-flex justify-content-center align-items-center"><input type="text" class="form-control" :value="salary" id="salary"></div>
-          <input type="range" class="form-range" min="0" max="1000000" step="0.5" id="salary" :value="salary">
+          <div class="d-flex justify-content-center align-items-center"><input type="text" class="form-control" id="salary" v-model="currentSalary"></div>
+          <input type="range" class="form-range" min="0" max="1000000" step="0.5" id="salary" v-model="currentSalary">
         </div>
-        
     </div>               
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="selectedGraph">График</label>
         <div class="col-sm-9">
-        <select class="form-select" aria-label="Default select example" :value="selectedGraph" id="selectedGraph">
+        <select class="form-select" aria-label="Default select example" v-model="selectedGraph" id="selectedGraph">
           <option v-for="graph in graphList" :value="graph.id">{{ graph.name }}</option>
-</select>
+        </select>
         </div>
         
     </div>     
@@ -200,8 +199,7 @@
     
     <div class="row mb-3">
         <div class="col-sm-9 offset-sm-3">
-            <input type="submit" class="btn btn-primary" value="Создать" @click="addVacancy">
-            <input type="reset" class="btn btn-secondary ms-2" value="Очистить">
+            <button type="submit" class="btn btn-primary" @click="addVacancy" id="addVacancy">Создать</button>
         </div>
     </div>
                   </div>

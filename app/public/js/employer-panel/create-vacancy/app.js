@@ -1,46 +1,3 @@
-// const selected = document.querySelector(".selected");
-// const optionsContainer = document.querySelector(".options-container");
-// const searchBox = document.querySelector(".search-box input");
-
-// const optionsList = document.querySelectorAll(".option");
-
-// selected.addEventListener("click", () => {
-//   optionsContainer.classList.toggle("active");
-
-//   searchBox.value = "";
-//   filterList("");
-
-//   if (optionsContainer.classList.contains("active")) {
-//     searchBox.focus();
-//   }
-// });
-
-// optionsList.forEach(o => {
-//   o.addEventListener("click", () => {
-//     selected.innerHTML = o.querySelector("label").innerHTML;
-//     optionsContainer.classList.remove("active");
-//   });
-// });
-
-// searchBox.addEventListener("keyup", function(e) {
-//   filterList(e.target.value);
-// });
-
-// const filterList = searchTerm => {
-//   searchTerm = searchTerm.toLowerCase();
-//   optionsList.forEach(option => {
-//     let label = option.firstElementChild.nextElementSibling.innerText.toLowerCase();
-//     if (label.indexOf(searchTerm) != -1) {
-//       option.style.display = "block";
-//     } else {
-//       option.style.display = "none";
-//     }
-//   });
-// };
-
-
-
-
 const App = {
     data() {
         return {
@@ -55,7 +12,7 @@ const App = {
             
             categories: [],
             
-            salary: 10000,
+            currentSalary: 10000,
             
             graphList: [],
             selectedGraph: 1,
@@ -89,10 +46,7 @@ const App = {
         },
         async addVacancy(e){
             e.preventDefault();
-            console.log(this.vacancyName);
-            console.log(this.categoryName);
-            console.log(this.nameOrganization);
-            let errors = Validation.checkErrors(this.vacancyName, this.categoryName, this.nameOrganization);
+            let errors = Validation.checkErrors(this.vacancyName, this.selectedCategoryName, this.nameOrganization);
 
             if(errors.length != 0){
                 console.log(errors);

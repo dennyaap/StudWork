@@ -6,3 +6,7 @@
 #selectedGraph{
     transition: all 0.4s;
 }
+#addVacancy{
+    background: #828EFF;
+    color: #fff;
+}
