@@ -72,7 +72,7 @@
 
                   </div>
                   <div class="col categories-container add-panel">
-                    <h2>Информация</h2>
+                    <h2>Заполнение</h2>
                     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for=vacancyName">Название:</label>
         <div class="col-sm-9">
@@ -147,6 +147,11 @@
             <button type="submit" class="btn btn-primary" @click="addVacancy" id="addVacancy">Создать</button>
         </div>
     </div>
+    <div class="alert-container" id="dangerAlertContainer">
+              <div class="alert alert-danger" role="alert" id="alert" v-for="error in errors">
+                  {{error}}   
+              </div>
+            </div>
                   </div>
                 </div>
             </div>

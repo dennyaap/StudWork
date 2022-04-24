@@ -10,7 +10,7 @@ const App = {
             isActive: false,
             searchBox: '',
             description: '',
-            
+            errors: [],
             categories: [],
             
             currentSalary: 10000,
@@ -47,15 +47,12 @@ const App = {
         },
         async addVacancy(e){
             e.preventDefault();
-            let errors = Validation.checkErrors(this.vacancyName, this.selectedCategoryName, this.nameOrganization);
+            this.errors = Validation.checkErrors(this.vacancyName, this.selectedCategoryName, this.nameOrganization, this.description);
 
-            if(errors.length != 0){
-                console.log(errors);
-            }
-            else{
+            if(this.errors.length == 0){
                 await Vacancy.addVacancy({ 'name': this.vacancyName, 'photo': 'link', 'category_id': this.selectedCategoryId, 'salary': this.currentSalary, 'description': this.description, 'work_graph': this.selectedGraph })
-                console.log('Успешно добавлена...');
             }
+
         }
         
     },
