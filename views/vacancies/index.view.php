@@ -21,49 +21,44 @@
       <div class="container mt-5">
         
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 p-3">
             <!-- Section: Sidebar -->
             <section>
               <!-- Section: Filters -->
               <section id="filters" data-auto-filter="true">
-                <h5><i class="fa-solid fa-filter"></i>Фильтры</h5>
+                <h5 class="d-flex align-items-center"><i class="fa-solid fa-filter"></i><div class="filter-title">Фильтры</div></h5>
 
                 <!-- Section: Condition -->
-                <section class="mb-4" data-filter="condition">
-                  <h6 class="font-weight-bold mb-3">Condition</h6>
+                <section class="mb-4 filter-section" data-filter="condition">
+                  <h6 class="font-weight-bold mb-3 filter-name">График работы</h6>
 
                   <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" value="new" id="condition-checkbox">
                     <label class="form-check-label text-uppercase small text-muted" for="condition-checkbox">
-                      New
+                      Полный день
                     </label>
                   </div>
 
                   <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" value="used" id="condition-checkbox2">
                     <label class="form-check-label text-uppercase small text-muted" for="condition-checkbox2">
-                      Used
+                      Не полный день
                     </label>
                   </div>
 
                   <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" value="collectible" id="condition-checkbox3">
                     <label class="form-check-label text-uppercase small text-muted" for="condition-checkbox3">
-                      Collectible
+                      2/2
                     </label>
                   </div>
 
-                  <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="renewed" id="condition-checkbox4">
-                    <label class="form-check-label text-uppercase small text-muted" for="condition-checkbox4">
-                      Renewed
-                    </label>
-                  </div>
+                  
                 </section>
                 <!-- Section: Condition -->
 
                 <!-- Section: Avg. Customer Review -->
-                <section class="mb-4">
+                <!-- <section class="mb-4">
                   <h6 class="font-weight-bold mb-3">Avg. Customer Review</h6>
 
                   <ul class="rating" data-toggle="rating" id="filter-rating" tabindex="0">
@@ -83,11 +78,11 @@
                       <i class="far fa-star fa-sm text-primary" title="" data-toggle="tooltip" data-original-title="5"></i>
                     </li>
                   </ul>
-                </section>
+                </section> -->
                 <!-- Section: Avg. Customer Review -->
 
                 <!-- Section: Price -->
-                <section class="mb-4">
+                <!-- <section class="mb-4">
                   <h6 class="font-weight-bold mb-3">Price</h6>
 
                   <div class="form-check mb-3">
@@ -124,11 +119,11 @@
                       $200 &amp; above
                     </label>
                   </div>
-                </section>
+                </section> -->
                 <!-- Section: Price -->
 
                 <!-- Section: Size -->
-                <section class="mb-4" data-filter="size">
+                <!-- <section class="mb-4" data-filter="size">
                   <h6 class="font-weight-bold mb-3">Size</h6>
 
                   <div class="form-check mb-3">
@@ -158,11 +153,11 @@
                       40
                     </label>
                   </div>
-                </section>
+                </section> -->
                 <!-- Section: Size -->
 
                 <!-- Section: Color -->
-                <section class="mb-4" data-filter="color">
+                <!-- <section class="mb-4" data-filter="color">
                   <h6 class="font-weight-bold mb-3">Color</h6>
 
                   <div class="form-check form-check-inline m-0 p-0 pr-3">
@@ -194,7 +189,7 @@
                     <input class="btn-check" type="radio" name="colorRadio" id="colorRadio10" value="orange">
                     <label class="btn bg-warning btn-rounded p-3" for="colorRadio10"></label>
                   </div>
-                </section>
+                </section> -->
                 <!-- Section: Color -->
               </section>
               <!-- Section: Filters -->
@@ -212,7 +207,7 @@
                 
               </div>
             </div> -->
-            <div class="row mb-4" id="content" style="display: flex;">
+            <div class="row mb-4 p-3" id="content" style="display: flex;">
                   <div class="col-md-4 search-container">
                     <div class="select-box">
                       <div class="options-container" :class="{active : isActive}">
@@ -263,13 +258,16 @@
 
                 
                 
-                <nav aria-label="...">
+                
+
+            </div>
+            <nav aria-label="...">
                 <ul class="pagination">
                     <li class="page-item">
                     <span class="page-link"><i class="fa-solid fa-chevron-left"></i></span>
                     </li>
-                    <li class="page-item"><a class="page-link number-page" href="#">1</a></li>
-                    <li class="page-item active" aria-current="page">
+                    <li class="page-item active"><a class="page-link number-page" href="#">1</a></li>
+                    <li class="page-item" aria-current="page">
                     <span class="page-link number-page">2</span>
                     </li>
                     <li class="page-item number-page"><a class="page-link number-page" href="#">3</a></li>
@@ -278,9 +276,6 @@
                     </li>
                 </ul>
                 </nav>
-
-            </div>
-            
             <!-- <div class="row">
               <div class="col-md-12 mt-3 text-center">
                 <div class="spinner-border text-primary mx-auto my-5" id="spinner" role="status" style="display: none;">
