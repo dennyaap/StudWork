@@ -20,7 +20,7 @@
             <section>
               <!-- Section: Filters -->
               <section id="filters" data-auto-filter="true">
-                <h5>Filters</h5>
+                <h5><i class="fa-solid fa-filter"></i>Фильтры</h5>
 
                 <!-- Section: Condition -->
                 <section class="mb-4" data-filter="condition">
@@ -401,7 +401,21 @@
                         <button class="btn btn-primary btn-feedback">Отлкликнуться</button>
                     </div>
                 </div>
-                
+                <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                    <span class="page-link"><i class="fa-solid fa-chevron-left"></i></span>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active" aria-current="page">
+                    <span class="page-link">2</span>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                    <span class="page-link"><i class="fa-solid fa-chevron-right"></i></span>
+                    </li>
+                </ul>
+                </nav>
 
             </div>
             
