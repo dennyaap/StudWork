@@ -7,46 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/app/public/css/vacancies/main.css" />
+    <link rel="stylesheet" href="/app/public/css/vacancies/scrollable.css" />
+    <link rel="stylesheet" href="/app/public/css/vacancies/paginator.css" />
     <title><?= $title ?></title>
 </head>
 
 <body>
 <div id="app">
     <main>
-    <nav class="navbar navbar-expand-lg" aria-label="Ninth navbar example">
-    <div class="container-xl">
-      <a class="navbar-brand" href="#">StudWork</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarsExample07XL">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-            <ul class="dropdown-menu" aria-labelledby="dropdown07XL">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-        </ul>
-        <form>
-          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-        </form>
-      </div>
-    </div>
-  </nav>
+    
       <div class="container mt-5">
         
         <div class="row">
@@ -242,7 +213,30 @@
               </div>
             </div> -->
             <div class="row mb-4" id="content" style="display: flex;">
-
+                  <div class="col-md-4 search-container">
+                    <div class="select-box">
+                      <div class="options-container" :class="{active : isActive}">
+                        <div class="option category">
+                            1
+                        </div>
+                        <div class="option category">
+                            2
+                        </div>
+                        <div class="option category">
+                            3
+                        </div>
+                        <div class="option category">
+                            1
+                        </div>
+                      
+                        
+                      </div>
+                      <div class="search-box">
+                          <input @click="hide" type="text" placeholder="Название категории..."/>
+                          <i class="fa-solid fa-magnifying-glass"></i>
+                      </div>
+                    </div>
+                  </div>
                 <div class="col-md-4 vacancy-card animation fade-in" v-for="vacancy in vacancies">
                     <!-- <div class="bg-image hover-overlay hover-zoom hover-shadow ripple rounded">
                         <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg" class="vacancy-photo">
@@ -271,14 +265,14 @@
                 
                 <nav aria-label="...">
                 <ul class="pagination">
-                    <li class="page-item disabled">
+                    <li class="page-item">
                     <span class="page-link"><i class="fa-solid fa-chevron-left"></i></span>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link number-page" href="#">1</a></li>
                     <li class="page-item active" aria-current="page">
-                    <span class="page-link">2</span>
+                    <span class="page-link number-page">2</span>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item number-page"><a class="page-link number-page" href="#">3</a></li>
                     <li class="page-item">
                     <span class="page-link"><i class="fa-solid fa-chevron-right"></i></span>
                     </li>

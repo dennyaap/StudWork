@@ -1,0 +1,8 @@
+.number-page{
+    color: #828EFF;
+}
+
+.page-item.active .page-link{
+    background: #828EFF;
+    border-color: #828EFF;
+}

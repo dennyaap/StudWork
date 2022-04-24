@@ -1,3 +1,6 @@
+body {
+    font-family: 'Roboto', sans-serif;
+  }
 #filters{
     background: #ffffff;
     padding: 30px;
@@ -6,6 +9,7 @@
 body{
     background: #f3f2f2;
 }
+
 .vacancy-card{
     background: #ffffff;
     width: 100%;
@@ -45,4 +49,18 @@ body{
     border: none;
     background: #828EFF;
     opacity: 0.9;
+}
+
+.logo-title{
+    color: #828EFF;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+a{
+    text-decoration: none;
+}
+
+.fa-solid{
+    color: #828EFF;
 }
