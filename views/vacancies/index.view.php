@@ -12,8 +12,43 @@
 </head>
 
 <body>
+<div id="app">
     <main>
+    <nav class="navbar navbar-expand-lg" aria-label="Ninth navbar example">
+    <div class="container-xl">
+      <a class="navbar-brand" href="#">StudWork</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample07XL">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown07XL">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form>
+          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        </form>
+      </div>
+    </div>
+  </nav>
       <div class="container mt-5">
+        
         <div class="row">
           <div class="col-md-4">
             <!-- Section: Sidebar -->
@@ -208,7 +243,7 @@
             </div> -->
             <div class="row mb-4" id="content" style="display: flex;">
 
-                <div class="col-md-4 vacancy-card animation fade-in">
+                <div class="col-md-4 vacancy-card animation fade-in" v-for="vacancy in vacancies">
                     <!-- <div class="bg-image hover-overlay hover-zoom hover-shadow ripple rounded">
                         <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg" class="vacancy-photo">
                         <a href="#!">
@@ -217,15 +252,14 @@
                     </div> -->
                     <div class="vacancy-information">
                         <div class="vacancy-title">
-                            <div class="vacancy-name">PHP-Программист</div>
-                            <div class="organization-name">ИП Котельников Владимир Владимирович</div>
+                            <div class="vacancy-name">{{vacancy.name}}</div>
+                            <div class="organization-name">{{vacancy.name}}</div>
                         </div>
-                        <div class="vacancy-salary">от 40 000 руб</div>
+                        <div class="vacancy-salary">от {{ getSalary(vacancy.salary) }} руб</div>
                     </div>
 
                     <div class="vacancy-description">  
-                        Code review. — Управление командой разработчиков. — Проектирование баз данных. — Построение REST API. — Создание бизнес-логики для различных операций с данными на...
-                        Опыт коммерческой разработки на PHP от 6 лет. Уверенные знания PHP 7.x и MySQL/Postgres. Понимание современных подходов в...
+                        {{ vacancy.description }}
                     </div>
 
                     <div class="feedback">
@@ -233,174 +267,8 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 vacancy-card animation fade-in">
-                    <!-- <div class="bg-image hover-overlay hover-zoom hover-shadow ripple rounded">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg" class="vacancy-photo">
-                        <a href="#!">
-                        <div class="mask rounded" style="background-color: rgba(66, 66, 66, 0.2);"></div>
-                        </a>
-                    </div> -->
-                    <div class="vacancy-information">
-                        <div class="vacancy-title">
-                            <div class="vacancy-name">PHP-Программист</div>
-                            <div class="organization-name">ИП Котельников Владимир Владимирович</div>
-                        </div>
-                        <div class="vacancy-salary">от 40 000 руб</div>
-                    </div>
-
-                    <div class="vacancy-description">  
-                        Code review. — Управление командой разработчиков. — Проектирование баз данных. — Построение REST API. — Создание бизнес-логики для различных операций с данными на...
-                        Опыт коммерческой разработки на PHP от 6 лет. Уверенные знания PHP 7.x и MySQL/Postgres. Понимание современных подходов в...
-                    </div>
-
-                    <div class="feedback">
-                        <button class="btn btn-primary btn-feedback">Отлкликнуться</button>
-                    </div>
-                </div>
-                <div class="col-md-4 vacancy-card animation fade-in">
-                    <!-- <div class="bg-image hover-overlay hover-zoom hover-shadow ripple rounded">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg" class="vacancy-photo">
-                        <a href="#!">
-                        <div class="mask rounded" style="background-color: rgba(66, 66, 66, 0.2);"></div>
-                        </a>
-                    </div> -->
-                    <div class="vacancy-information">
-                        <div class="vacancy-title">
-                            <div class="vacancy-name">PHP-Программист</div>
-                            <div class="organization-name">ИП Котельников Владимир Владимирович</div>
-                        </div>
-                        <div class="vacancy-salary">от 40 000 руб</div>
-                    </div>
-
-                    <div class="vacancy-description">  
-                        Code review. — Управление командой разработчиков. — Проектирование баз данных. — Построение REST API. — Создание бизнес-логики для различных операций с данными на...
-                        Опыт коммерческой разработки на PHP от 6 лет. Уверенные знания PHP 7.x и MySQL/Postgres. Понимание современных подходов в...
-                    </div>
-
-                    <div class="feedback">
-                        <button class="btn btn-primary btn-feedback">Отлкликнуться</button>
-                    </div>
-                </div>
-                <div class="col-md-4 vacancy-card animation fade-in">
-                    <!-- <div class="bg-image hover-overlay hover-zoom hover-shadow ripple rounded">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg" class="vacancy-photo">
-                        <a href="#!">
-                        <div class="mask rounded" style="background-color: rgba(66, 66, 66, 0.2);"></div>
-                        </a>
-                    </div> -->
-                    <div class="vacancy-information">
-                        <div class="vacancy-title">
-                            <div class="vacancy-name">PHP-Программист</div>
-                            <div class="organization-name">ИП Котельников Владимир Владимирович</div>
-                        </div>
-                        <div class="vacancy-salary">от 40 000 руб</div>
-                    </div>
-
-                    <div class="vacancy-description">  
-                        Code review. — Управление командой разработчиков. — Проектирование баз данных. — Построение REST API. — Создание бизнес-логики для различных операций с данными на...
-                        Опыт коммерческой разработки на PHP от 6 лет. Уверенные знания PHP 7.x и MySQL/Postgres. Понимание современных подходов в...
-                    </div>
-
-                    <div class="feedback">
-                        <button class="btn btn-primary btn-feedback">Отлкликнуться</button>
-                    </div>
-                </div>
-                <div class="col-md-4 vacancy-card animation fade-in">
-                    <!-- <div class="bg-image hover-overlay hover-zoom hover-shadow ripple rounded">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg" class="vacancy-photo">
-                        <a href="#!">
-                        <div class="mask rounded" style="background-color: rgba(66, 66, 66, 0.2);"></div>
-                        </a>
-                    </div> -->
-                    <div class="vacancy-information">
-                        <div class="vacancy-title">
-                            <div class="vacancy-name">PHP-Программист</div>
-                            <div class="organization-name">ИП Котельников Владимир Владимирович</div>
-                        </div>
-                        <div class="vacancy-salary">от 40 000 руб</div>
-                    </div>
-
-                    <div class="vacancy-description">  
-                        Code review. — Управление командой разработчиков. — Проектирование баз данных. — Построение REST API. — Создание бизнес-логики для различных операций с данными на...
-                        Опыт коммерческой разработки на PHP от 6 лет. Уверенные знания PHP 7.x и MySQL/Postgres. Понимание современных подходов в...
-                    </div>
-
-                    <div class="feedback">
-                        <button class="btn btn-primary btn-feedback">Отлкликнуться</button>
-                    </div>
-                </div>
-                <div class="col-md-4 vacancy-card animation fade-in">
-                    <!-- <div class="bg-image hover-overlay hover-zoom hover-shadow ripple rounded">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg" class="vacancy-photo">
-                        <a href="#!">
-                        <div class="mask rounded" style="background-color: rgba(66, 66, 66, 0.2);"></div>
-                        </a>
-                    </div> -->
-                    <div class="vacancy-information">
-                        <div class="vacancy-title">
-                            <div class="vacancy-name">PHP-Программист</div>
-                            <div class="organization-name">ИП Котельников Владимир Владимирович</div>
-                        </div>
-                        <div class="vacancy-salary">от 40 000 руб</div>
-                    </div>
-
-                    <div class="vacancy-description">  
-                        Code review. — Управление командой разработчиков. — Проектирование баз данных. — Построение REST API. — Создание бизнес-логики для различных операций с данными на...
-                        Опыт коммерческой разработки на PHP от 6 лет. Уверенные знания PHP 7.x и MySQL/Postgres. Понимание современных подходов в...
-                    </div>
-
-                    <div class="feedback">
-                        <button class="btn btn-primary btn-feedback">Отлкликнуться</button>
-                    </div>
-                </div>
-                <div class="col-md-4 vacancy-card animation fade-in">
-                    <!-- <div class="bg-image hover-overlay hover-zoom hover-shadow ripple rounded">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg" class="vacancy-photo">
-                        <a href="#!">
-                        <div class="mask rounded" style="background-color: rgba(66, 66, 66, 0.2);"></div>
-                        </a>
-                    </div> -->
-                    <div class="vacancy-information">
-                        <div class="vacancy-title">
-                            <div class="vacancy-name">PHP-Программист</div>
-                            <div class="organization-name">ИП Котельников Владимир Владимирович</div>
-                        </div>
-                        <div class="vacancy-salary">от 40 000 руб</div>
-                    </div>
-
-                    <div class="vacancy-description">  
-                        Code review. — Управление командой разработчиков. — Проектирование баз данных. — Построение REST API. — Создание бизнес-логики для различных операций с данными на...
-                        Опыт коммерческой разработки на PHP от 6 лет. Уверенные знания PHP 7.x и MySQL/Postgres. Понимание современных подходов в...
-                    </div>
-
-                    <div class="feedback">
-                        <button class="btn btn-primary btn-feedback">Отлкликнуться</button>
-                    </div>
-                </div>
-                <div class="col-md-4 vacancy-card animation fade-in">
-                    <!-- <div class="bg-image hover-overlay hover-zoom hover-shadow ripple rounded">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg" class="vacancy-photo">
-                        <a href="#!">
-                        <div class="mask rounded" style="background-color: rgba(66, 66, 66, 0.2);"></div>
-                        </a>
-                    </div> -->
-                    <div class="vacancy-information">
-                        <div class="vacancy-title">
-                            <div class="vacancy-name">PHP-Программист</div>
-                            <div class="organization-name">ИП Котельников Владимир Владимирович</div>
-                        </div>
-                        <div class="vacancy-salary">от 40 000 руб</div>
-                    </div>
-
-                    <div class="vacancy-description">  
-                        Code review. — Управление командой разработчиков. — Проектирование баз данных. — Построение REST API. — Создание бизнес-логики для различных операций с данными на...
-                        Опыт коммерческой разработки на PHP от 6 лет. Уверенные знания PHP 7.x и MySQL/Postgres. Понимание современных подходов в...
-                    </div>
-
-                    <div class="feedback">
-                        <button class="btn btn-primary btn-feedback">Отлкликнуться</button>
-                    </div>
-                </div>
+                
+                
                 <nav aria-label="...">
                 <ul class="pagination">
                     <li class="page-item disabled">
@@ -545,8 +413,12 @@
       </div>
       <!-- Copyright -->
     </footer>
+</div>
   
-  
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="/app/public/js/fetch.js"></script>
+    <script src="/app/public/js/vacancies/Vacancy.js"></script>
+    <script src="/app/public/js/vacancies/app.js"></script>
 
 </body>
 

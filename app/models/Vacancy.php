@@ -31,4 +31,9 @@ class Vacancy
             $res = '123';
             echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
+    public static function getVacancies(){
+        $stmt = self::pdo()->query('SELECT * FROM vacancies');
+        $res = $stmt->fetchAll();
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
+    }
 }
