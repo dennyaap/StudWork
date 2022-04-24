@@ -175,7 +175,7 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="salary">Зарплата от:</label>
         <div class="col-sm-9">
-          <div class="d-flex justify-content-center align-items-center"><input type="text" class="form-control" id="salary" v-model="currentSalary"></div>
+          <div class="d-flex justify-content-center align-items-center"><input type="text" class="form-control" id="salary" v-model="currentSalary">руб</div>
           <input type="range" class="form-range" min="0" max="1000000" step="0.5" id="salary" v-model="currentSalary">
         </div>
     </div>               

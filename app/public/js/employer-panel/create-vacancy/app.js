@@ -52,7 +52,7 @@ const App = {
                 console.log(errors);
             }
             else{
-                await Vacancy.addVacancy({ 'name': this.vacancyName, 'photo': 'link', 'category_id': this.selectedCategoryId, 'salary' : this.salary, 'about': this.about, 'graph': this.selectedGraph })
+                await Vacancy.addVacancy({ 'name': this.vacancyName, 'photo': 'link', 'category_id': this.selectedCategoryId, 'salary': this.currentSalary, 'about': this.about, 'work_graph': this.selectedGraph })
                 console.log('Успешно добавлена...');
             }
         }

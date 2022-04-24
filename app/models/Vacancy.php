@@ -20,11 +20,14 @@ class Vacancy
             VALUES (:employer_id, :name, :category_id, :salary, :work_graph)");
             $stmt->execute(
                 [
-                    'employer_id' => 1,
+                    'employer_id' => 4,
+                    'name' => $vacancy->name,
                     'category_id' => $vacancy->category_id,
                     'salary' => $vacancy->salary,
                     'work_graph' => $vacancy->work_graph,
                 ]
             );
+            $res = '123';
+            echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
 }

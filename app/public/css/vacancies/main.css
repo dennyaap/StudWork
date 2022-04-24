@@ -1,0 +1,48 @@
+#filters{
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+}
+body{
+    background: #f3f2f2;
+}
+.vacancy-card{
+    background: #ffffff;
+    width: 100%;
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0px 0px 12px 0px;
+}
+.vacancy-information{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.vacancy-title{
+
+}
+.vacancy-name{
+    color: #828EFF;
+    font-size: 22px;
+}
+.organization-name{
+    color: #BBBBBB;
+}
+.vacancy-salary{
+    font-size: 22px;
+}
+.vacancy-description{
+    margin: 10px 0px 10px 0px;
+}
+.btn-feedback{
+    border: none;
+    background: #828EFF;
+}
+.btn-feedback:hover{
+    border: none;
+    background: #828EFF;
+    opacity: 0.9;
+}
