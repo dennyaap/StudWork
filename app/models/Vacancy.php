@@ -16,8 +16,8 @@ class Vacancy
         return $stmt->fetchAll();
     }
     public static function addVacancy($vacancy){
-        $stmt = self::pdo()->prepare("INSERT INTO vacancies (employer_id, name, category_id, salary, work_graph)
-            VALUES (:employer_id, :name, :category_id, :salary, :work_graph)");
+        $stmt = self::pdo()->prepare("INSERT INTO vacancies (employer_id, name, category_id, salary, work_graph, description)
+            VALUES (:employer_id, :name, :category_id, :salary, :work_graph, :description)");
             $stmt->execute(
                 [
                     'employer_id' => 4,
@@ -25,6 +25,7 @@ class Vacancy
                     'category_id' => $vacancy->category_id,
                     'salary' => $vacancy->salary,
                     'work_graph' => $vacancy->work_graph,
+                    'description' => $vacancy->description
                 ]
             );
             $res = '123';

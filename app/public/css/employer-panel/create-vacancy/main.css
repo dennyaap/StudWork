@@ -10,3 +10,225 @@
     background: #828EFF;
     color: #fff;
 }
+:root {
+    --main-bg-color: #009d63;
+    --main-text-color: #828EFF;
+    --second-text-color: #d7dae0;
+    --second-bg-color: #c1efde;
+  }
+  
+  .primary-text {
+    color: var(--main-text-color);
+  }
+  
+  .second-text {
+    color: var(--second-text-color);
+  }
+  
+  .primary-bg {
+    background-color: var(--main-bg-color);
+  }
+  
+  .secondary-bg {
+    background-color: var(--second-bg-color);
+  }
+  
+  .rounded-full {
+    border-radius: 100%;
+  }
+
+  
+  #wrapper {
+    overflow-x: hidden;
+    /* background-image: linear-gradient(
+      to right,
+      #bdbdbd,
+      #c2f5de,
+      #cbf7e4,
+      #d4f8ea,
+      #ddfaef
+    ); */
+    background: #f3f2f2;
+  }
+  .categories-container{
+      background: #fff;
+      border-radius: 18px;
+      padding: 25px;
+  }
+  .edit-panel{
+      /* margin: 0px 0px 60px 0px; */
+      height: 100%;
+  }
+  
+  #sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin 0.25s ease-out;
+    -moz-transition: margin 0.25s ease-out;
+    -o-transition: margin 0.25s ease-out;
+    transition: margin 0.25s ease-out;
+  }
+  
+  #sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+  }
+  
+  #sidebar-wrapper .list-group {
+    width: 15rem;
+  }
+  
+  #page-content-wrapper {
+    min-width: 100vw;
+  }
+  
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+  }
+  
+  #menu-toggle {
+    cursor: pointer;
+  }
+  
+  .list-group-item {
+    border: none;
+    padding: 20px 30px;
+  }
+  
+  .list-group-item.active {
+    background-color: transparent;
+    color: var(--main-text-color);
+    font-weight: bold;
+    border: none;
+  }
+  .edit-panel{
+    min-width: 200px;
+  }
+  @media (min-width: 768px) {
+    #sidebar-wrapper {
+      margin-left: 0;
+    }
+  
+    #page-content-wrapper {
+      min-width: 0;
+      width: 100%;
+    }
+  
+    #wrapper.toggled #sidebar-wrapper {
+      margin-left: -15rem;
+    }
+    .edit-panel{
+      min-width: 500px;
+    }
+  }
+
+  #btnAdd{
+    background: #4CD47D;
+    color: #fff;
+  }
+  td > i{
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+  }
+  .fa-trash{
+      color: #FF9797;
+      cursor: pointer;
+  }
+  .td-center{
+    text-align: center;
+  }
+  #categoryInput{
+    border-radius: 5px 0px 0px 5px;
+  }
+  #btnAdd{
+    border-radius: 0px 5px 5px 0px;
+  }
+  #btnDeleteCategory{
+    background:#FF9797;
+  }
+  .btn-secondary{
+    border: none;
+  }
+  .btn-primary{
+    border: none;
+  }
+  #btnClose{
+   
+  }
+  #btnAccept{
+    background:#828EFF;
+  }
+  h2{
+    margin: 0px 0px 20px 0px;
+  }
+  #avatar{
+    margin: 0px 0px 0px 10px;
+    width: 45px;
+  }
+ 
+  .add-panel{
+    min-width: 350px;
+  }
+  thead{
+    color: #fff;
+    background: #212529;
+  }
+  
+  input[type="color"] {
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+    width: 35px;
+    height: 34px;    
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  
+  input[type="color"]::-webkit-color-swatch {
+    border: none;  
+    border-radius: 10%;
+  }
+.category-color{
+  width: 5px;
+}
+
+
+.vacancy-information{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.vacancy-title{
+
+}
+.vacancy-name{
+  color: #828EFF;
+  font-size: 22px;
+}
+.organization-name{
+  color: #BBBBBB;
+}
+.vacancy-salary{
+  font-size: 22px;
+}
+.vacancy-description{
+  margin: 10px 0px 10px 0px;
+}
+.btn-feedback{
+  border: none;
+  background: #828EFF;
+}
+.btn-feedback:hover{
+  border: none;
+  background: #828EFF;
+  opacity: 0.9;
+}
+
+
+.preview{
+  color: #FF9797;
+  font-size: large;
+  font-weight: bold;
+}

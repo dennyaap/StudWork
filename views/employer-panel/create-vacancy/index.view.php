@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <link rel="stylesheet" href="/app/public/css/admin-panel.css" />
     <link rel="stylesheet" href="/app/public/css/employer-panel/create-vacancy/main.css" />
     <link rel="stylesheet" href="/app/public/css/employer-panel/create-vacancy/scrollable.css" />
     <title><?= $title ?></title>
@@ -15,60 +14,6 @@
 
 <body>
 <div id="app">
-    <!-- <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Редактировать</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <label for="category-name" class="col-form-label">Название категории</label>
-                <label>
-  <input type="color" v-model="paletteColorEdit" id="paletteColorEdit">
-  
-</label>
-                <input type="text" v-model="categoryNameEdit" class="form-control" id="categoryNameEdit">
-              </div>
-               <div class="alert alert-success" role="alert" id="successAlertEdit" v-show="showSuccessAlertEdit">
-                      Изменения были пременены!
-                      </div>
-                    
-                      <div id="dangerAlertContainerEdit" v-html="dangerAlertContainerEdit">
-                        
-                      </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnClose">Закрыть</button>
-            <button type="button" class="btn btn-primary" id="btnAccept" @click="acceptEditCategory">Принять</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- Button trigger modal -->
-
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Удаление</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Вы действительно хотите удалить категорию «<span id="category-name-delete">{{ categoryNameDelete }}</span>»?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-            <button type="button" class="btn btn-primary" id="btnDeleteCategory" data-bs-dismiss="modal" @click="acceptDeleteCategory(this)">Удалить</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
     
     <div class="d-flex" :class="{toggled: isToggledNavbar}" id="wrapper">
         <!-- Sidebar -->
@@ -98,27 +43,27 @@
             <div class="container px-4 categories">
                 <div class="row d-flex gap-3">
                   <div class="col categories-container edit-panel">
-                    <h2>Предпросмотр</h2>
-                      <div id="form">
-                      <!-- Email input -->
-                        
-                      <!-- <div class="container col-md-6"> -->
-                      <!-- <img id="frame" src="" class="img-fluid" />
-            <div class="mb-5">
-                <input class="form-control" type="file" id="formFile" onchange="preview()">
-                <button onclick="clearImage()" class="btn btn-primary mt-3">Click me</button>
-            </div>
-        </div>
+                      <div class="vacancy-card">
+                      <div class="vacancy-information">
+                        <div class="vacancy-title">
+                            <div class="vacancy-name"><div v-if="vacancyName != ''">{{vacancyName}}</div><div v-else>Название вакансии</div></div>
+                            <div class="organization-name"><div v-if="nameOrganization != ''">{{nameOrganization}}</div><div v-else>Название организации</div></div>
+                        </div>
+                        <div class="vacancy-salary">от {{currentSalary}} руб</div>
+                    </div>
 
-        <script>
-            function preview() {
-                frame.src = URL.createObjectURL(event.target.files[0]);
-            }
-            function clearImage() {
-                document.getElementById('formFile').value = null;
-                frame.src = "";
-            }
-        </script> -->
+                    <div class="vacancy-description">  
+                    <div v-if="description != ''">{{description}}</div><div v-else>Описание вакансии...</div>
+                    </div>
+
+                    <div class="vacancy-card-footer d-flex justify-content-between align-items-center">
+                    <div class="feedback">
+                        <button class="btn btn-primary btn-feedback">Откликнуться</button>
+                    </div>
+                    <div class="preview">
+                      Предпросмотр вакансии
+                    </div>
+                    </div>
                       
                       
                       </div>
@@ -191,7 +136,7 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="description">Описание:</label>
         <div class="col-sm-9">
-            <textarea rows="3" class="form-control" id="description" placeholder="" required></textarea>
+            <textarea rows="3" class="form-control" id="description" placeholder="" required v-model="description"></textarea>
         </div>
     </div>
    
