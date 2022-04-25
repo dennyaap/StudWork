@@ -73,4 +73,10 @@ a{
     margin: 18px 0px 0px 0px;
 }
 
-
+.feedback{
+    display: flex;
+    justify-content: space-between;
+}
+.vacancy-date{
+    color: #BBBBBB;
+}

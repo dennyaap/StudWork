@@ -17,6 +17,8 @@ const App = {
             
             graphList: [],
             selectedGraph: 1,
+
+            currentDate: '',
         }
     },
     methods: {
@@ -50,7 +52,8 @@ const App = {
             this.errors = Validation.checkErrors(this.vacancyName, this.selectedCategoryName, this.nameOrganization, this.description);
 
             if(this.errors.length == 0){
-                await Vacancy.addVacancy({ 'name': this.vacancyName, 'photo': 'link', 'category_id': this.selectedCategoryId, 'salary': this.currentSalary, 'description': this.description, 'work_graph': this.selectedGraph })
+                this.currentDate = new Date().toLocaleDateString();
+                await Vacancy.addVacancy({ 'name': this.vacancyName, 'photo': 'link', 'category_id': this.selectedCategoryId, 'salary': this.currentSalary, 'description': this.description, 'work_graph': this.selectedGraph , 'created_at': this.currentDate})
             }
             this.clearLabels();
         },

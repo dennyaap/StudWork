@@ -287,6 +287,7 @@
 
                     <div class="feedback">
                         <button class="btn btn-primary btn-feedback">Отлкликнуться</button>
+                        <div class="vacancy-date">{{ vacancy.created_at }}</div>
                     </div>
                 </div>
 
