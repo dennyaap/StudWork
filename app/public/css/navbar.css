@@ -51,3 +51,6 @@ button.btn{
     font-size: 24px;
     color: #828EFF!important;
 }
+.navbar-container{
+    padding: 0px 60px 0px 60px;
+}
