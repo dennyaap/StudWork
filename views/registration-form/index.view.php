@@ -22,16 +22,9 @@
             <h2 class="title">Студент</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Имя" id="studentName" v-model="studentName"/>
+              <input type="text" placeholder="ФИО" id="studentName" v-model="studentFullName"/>
             </div>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Фамилия" id="studentSurname" v-model="studentSurname"/>
-            </div>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Отчество" id="studentatronomyc" v-model="studentPatronomyc"/>
-            </div>
+            
             <div class="form_radio">
             <div class="form_radio_btn">
 	<input id="maleRadio" type="radio" name="radio" value="м" v-model="gender" checked>
@@ -85,16 +78,9 @@
             
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Имя" v-model="employerName"/>
+              <input type="text" placeholder="Имя" v-model="studentFullName"/>
             </div>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Фамилия" v-model="employerSurname"/>
-            </div>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Отчество" v-model="employerPatronomyc"/>
-            </div>
+            
             <div class="form_radio">
             <div class="form_radio_btn">
 	<input id="maleRadio1" type="radio" name="radio" value="м" v-model="employerGender" checked>
@@ -181,7 +167,7 @@
     <script src="https://unpkg.com/vue@next"></script>
     <script src="/app/public/js/fetch.js"></script>
     <script src="/app/public/js/admin-panel/Alert.js"></script>
-    <script src="/app/public/js/admin-panel/Validation.js"></script>
+    <script src="/app/public/js/registration-form/Validation.js"></script>
     <script src="/app/public/js/Autorisation.js"></script>
     <script src="/app/public/js/registration-form/Registration.js"></script>
     <script src="/app/public/js/registration-form/app.js"></script>

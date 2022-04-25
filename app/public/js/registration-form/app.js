@@ -1,6 +1,7 @@
 const App = {
   data() {
       return {
+        studentFullName: '',
         studentName: '',
         studentSurname: '',
         studentPatronomyc: '',
@@ -31,7 +32,7 @@ const App = {
     async createAccount(e){
       e.preventDefault();
 
-      this.errors = await Validation.checkErrorsRegistration(this.studentName, this.studentSurname, this.studentPatronomyc, this.studentEmail, this.studentPassword, this.gender);
+      this.errors = await Validation.checkErrorsRegistration(this.studentFullName, this.studentEmail, this.studentPassword, this.gender);
 
       if(this.errors.length != 0){
         this.dangerAlertStudentContainer = true

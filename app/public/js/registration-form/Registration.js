@@ -1,8 +1,8 @@
 class Registration{
-    static async searchStudent(name, surname, patronomyc, email, password, gender){
+    static async searchStudent(full_name, email, password, gender){
         let route = '/app/controllers/registration-form/searchStudent.php';
         
-        let result = await postDataResponse( route , { 'name' : name, 'surname' : surname, 'patronomyc' : patronomyc, 'email' : email, 'password' : password, 'gender' : gender });
+        let result = await postDataResponse( route , { 'full_name' : full_name, 'email' : email, 'password' : password, 'gender' : gender });
         return result;
     }
     static async searchEmployer(name, surname, patronomyc, nameOrganization, phone, email, password, gender){

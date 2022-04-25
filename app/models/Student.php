@@ -53,12 +53,10 @@ class Student
         // return $verifyPassword;
     }
     public static function createStudentAccount($student){
-        $stmt = self::pdo()->prepare("INSERT users(name, surname, patronomyc, email, password, gender)
-        VALUES(:name, :surname, :patronomyc, :email, :password, :gender)");
+        $stmt = self::pdo()->prepare("INSERT users(full_name, email, password, gender)
+        VALUES(:full_name, :email, :password, :gender)");
         $stmt-> execute([
-            'name' => $student->name,
-            'surname' => $student->surname,
-            'patronomyc' => $student->patronomyc,
+            'full_name' => $student->full_name,
             'email' => $student->email,
             'password' => password_hash($student->password, PASSWORD_BCRYPT),
             'gender' => $student->gender
