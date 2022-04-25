@@ -5,19 +5,53 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/app/public/css/vacancies/main.css" />
     <link rel="stylesheet" href="/app/public/css/vacancies/scrollable.css" />
     <link rel="stylesheet" href="/app/public/css/vacancies/paginator.css" />
+    <link rel="stylesheet" href="/app/public/css/navbar.css" />
     <title><?= $title ?></title>
 </head>
 
 <body>
 <div id="app">
     <main>
-    
+
+        <nav class="navbar navbar-light bg-light">
+          <div class="container">
+            <span class="navbar-brand mb-0 h1">StudWork</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Создать резюме</li>
+        <li class="list-group-item">Отклики</li>
+        <li class="list-group-item">Профиль</li>
+      </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
       <div class="container mt-5">
         
         <div class="row">
