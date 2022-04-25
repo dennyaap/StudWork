@@ -52,9 +52,21 @@ const App = {
             if(this.errors.length == 0){
                 await Vacancy.addVacancy({ 'name': this.vacancyName, 'photo': 'link', 'category_id': this.selectedCategoryId, 'salary': this.currentSalary, 'description': this.description, 'work_graph': this.selectedGraph })
             }
-
+            this.clearLabels();
+        },
+        getSalary(salary){
+            return Number(salary).toLocaleString();
+        },
+        clearLabels(){
+            this.vacancyName = '';
+            this.nameOrganization = '';
+            this.categoryName = '';
+            this.selectedCategoryName = 'WEB-Разработчик';
+            this.selectedCategoryId = 1;
+            this.description = '';
+            this.selectedGraph = 1;
+            this.currentSalary = 10000;
         }
-        
     },
     created(){
         this.renderCategories();

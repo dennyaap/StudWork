@@ -2,7 +2,7 @@ const App = {
     data() {
         return {
             vacancies: [],
-            isActive: true,
+            isActive: false,
         }
     },
     methods: {
@@ -14,7 +14,7 @@ const App = {
         },
         hide(){
             this.isActive = !this.isActive;
-        }
+        },
     },
     created(){
        this.renderVacancies();

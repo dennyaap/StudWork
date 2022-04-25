@@ -3,6 +3,7 @@
 namespace App\models;
 use App\services\Connection;
 use PDO;
+session_start();
 
 class Vacancy
 {
@@ -20,7 +21,7 @@ class Vacancy
             VALUES (:employer_id, :name, :category_id, :salary, :work_graph, :description)");
             $stmt->execute(
                 [
-                    'employer_id' => 4,
+                    'employer_id' => $_SESSION['user']->id,
                     'name' => $vacancy->name,
                     'category_id' => $vacancy->category_id,
                     'salary' => $vacancy->salary,

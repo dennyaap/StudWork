@@ -49,7 +49,7 @@
                             <div class="vacancy-name"><div v-if="vacancyName != ''">{{vacancyName}}</div><div v-else>Название вакансии</div></div>
                             <div class="organization-name"><div v-if="nameOrganization != ''">{{nameOrganization}}</div><div v-else>Название организации</div></div>
                         </div>
-                        <div class="vacancy-salary">от {{currentSalary}} руб</div>
+                        <div class="vacancy-salary">от {{getSalary(currentSalary)}} руб</div>
                     </div>
 
                     <div class="vacancy-description">  
