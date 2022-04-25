@@ -14,6 +14,7 @@ const App = {
         dangerAlertStudentContainer: false,
         authMode: false,
         gender: 'м',
+        employerFullName: '',
         employerName: '',
         employerSurname: '',
         employerPatronomyc: '',
@@ -53,7 +54,7 @@ const App = {
     async createEmployerAccount(e){
       e.preventDefault();
 
-      this.employerErrors = await Validation.checkErrorsRegistrationEmployer(this.employerName, this.employerSurname, this.employerPatronomyc, this.employerEmail, this.employerNameOrganization, this.employerPhone, this.employerPassword, this.employerGender);
+      this.employerErrors = await Validation.checkErrorsRegistrationEmployer(this.employerFullName, this.employerEmail, this.employerNameOrganization, this.employerPhone, this.employerPassword, this.employerGender);
       if(this.employerErrors.length != 0){
         this.dangerAlertEmployerContainer = true
       } else {

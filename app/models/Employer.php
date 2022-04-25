@@ -53,12 +53,10 @@ class Employer
         // return $verifyPassword;
     }
     public static function createEmployerAccount($employer){
-        $stmt = self::pdo()->prepare("INSERT employers(name, surname, patronomyc, name_organization, phone, email, password, gender)
-        VALUES(:name, :surname, :patronomyc, :name_organization, :phone, :email, :password, :gender)");
+        $stmt = self::pdo()->prepare("INSERT employers(full_name, name_organization, phone, email, password, gender)
+        VALUES(:full_name, :name_organization, :phone, :email, :password, :gender)");
         $stmt-> execute([
-            'name' => $employer->name,
-            'surname' => $employer->surname,
-            'patronomyc' => $employer->patronomyc,
+            'full_name' => $employer->full_name,
             'name_organization' => $employer->nameOrganization,
             'phone' => $employer->phone,
             'email' => $employer->email,

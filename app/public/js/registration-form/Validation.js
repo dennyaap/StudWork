@@ -106,13 +106,17 @@ class Validation{
         }
         return errors;
     }
-    static async checkErrorsRegistrationEmployer(name, surname, patronomyc, email, nameOrganization, phone, password, gender){
+    static async checkErrorsRegistrationEmployer(full_name, email, nameOrganization, phone, password, gender){
         let errors = [];
 
         let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        let fullNameFormat = /[А-Яа-я]*?\s[А-Яа-я]*?\s[А-Яа-я]*/;
         
-        if(name == '' || surname == '' || patronomyc == ''){
+        if(full_name == ''){
             errors.push('Введите ФИО');
+        }
+        else if(!full_name.match(fullNameFormat)){
+            errors.push('Некорректно введенно ФИО')
         }
         else if(nameOrganization == ''){
             errors.push('Введите название организации');
@@ -129,7 +133,7 @@ class Validation{
         else if(password.length <= 8){
             errors.push('Пароль должен содержать не менее 8 символов')
         }
-        else if(await Registration.searchEmployer(name, surname, patronomyc, nameOrganization, phone, email, password, gender)){
+        else if(await Registration.searchEmployer(full_name, nameOrganization, phone, email, password, gender)){
             errors.push('Пользователь с таким E-mail уже существует')
         }
         return errors;

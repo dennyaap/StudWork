@@ -78,7 +78,7 @@
             
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Имя" v-model="studentFullName"/>
+              <input type="text" placeholder="ФИО" v-model="employerFullName"/>
             </div>
             
             <div class="form_radio">
