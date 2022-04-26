@@ -41,7 +41,8 @@ class Student
         if($data){
            if(password_verify($user->password, $data->password)){
                 $_SESSION['isAuth'] = true;
-                Utils::setUser($data);
+                $role = 'student';
+                Utils::setUser($data, $role);
                 $find = true;
            }
         }

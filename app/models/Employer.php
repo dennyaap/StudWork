@@ -41,7 +41,8 @@ class Employer
         if($data){
             if(password_verify($employer->password, $data->password)){
                 $_SESSION['isAuth'] = true;
-                Utils::setUser($data);
+                $role = 'employer';
+                Utils::setUser($data, $role);
                 $find = true;
             }
         }

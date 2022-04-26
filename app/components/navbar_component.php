@@ -18,14 +18,16 @@
       
         <?php else : ?>
           <div class="navbar-nav ms-auto">
-                <a class="nav-link fw-bold" href="#"
-                               >
+                <a class="nav-link fw-bold d-flex align-items-center" href="<?php if($_SESSION['role'] == 'employer') : ?>/app/controllers/employer-panel/create-vacancy/<?php else : ?>/<?php endif ?>">
                                 
                                 <!-- <i class="fas fa-user me-2">fddfdf</i>
                                -->
                                 <?= $_SESSION['user']->full_name ?>
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" class="rounded-circle" id="avatar"
-  alt="Avatar" />
+                                <div class="rounded-circle border d-flex justify-content-center align-items-center"
+         style="width:30px;height:30px;margin-left:10px;"
+      alt="Avatar">
+    <i class="fas fa-user text-info"></i>
+    </div>
                             </a>
                             
                     </div>

@@ -59,8 +59,6 @@
 
 <div id="app">
     <div class="categories">
-        <a href="/app/controllers/auth-form/">auth</a>
-        <a href="/app/controllers/admin-panel/categories/">admin panel</a>
         <div class="container">
             <div class="categories-container">
                 <div class="row row-cols-1 row-cols-md-3 g-4" id="categoriesContainer">

@@ -11,7 +11,8 @@ class Utils
     public static function isAutorisation(){
         return $_SESSION['isAuth'] ?? false;
     }
-    public static function setUser($data){
+    public static function setUser($data, $role){
+        $_SESSION['role'] = $role;
         $_SESSION['user'] = $data;
     }
 }
