@@ -57,3 +57,38 @@ button.btn{
 .fa-user{
     color: #828EFF!important;
 }
+.btn-logout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar-avatar{
+    width: 30px;
+    margin: 0px 5px 0px 0px;
+}
+a{
+    text-decoration: none;
+}
+
+
+#btn-auth{
+  
+    margin: 0px 0px 0px 12px;
+    color: #fff;
+    background: #828EFF;
+    padding: 8px 24px 8px 24px;
+}
+button.btn{
+    border-radius: 15px;
+}
+#btn-resume{
+    border: 1px solid #4CD47D;
+    color: #4CD47D;
+    padding: 8px 24px 8px 24px;
+}
+#btn-resume:hover{
+    opacity: 0.8;
+}
+#btn-auth:hover{
+    opacity: 0.8;
+}

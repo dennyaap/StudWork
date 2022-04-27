@@ -6,7 +6,7 @@ const App = {
     },
     methods: {
         async getCategories(){
-            let route = '/app/controllers/main-page/getCategories.php';
+            let route = '/app/controllers/main-page/getCountVacancies.php';
             this.categories =  await getData(route);
         },
     },

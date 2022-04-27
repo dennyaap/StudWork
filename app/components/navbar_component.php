@@ -3,6 +3,7 @@
 
 <nav class="navbar navbar-light sticky-top navbar-expand-sm bg-light">
           <div class="container navbar-container">
+            <div class="left d-flex align-items-center">
             <span class="navbar-brand mb-0 h1">StudWork</span>
             <ul class="navbar-nav mr-auto">
         <?php foreach($routes as $route) : ?>
@@ -11,9 +12,11 @@
         </li>
         <?php endforeach ?>
       </ul>
+            </div>
       <div class="about-user">
 
         <?php if (!$_SESSION['isAuth']) : ?>
+          <a href="/app/controllers/student-panel/create-resume/"><button class="btn" id="btn-resume">Создать резюме</button></a>
           <a href="/app/controllers/auth-form/"><button class="btn" id="btn-auth">Войти</button></a>
       
         <?php else : ?>
@@ -24,14 +27,13 @@
                                -->
                                
                                 <?= $_SESSION['user']->full_name ?>
-                                <div class="rounded-circle border d-flex justify-content-center align-items-center"
-         style="width:30px;height:30px;margin-left:10px;"
+                                <div class="d-flex justify-content-center align-items-center navbar-avatar"
       alt="Avatar">
     <i class="fas fa-user text-info"></i>
     
     </div>
     
-    <a href="/app/controllers/logout/" class="text-danger fw-bold"><i class="fas fa-arrow-right-from-bracket me-2"></i></a>
+    <a href="/app/controllers/logout/" class="text-danger fw-bold btn-logout"><i class="fas fa-arrow-right-from-bracket me-2"></i></a>
                             </a>
                             
                     </div>

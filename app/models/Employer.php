@@ -16,7 +16,7 @@ class Employer
     }
     public static function searchEmployer($employer){
         $find = false;
-        $stmt = self::pdo()->prepare("SELECT email FROM users 
+        $stmt = self::pdo()->prepare("SELECT email FROM employers
         WHERE email = :email");
         $stmt-> execute([
             'email' => $employer->email,

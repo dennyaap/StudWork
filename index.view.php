@@ -60,6 +60,7 @@
 <div id="app">
     <div class="categories">
         <div class="container">
+            <h2 class="categories-title">Популярные категории</h2>
             <div class="categories-container">
                 <div class="row row-cols-1 row-cols-md-3 g-4" id="categoriesContainer">
                     <div class="col" v-for="category in categories">
@@ -67,7 +68,7 @@
                             <div class="category-color" :style="{background: category.color}"></div>
                             <div class="card-body">
                                 <h5 class="card-title">{{category.name}}</h5>
-                                <p class="card-text">smth</p>
+                                <p class="card-text">{{ category.countVacancies }} вакансии.</p>
                             </div>
                         </div>
                     </div>
