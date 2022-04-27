@@ -29,9 +29,19 @@ class Employer
         }
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
     }
+    public static function getUser($email){
+        $stmt = self::pdo()->prepare("SELECT id, full_name, name_organization FROM employers 
+        WHERE email = :email");
+        $stmt->execute(
+            [
+                'email' => $email,
+            ]
+        );
+        return $stmt->fetch();
+    }
     public static function authEmployer($employer){
         $find = false;
-        $stmt = self::pdo()->prepare("SELECT * FROM employers 
+        $stmt = self::pdo()->prepare("SELECT password FROM employers 
         WHERE email = :email");
         $stmt-> execute([
             'email' => $employer->email
@@ -42,7 +52,8 @@ class Employer
             if(password_verify($employer->password, $data->password)){
                 $_SESSION['isAuth'] = true;
                 $role = 'employer';
-                Utils::setUser($data, $role);
+                $user_data = self::getUser($employer->email);
+                Utils::setUser($user_data, $role);
                 $find = true;
             }
         }

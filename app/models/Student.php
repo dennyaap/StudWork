@@ -29,9 +29,19 @@ class Student
         }
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
     }
+    public static function getUser($email){
+        $stmt = self::pdo()->prepare("SELECT full_name FROM users 
+        WHERE email = :email");
+        $stmt->execute(
+            [
+                'email' => $email,
+            ]
+        );
+        return $stmt->fetch();
+    }
     public static function authStudent($user){
         $find = false;
-        $stmt = self::pdo()->prepare("SELECT * FROM users 
+        $stmt = self::pdo()->prepare("SELECT password FROM users 
         WHERE email = :email");
         $stmt-> execute([
             'email' => $user->email
@@ -42,7 +52,8 @@ class Student
            if(password_verify($user->password, $data->password)){
                 $_SESSION['isAuth'] = true;
                 $role = 'student';
-                Utils::setUser(['full_name' => $data->full_name], $role);
+                $data = self::getUser($user->email);
+                Utils::setUser($data, $role);
                 $find = true;
            }
         }
