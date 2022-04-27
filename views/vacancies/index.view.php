@@ -20,17 +20,17 @@
 <div id="app">
     <main>
 
-        <nav class="navbar navbar-light bg-light">
+        <!-- <nav class="navbar navbar-light bg-light">
           <div class="container">
             <span class="navbar-brand mb-0 h1">StudWork</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
               <span class="navbar-toggler-icon"></span>
             </button>
           </div>
-        </nav>
+        </nav> -->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header">
@@ -50,8 +50,8 @@
       </div>
     </div>
   </div>
-</div>
-
+</div> -->
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/app/components/navbar_component.php' ?>
       <div class="container mt-5">
         
         <div class="row">
@@ -276,7 +276,7 @@
                     <div class="vacancy-information">
                         <div class="vacancy-title">
                             <div class="vacancy-name">{{vacancy.name}}</div>
-                            <div class="organization-name">{{vacancy.name}}</div>
+                            <div class="organization-name">{{vacancy.organization}}</div>
                         </div>
                         <div class="vacancy-salary">от {{ getSalary(vacancy.salary) }} руб</div>
                     </div>
@@ -327,8 +327,7 @@
 
 
 
-    <footer class="bg-dark text-white text-center text-lg-left">
-      <!-- Socials -->
+    <!-- <footer class="bg-dark text-white text-center text-lg-left">
       <div class="bg-primary text-center p-3">
         <div class="row">
           <div class="col-md-6">
@@ -342,13 +341,9 @@
           </div>
         </div>
       </div>
-      <!-- Socials -->
 
-      <!-- Grid container -->
       <div class="container p-5">
-        <!--Grid row-->
         <div class="row p-2">
-          <!--Grid column-->
           <div class="col-md-3 mx-auto py-4">
             <h5 class="text-uppercase">About me</h5>
             <hr class="mb-4 mt-0">
@@ -358,9 +353,7 @@
               sit amet, consectetur adipisicing elit.
             </p>
           </div>
-          <!--Grid column-->
 
-          <!--Grid column-->
           <div class="col-md-3 mx-auto py-4">
             <h5 class="text-uppercase">Products</h5>
             <hr class="mb-4 mt-0">
@@ -380,9 +373,7 @@
               </li>
             </ul>
           </div>
-          <!--Grid column-->
 
-          <!--Grid column-->
           <div class="col-md-3 mx-auto py-4">
             <h5 class="text-uppercase">Useful links</h5>
             <hr class="mb-4 mt-0">
@@ -402,9 +393,7 @@
               </li>
             </ul>
           </div>
-          <!--Grid column-->
 
-          <!--Grid column-->
           <div class="col-md-3 mx-auto py-4">
             <h5 class="text-uppercase">Contacts</h5>
             <hr class="mb-4 mt-0">
@@ -424,19 +413,14 @@
               </li>
             </ul>
           </div>
-          <!--Grid column-->
         </div>
-        <!--Grid row-->
       </div>
-      <!-- Grid container -->
 
-      <!-- Copyright -->
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
         © 2020 Copyright:
         <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
       </div>
-      <!-- Copyright -->
-    </footer>
+    </footer> -->
 </div>
   
     <script src="https://unpkg.com/vue@next"></script>

@@ -31,7 +31,7 @@ class Student
     }
     public static function authStudent($user){
         $find = false;
-        $stmt = self::pdo()->prepare("SELECT email, password FROM users 
+        $stmt = self::pdo()->prepare("SELECT * FROM users 
         WHERE email = :email");
         $stmt-> execute([
             'email' => $user->email
@@ -42,7 +42,7 @@ class Student
            if(password_verify($user->password, $data->password)){
                 $_SESSION['isAuth'] = true;
                 $role = 'student';
-                Utils::setUser($data, $role);
+                Utils::setUser(['full_name' => $data->full_name], $role);
                 $find = true;
            }
         }

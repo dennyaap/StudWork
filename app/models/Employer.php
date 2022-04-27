@@ -58,7 +58,7 @@ class Employer
         VALUES(:full_name, :name_organization, :phone, :email, :password, :gender)");
         $stmt-> execute([
             'full_name' => $employer->full_name,
-            'name_organization' => $employer->nameOrganization,
+            'name_organization' => $employer->name_organization,
             'phone' => $employer->phone,
             'email' => $employer->email,
             'password' => password_hash($employer->password, PASSWORD_BCRYPT),

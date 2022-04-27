@@ -29,12 +29,15 @@
                 
 
                 <ul class="navbar-nav ms-auto">
-                <a class="nav-link fw-bold" href="#"
+                <a class="nav-link fw-bold d-flex" href="#"
                                >
-                               Viktor Rain
+                               <?= $_SESSION['user']->full_name ?>
                                 <!-- <i class="fas fa-user me-2"></i>Viktor Sunset -->
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" class="rounded-circle" id="avatar"
-  alt="Avatar" />
+                                <div class="rounded-circle border d-flex justify-content-center align-items-center"
+         style="width:30px;height:30px;margin-left:10px;"
+      alt="Avatar">
+    <i class="fas fa-user text-info"></i>
+    </div>
                             </a>
                             
                     </ul>
@@ -47,7 +50,7 @@
                       <div class="vacancy-information">
                         <div class="vacancy-title">
                             <div class="vacancy-name"><div v-if="vacancyName != ''">{{vacancyName}}</div><div v-else>Название вакансии</div></div>
-                            <div class="organization-name"><div v-if="nameOrganization != ''">{{nameOrganization}}</div><div v-else>Название организации</div></div>
+                            <div class="organization-name"><div v-if="name_organization != ''">{{name_organization}}</div><div v-else>Название организации</div></div>
                         </div>
                         <div class="vacancy-salary">от {{getSalary(currentSalary)}} руб</div>
                     </div>
@@ -105,7 +108,7 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="nameOrganization">Организация:</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="nameOrganization" v-model="nameOrganization">
+            <input type="text" class="form-control" id="nameOrganization" v-model="name_organization">
         </div>
     </div>
     <div class="row mb-3">

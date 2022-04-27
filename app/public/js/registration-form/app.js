@@ -56,6 +56,7 @@ const App = {
 
       this.employerErrors = await Validation.checkErrorsRegistrationEmployer(this.employerFullName, this.employerEmail, this.employerNameOrganization, this.employerPhone, this.employerPassword, this.employerGender);
       if(this.employerErrors.length != 0){
+        console.log(this.employerErrors);
         this.dangerAlertEmployerContainer = true
       } else {
         await Autorisation.authEmployer(this.employerEmail, this.employerPassword);

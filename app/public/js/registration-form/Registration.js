@@ -5,10 +5,10 @@ class Registration{
         let result = await postDataResponse( route , { 'full_name' : full_name, 'email' : email, 'password' : password, 'gender' : gender });
         return result;
     }
-    static async searchEmployer(full_name, nameOrganization, phone, email, password, gender){
+    static async searchEmployer(full_name, name_organization, phone, email, password, gender){
         let route = '/app/controllers/registration-form/searchEmployer.php';
         
-        let result = await postDataResponse( route , { 'full_name': full_name, 'nameOrganization': nameOrganization, 'phone': phone,'email' : email, 'password' : password, 'gender' : gender });
+        let result = await postDataResponse( route , { 'full_name': full_name, 'name_organization': name_organization, 'phone': phone,'email' : email, 'password' : password, 'gender' : gender });
         return result;
     }
 }

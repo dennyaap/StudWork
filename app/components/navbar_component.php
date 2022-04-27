@@ -22,6 +22,7 @@
                                 
                                 <!-- <i class="fas fa-user me-2">fddfdf</i>
                                -->
+                               
                                 <?= $_SESSION['user']->full_name ?>
                                 <div class="rounded-circle border d-flex justify-content-center align-items-center"
          style="width:30px;height:30px;margin-left:10px;"

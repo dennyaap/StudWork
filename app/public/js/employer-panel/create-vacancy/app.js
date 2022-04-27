@@ -3,9 +3,9 @@ const App = {
         return {
             isToggledNavbar: false,
             vacancyName: '',
-            nameOrganization: '',
+            name_organization: '',
             categoryName: '',
-            selectedCategoryName: 'WEB-Разработчик',
+            selectedCategoryName: '',
             selectedCategoryId: 1,
             isActive: false,
             searchBox: '',
@@ -26,12 +26,16 @@ const App = {
             this.isToggledNavbar = !this.isToggledNavbar;
         },
         async renderCategories(){
+            this.selectedCategory = await Category.getCategoriesLimit(1);
+            this.selectedCategoryId = this.selectedCategory[0].id;
+            this.selectedCategoryName = this.selectedCategory[0].name;
             let countRow = 8;
             this.categories = await Category.getCategoriesLimit(countRow);
         },
         chooseCategory(e){
             this.selectedCategoryName = e.target.getAttribute('data-categoryName');
             this.selectedCategoryId = e.target.id;
+            console.log(`ff: ${this.selectedCategoryId}`)
             this.hideCategoryList();
         },
         hideCategoryList(){
@@ -49,29 +53,32 @@ const App = {
         },
         async addVacancy(e){
             e.preventDefault();
-            this.errors = Validation.checkErrors(this.vacancyName, this.selectedCategoryName, this.nameOrganization, this.description);
+            this.errors = Validation.checkErrors(this.vacancyName, this.selectedCategoryName, this.name_organization, this.description);
 
             if(this.errors.length == 0){
                 this.currentDate = new Date().toLocaleDateString();
-                await Vacancy.addVacancy({ 'name': this.vacancyName, 'photo': 'link', 'category_id': this.selectedCategoryId, 'salary': this.currentSalary, 'description': this.description, 'work_graph': this.selectedGraph , 'created_at': this.currentDate})
+                console.log(this.selectedCategoryId);
+                await Vacancy.addVacancy({ 'name': this.vacancyName, 'name_organization': this.name_organization, 'photo': 'link', 'category_id': this.selectedCategoryId, 'salary': this.currentSalary, 'description': this.description, 'work_graph': this.selectedGraph , 'created_at': this.currentDate})
+                this.clearLabels();
             }
-            this.clearLabels();
+            
         },
         getSalary(salary){
             return Number(salary).toLocaleString();
         },
         clearLabels(){
             this.vacancyName = '';
-            this.nameOrganization = '';
+            this.name_organization = '';
             this.categoryName = '';
-            this.selectedCategoryName = 'WEB-Разработчик';
-            this.selectedCategoryId = 1;
+            this.selectedCategoryName = 'WEB-разработчик';
+            this.selectedCategoryId = ''; //добавить запрос на получения первой категории
             this.description = '';
             this.selectedGraph = 1;
             this.currentSalary = 10000;
         }
     },
     created(){
+         //добавить запрос на получения первой категории
         this.renderCategories();
         this.renderGraphList();
     }
