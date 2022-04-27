@@ -27,7 +27,7 @@ class Vacancy
                     'salary' => $vacancy->salary,
                     'work_graph' => $vacancy->work_graph,
                     'description' => $vacancy->description,
-                    'created_at' => $vacancy->created_at,
+                    'created_at' => date('Y-m-d', strtotime($vacancy->created_at)),
                     'name_organization' => $_SESSION['user']->name_organization
                 ]
             );
