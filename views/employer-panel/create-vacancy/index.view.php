@@ -148,9 +148,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="/app/public/js/fetch.js"></script>
-    <script src="/app/public/js/employer-panel/create-vacancy/Validation.js"></script>
-    <script src="/app/public/js/employer-panel/create-vacancy/Vacancy.js"></script>
-    <script src="/app/public/js/employer-panel/create-vacancy/Category.js"></script>
+    <script src="/app/public/js/employer-panel/Validation.js"></script>
+    <script src="/app/public/js/employer-panel/Vacancy.js"></script>
+    <script src="/app/public/js/employer-panel/Category.js"></script>
     <script src="/app/public/js/employer-panel/create-vacancy/Graph.js"></script>
     <script src="/app/public/js/employer-panel/create-vacancy/app.js"></script>
 </body>

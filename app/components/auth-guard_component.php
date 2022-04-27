@@ -6,6 +6,4 @@ use App\services\Utils;
 if(!Utils::isAutorisation()){
     header('Location: /app/controllers/auth-form/index.php');
     die();
-} else {
-    header('Location: /');
 }

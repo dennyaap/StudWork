@@ -17,4 +17,10 @@ class Vacancy{
         let result = await postDataResponse(route, vacancy_id);
         return result;
     }
+    static async editVacancy(data){
+        let route = '/app/controllers/employer-panel/vacancies/editVacancy.php';
+
+        let result = await postDataResponse(route, data);
+        return result;
+    }
 }

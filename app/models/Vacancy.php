@@ -46,7 +46,7 @@ class Vacancy
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
     public static function getVacancy($vacancy_id){
-        $stmt = self::pdo()->prepare('SELECT * FROM vacancies WHERE id = :vacancy_id');
+        $stmt = self::pdo()->prepare('SELECT vacancies.*, categories.name AS category_name  FROM vacancies INNER JOIN categories ON vacancies.category_id = categories.id WHERE vacancies.id = :vacancy_id');
         $stmt->execute(['vacancy_id' => $vacancy_id]);
         $res = $stmt->fetch();
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
@@ -57,4 +57,21 @@ class Vacancy
         $res = 'OK';
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
+
+    public static function editVacancy($vacancy){
+        $stmt = self::pdo()->prepare('UPDATE vacancies SET name = :name, category_id = :category_id, salary = :salary, description = :description, work_graph = :work_graph WHERE id = :vacancy_id');
+        $stmt->execute(
+            [
+                'vacancy_id' => $vacancy->vacancy_id,
+                'name' => $vacancy->name,
+                'category_id' => $vacancy->category_id,
+                'salary' => $vacancy->salary,
+                'description' => $vacancy->description,
+                'work_graph' => $vacancy->work_graph
+            ]
+        );
+        $res = 'OK';
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
+    }
+
 }

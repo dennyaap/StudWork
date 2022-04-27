@@ -13,11 +13,11 @@
       </ul>
       <div class="about-user">
 
-        <?php if (!isset($_SESSION['isAuth'])) : ?>
+        <?php if (!$_SESSION['isAuth']) : ?>
           <a href="/app/controllers/auth-form/"><button class="btn" id="btn-auth">Войти</button></a>
       
         <?php else : ?>
-          <div class="navbar-nav ms-auto">
+          <div class="navbar-nav ms-auto d-flex align-items-center">
                 <a class="nav-link fw-bold d-flex align-items-center" href="<?php if($_SESSION['role'] == 'employer') : ?>/app/controllers/employer-panel/create-vacancy/<?php else : ?>/<?php endif ?>">
                                 
                                 <!-- <i class="fas fa-user me-2">fddfdf</i>
@@ -28,7 +28,10 @@
          style="width:30px;height:30px;margin-left:10px;"
       alt="Avatar">
     <i class="fas fa-user text-info"></i>
+    
     </div>
+    
+    <a href="/app/controllers/logout/" class="text-danger fw-bold"><i class="fas fa-arrow-right-from-bracket me-2"></i></a>
                             </a>
                             
                     </div>
