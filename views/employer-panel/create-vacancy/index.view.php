@@ -23,25 +23,7 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-3 px-3 container">
-            <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/app/components/admin-title_component.php' ?>
-
-                
-
-                <ul class="navbar-nav ms-auto">
-                <a class="nav-link fw-bold d-flex" href="#"
-                               >
-                               <?= $_SESSION['user']->full_name ?>
-                                <!-- <i class="fas fa-user me-2"></i>Viktor Sunset -->
-                                <div class="rounded-circle border d-flex justify-content-center align-items-center"
-         style="width:30px;height:30px;margin-left:10px;"
-      alt="Avatar">
-    <i class="fas fa-user text-info"></i>
-    </div>
-                            </a>
-                            
-                    </ul>
-            </nav>
+        <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/app/components/employer-navbar_component.php' ?>
 
             <div class="container px-4 categories">
                 <div class="row d-flex gap-3">
@@ -124,7 +106,7 @@
         <label class="col-sm-3 col-form-label" for="salary">Зарплата от:</label>
         <div class="col-sm-9">
           <div class="d-flex justify-content-center align-items-center"><input type="text" class="form-control" id="salary" v-model="currentSalary">руб</div>
-          <input type="range" class="form-range" min="0" max="1000000" step="0.5" id="salary" v-model="currentSalary">
+          <input type="range" class="form-range" min="10000" max="100000" step="0.5" id="salary" v-model="currentSalary">
         </div>
     </div>               
     <div class="row mb-3">
