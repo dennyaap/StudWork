@@ -1,5 +1,5 @@
 class Validation{
-    static checkErrors(vacancyName, categoryName, nameOrganization, desctription){
+    static checkErrors(vacancyName, categoryName, desctription){
         let errors = [];
         if(vacancyName == ''){
             errors.push('Введите название вакансии');

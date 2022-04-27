@@ -50,7 +50,7 @@
                       <div class="vacancy-information">
                         <div class="vacancy-title">
                             <div class="vacancy-name"><div v-if="vacancyName != ''">{{vacancyName}}</div><div v-else>Название вакансии</div></div>
-                            <div class="organization-name"><div v-if="name_organization != ''">{{name_organization}}</div><div v-else>Название организации</div></div>
+                            <div class="organization-name"><?= $_SESSION['user']->name_organization ?></div>
                         </div>
                         <div class="vacancy-salary">от {{getSalary(currentSalary)}} руб</div>
                     </div>
@@ -108,7 +108,7 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="nameOrganization">Организация:</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="nameOrganization" v-model="name_organization">
+            <input type="text" class="form-control" id="nameOrganization" value="<?= $_SESSION['user']->name_organization ?>" disabled>
         </div>
     </div>
     <div class="row mb-3">

@@ -276,7 +276,7 @@
                     <div class="vacancy-information">
                         <div class="vacancy-title">
                             <div class="vacancy-name">{{vacancy.name}}</div>
-                            <div class="organization-name">{{vacancy.organization}}</div>
+                            <div class="organization-name">{{vacancy.name_organization}}</div>
                         </div>
                         <div class="vacancy-salary">от {{ getSalary(vacancy.salary) }} руб</div>
                     </div>

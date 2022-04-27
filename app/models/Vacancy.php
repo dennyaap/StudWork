@@ -28,14 +28,14 @@ class Vacancy
                     'work_graph' => $vacancy->work_graph,
                     'description' => $vacancy->description,
                     'created_at' => $vacancy->created_at,
-                    'name_organization' => $vacancy->name_organization
+                    'name_organization' => $_SESSION['user']->name_organization
                 ]
             );
             $res = 'OK';
             echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
     public static function getVacancies(){
-        $stmt = self::pdo()->query('SELECT * FROM vacancies');
+        $stmt = self::pdo()->query('SELECT vacancies.*, employers.name_organization FROM vacancies INNER JOIN employers ON vacancies.employer_id = employers.id');
         $res = $stmt->fetchAll();
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }

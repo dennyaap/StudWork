@@ -3,7 +3,6 @@ const App = {
         return {
             isToggledNavbar: false,
             vacancyName: '',
-            name_organization: '',
             categoryName: '',
             selectedCategoryName: '',
             selectedCategoryId: 1,
@@ -53,12 +52,12 @@ const App = {
         },
         async addVacancy(e){
             e.preventDefault();
-            this.errors = Validation.checkErrors(this.vacancyName, this.selectedCategoryName, this.name_organization, this.description);
+            this.errors = Validation.checkErrors(this.vacancyName, this.selectedCategoryName, this.description);
 
             if(this.errors.length == 0){
                 this.currentDate = new Date().toLocaleDateString();
                 console.log(this.selectedCategoryId);
-                await Vacancy.addVacancy({ 'name': this.vacancyName, 'name_organization': this.name_organization, 'photo': 'link', 'category_id': this.selectedCategoryId, 'salary': this.currentSalary, 'description': this.description, 'work_graph': this.selectedGraph , 'created_at': this.currentDate})
+                await Vacancy.addVacancy({ 'name': this.vacancyName, 'photo': 'link', 'category_id': this.selectedCategoryId, 'salary': this.currentSalary, 'description': this.description, 'work_graph': this.selectedGraph , 'created_at': this.currentDate})
                 this.clearLabels();
             }
             
