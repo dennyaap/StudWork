@@ -52,8 +52,8 @@ const App = {
         },
         async addVacancy(e){
             e.preventDefault();
-            this.errors = Validation.checkErrors(this.vacancyName, this.selectedCategoryName, this.description);
-            
+            this.errors = Validation.checkErrors(this.vacancyName, this.description);
+        
             if(this.errors.length == 0){
                 this.currentDate = new Date().toISOString();
                 

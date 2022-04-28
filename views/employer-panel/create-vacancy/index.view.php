@@ -121,7 +121,7 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="description">Описание:</label>
         <div class="col-sm-9">
-            <textarea rows="3" class="form-control" id="description" placeholder="" required v-model="description"></textarea>
+            <textarea rows="3" class="form-control" id="description" placeholder="" required v-model="current_description"></textarea>
         </div>
     </div>
    

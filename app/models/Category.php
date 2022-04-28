@@ -12,6 +12,7 @@ class Category
     public static function getCountVacancies(){
         $stmt = self::pdo()->query('SELECT categories.*, count(*) AS countVacancies FROM vacancies INNER JOIN categories ON vacancies.category_id = categories.id GROUP BY category_id');
         $res = $stmt->fetchAll();
+
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
     public static function getCategories()

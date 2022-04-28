@@ -60,8 +60,8 @@
 <div id="app">
     <div class="categories">
         <div class="container">
-            <h2 class="categories-title">Популярные категории</h2>
             <div class="categories-container">
+            <h2 class="categories-title">Популярные категории</h2>
                 <div class="row row-cols-1 row-cols-md-3 g-4" id="categoriesContainer">
                     <div class="col" v-for="category in categories">
                         <div class="card category-card" :id="category.id">

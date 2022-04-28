@@ -1,5 +1,6 @@
 .categories{
     margin: 122px 0px 0px 0px;
+    padding: 30px 0px 30px 0px;
 }
 .category-color{
     /* background: #828EFF; */
@@ -18,3 +19,6 @@
 .rounded-circle{
     width: 45px;
 }
+.categories-title{
+    margin: 0px 0px 30px 0px;
+ }
