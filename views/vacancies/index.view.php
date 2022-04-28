@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/app/public/css/vacancies/main.css" />
     <link rel="stylesheet" href="/app/public/css/vacancies/scrollable.css" />
     <link rel="stylesheet" href="/app/public/css/vacancies/paginator.css" />
+    <link rel="stylesheet" href="/app/public/css/footer.css" />
     <link rel="stylesheet" href="/app/public/css/navbar.css" />
     <title><?= $title ?></title>
 </head>
@@ -266,7 +267,7 @@
                       </div>
                     </div>
                   </div>
-                <div class="col-md-4 vacancy-card animation fade-in" v-for="vacancy in vacancies">
+                <div class="col-md-4 vacancy-card animation fade-in" v-for="vacancy in vacancies" :data-vacancy_id="vacancy.id">
                     <!-- <div class="bg-image hover-overlay hover-zoom hover-shadow ripple rounded">
                         <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg" class="vacancy-photo">
                         <a href="#!">
@@ -286,7 +287,7 @@
                     </div>
 
                     <div class="feedback">
-                        <button class="btn btn-primary btn-feedback">Отлкликнуться</button>
+                        <button class="btn btn-primary btn-feedback" @click="goVacancyPage">Откликнуться</button>
                         <div class="vacancy-date">{{ vacancy.created_at }}</div>
                     </div>
                 </div>
@@ -323,104 +324,7 @@
       </div>
     </main>
 
-
-
-
-
-    <!-- <footer class="bg-dark text-white text-center text-lg-left">
-      <div class="bg-primary text-center p-3">
-        <div class="row">
-          <div class="col-md-6">
-            <span class="font-weight-bold">Get connected with us on social networks!</span>
-          </div>
-          <div class="col-md-6">
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-linkedin-in ml-4"></i>
-            <i class="fab fa-twitter ml-4"></i>
-            <i class="fab fa-facebook-f ml-4"></i>
-          </div>
-        </div>
-      </div>
-
-      <div class="container p-5">
-        <div class="row p-2">
-          <div class="col-md-3 mx-auto py-4">
-            <h5 class="text-uppercase">About me</h5>
-            <hr class="mb-4 mt-0">
-
-            <p>
-              Here you can use rows and columns to organize your footer content. Lorem ipsum dolor
-              sit amet, consectetur adipisicing elit.
-            </p>
-          </div>
-
-          <div class="col-md-3 mx-auto py-4">
-            <h5 class="text-uppercase">Products</h5>
-            <hr class="mb-4 mt-0">
-
-            <ul class="list-unstyled mb-0">
-              <li class="mb-2">
-                <a href="#!" class="text-white">MDBootstrap</a>
-              </li>
-              <li class="mb-2">
-                <a href="#!" class="text-white">MDWordPress</a>
-              </li>
-              <li class="mb-2">
-                <a href="#!" class="text-white">BrandFlow</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Bootstrap Angular</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="col-md-3 mx-auto py-4">
-            <h5 class="text-uppercase">Useful links</h5>
-            <hr class="mb-4 mt-0">
-
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <a href="#!" class="text-white">Your Account</a>
-              </li>
-              <li class="mb-2">
-                <a href="#!" class="text-white">Become an Affiliate</a>
-              </li>
-              <li class="mb-2">
-                <a href="#!" class="text-white">Shipping Rates</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Help</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="col-md-3 mx-auto py-4">
-            <h5 class="text-uppercase">Contacts</h5>
-            <hr class="mb-4 mt-0">
-
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <a href="#!" class="text-white"><i class="far fa-map mr-1"></i> New York, Avenue Street 10</a>
-              </li>
-              <li class="mb-2">
-                <a href="#!" class="text-white"><i class="fas fa-phone-alt mr-1"></i> 042 876 836 908</a>
-              </li>
-              <li class="mb-2">
-                <a href="#!" class="text-white"><i class="far fa-envelope mr-1"></i> company@example.com</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white"><i class="far fa-clock mr-1"></i> Monday - Friday: 10-17</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-        © 2020 Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-      </div>
-    </footer> -->
+    <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/app/components/footer_component.php' ?>
 </div>
   
     <script src="https://unpkg.com/vue@next"></script>

@@ -46,7 +46,7 @@ class Vacancy
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
     public static function getVacancy($vacancy_id){
-        $stmt = self::pdo()->prepare('SELECT vacancies.*, categories.name AS category_name  FROM vacancies INNER JOIN categories ON vacancies.category_id = categories.id WHERE vacancies.id = :vacancy_id');
+        $stmt = self::pdo()->prepare('SELECT vacancies.*, categories.name AS category_name, graph.name AS graph_name  FROM vacancies INNER JOIN categories ON vacancies.category_id = categories.id INNER JOIN graph ON vacancies.work_graph = graph.id WHERE vacancies.id = :vacancy_id');
         $stmt->execute(['vacancy_id' => $vacancy_id]);
         $res = $stmt->fetch();
         echo json_encode($res, JSON_UNESCAPED_UNICODE);

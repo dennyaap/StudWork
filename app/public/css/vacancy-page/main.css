@@ -36,7 +36,6 @@ body{
     color: #BBBBBB;
 }
 .vacancy-salary{
-    min-width: 140px;
     font-size: 22px;
 }
 .vacancy-description{
@@ -44,7 +43,12 @@ body{
 }
 .btn-feedback{
     border: none;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    padding: 7px;
     background: #828EFF;
+    border-radius: 12px;
 }
 .btn-feedback:hover{
     border: none;
@@ -66,23 +70,41 @@ a{
     color: #828EFF;
 }
 
-.filter-title{
-    margin: 0px 0px 0px 5px;
-}
 
-.filter-section{
-    margin: 18px 0px 0px 0px;
-}
-
-.feedback{
-    display: flex;
-    justify-content: space-between;
-}
 .vacancy-date{
     color: #BBBBBB;
-    display: flex;
-    align-items: flex-end;
 }
-.btn-primary{
-    padding: 8px 18px 8px 18px;  
+
+
+
+
+.vacancy-container{
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+}
+.vacancy-title{
+    /* color: #828EFF; */
+}
+.vacancy-photo{
+    display: flex;
+    justify-content: right;
+}
+.vacancy-photo-container{
+    background: #e5e5e5;
+    height: 120px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    color: #BBBBBB;
+}
+.name-organization{
+    color: #828EFF;
+}
+.feedback{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

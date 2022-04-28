@@ -15,6 +15,11 @@ const App = {
         hide(){
             this.isActive = !this.isActive;
         },
+        goVacancyPage(e){
+            let vacancy_id = e.target.closest('.vacancy-card').dataset.vacancy_id;
+            let route = '/app/controllers/vacancy-page/?vacancy_id=' + vacancy_id;
+            window.location.href = route;
+        }
     },
     created(){
        this.renderVacancies();
