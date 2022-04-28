@@ -10,7 +10,7 @@ class Category
         return Connection::make($config);
     }
     public static function getCountVacancies($count_categories){
-        $stmt = self::pdo()->prepare('SELECT categories.*, count(*) AS countVacancies FROM vacancies INNER JOIN categories ON vacancies.category_id = categories.id GROUP BY category_id ORDER BY countVacancies DESC LIMIT :count_categories');
+        $stmt = self::pdo()->prepare('SELECT categories.*, MIN(vacancies.salary) AS minSalary, MAX(vacancies.salary) AS maxSalary, count(*) AS countVacancies FROM vacancies INNER JOIN categories ON categories.id = vacancies.category_id GROUP BY category_id ORDER BY countVacancies DESC LIMIT :count_categories');
         $stmt->bindValue(':count_categories', $count_categories, self::pdo()::PARAM_INT);
         $stmt->execute();
         $res = $stmt->fetchAll();

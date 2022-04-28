@@ -1,0 +1,15 @@
+a{
+    text-decoration: none;
+}
+.fa-user{
+    color: #828EFF!important;
+}
+.btn-logout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 0px 0px 6px;
+}
+.toggledNavbar{
+    cursor:pointer;
+}

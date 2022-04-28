@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" href="/app/public/css/employer-panel/create-vacancy/main.css" />
     <link rel="stylesheet" href="/app/public/css/employer-panel/create-vacancy/scrollable.css" />
+    <link rel="stylesheet" href="/app/public/css/employer-panel/navbar-panel.css" />
     <title><?= $title ?></title>
 </head>
 

@@ -67,8 +67,11 @@
                         <div class="card category-card" :id="category.id">
                             <div class="category-color" :style="{background: category.color}"></div>
                             <div class="card-body">
-                                <h5 class="card-title">{{category.name}}</h5>
-                                <p class="card-text">{{ category.countVacancies }} вакансии.</p>
+                                <h5 class="card-title">{{ category.name }}</h5>
+                                <div class="salary">
+                                    {{ category.minSalary }} — {{ category.maxSalary }} руб.
+                                </div>
+                                <p class="card-text">{{ category.countVacancies }} ваканс{{ getDeclinationWord(category.countVacancies) }}</p>
                             </div>
                         </div>
                     </div>

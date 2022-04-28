@@ -5,7 +5,7 @@
 
                 
 
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto d-flex align-items-center">
                 <a class="nav-link fw-bold d-flex" href="#"
                                >
                                <?= $_SESSION['user']->full_name ?>
@@ -16,6 +16,6 @@
     <i class="fas fa-user text-info"></i>
     </div>
                             </a>
-                            
+                            <a href="/app/controllers/logout/" class="text-danger fw-bold btn-logout"><i class="fas fa-arrow-right-from-bracket me-2"></i></a>
                     </ul>
             </nav>
