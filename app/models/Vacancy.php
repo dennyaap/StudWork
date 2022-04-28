@@ -39,6 +39,13 @@ class Vacancy
         $res = $stmt->fetchAll();
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
+    public static function getVacanciesLimit($number_page){
+        $stmt = self::pdo()->prepare('SELECT vacancies.*, employers.name_organization FROM vacancies INNER JOIN employers ON vacancies.employer_id = employers.id LIMIT 10 OFFSET :number_page');
+        $stmt->bindValue(':number_page', $number_page, self::pdo()::PARAM_INT);
+        $stmt->execute();
+        $res = $stmt->fetchAll();
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
+    }
     public static function getVacanciesEmployer($employer_id){
         $stmt = self::pdo()->prepare('SELECT * FROM vacancies WHERE employer_id = :employer_id');
         $stmt->execute(['employer_id' => $employer_id]);

@@ -30,7 +30,7 @@ class Student
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
     }
     public static function getUser($email){
-        $stmt = self::pdo()->prepare("SELECT full_name FROM users 
+        $stmt = self::pdo()->prepare("SELECT id, full_name FROM users 
         WHERE email = :email");
         $stmt->execute(
             [

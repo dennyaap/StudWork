@@ -299,7 +299,7 @@
             </div>
             <nav aria-label="...">
                 <ul class="pagination">
-                    <li class="page-item">
+                    <li class="page-item" @click="changePage(-1)">
                     <span class="page-link"><i class="fa-solid fa-chevron-left"></i></span>
                     </li>
                     <li class="page-item active"><a class="page-link number-page" href="#">1</a></li>
@@ -308,7 +308,7 @@
                     </li>
                     <li class="page-item number-page"><a class="page-link number-page" href="#">3</a></li>
                     <li class="page-item">
-                    <span class="page-link"><i class="fa-solid fa-chevron-right"></i></span>
+                    <span class="page-link" @click="changePage(1)"><i class="fa-solid fa-chevron-right"></i></span>
                     </li>
                 </ul>
                 </nav>

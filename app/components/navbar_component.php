@@ -21,7 +21,7 @@
       
         <?php else : ?>
           <div class="navbar-nav ms-auto d-flex align-items-center">
-                <a class="nav-link fw-bold d-flex align-items-center" href="<?php if($_SESSION['role'] == 'employer') : ?>/app/controllers/employer-panel/create-vacancy/<?php else : ?>/<?php endif ?>">
+                <a class="nav-link fw-bold d-flex align-items-center" href="<?php if($_SESSION['role'] == 'employer') : ?>/app/controllers/employer-panel/create-vacancy/<?php else : ?>/app/controllers/student-panel/create-resume/<?php endif ?>">
                                 
                                 <!-- <i class="fas fa-user me-2">fddfdf</i>
                                -->
