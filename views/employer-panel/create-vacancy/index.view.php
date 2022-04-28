@@ -106,7 +106,7 @@
         <label class="col-sm-3 col-form-label" for="salary">Зарплата от:</label>
         <div class="col-sm-9">
           <div class="d-flex justify-content-center align-items-center"><input type="text" class="form-control" id="salary" v-model="currentSalary">руб</div>
-          <input type="range" class="form-range" min="10000" max="100000" step="0.5" id="salary" v-model="currentSalary">
+          <input type="range" class="form-range" min="10000" max="100000" step="1000" id="salary" v-model="currentSalary">
         </div>
     </div>               
     <div class="row mb-3">
@@ -121,7 +121,7 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="description">Описание:</label>
         <div class="col-sm-9">
-            <textarea rows="3" class="form-control" id="description" placeholder="" required v-model="current_description"></textarea>
+            <textarea rows="3" class="form-control" id="description" placeholder="" required v-model="description"></textarea>
         </div>
     </div>
    

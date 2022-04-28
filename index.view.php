@@ -80,4 +80,4 @@
 
 <script src="https://unpkg.com/vue@next"></script>
 <script src="/app/public/js/fetch.js"></script>
-<script src="/app/public/js/main-page/categories.js"></script>
+<script src="/app/public/js/main-page/app.js"></script>
