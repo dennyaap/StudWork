@@ -12,6 +12,13 @@ const App = {
         getSalary(salary){
             return Number(salary).toLocaleString();
         },
+        getDescription(description, maxLength){
+            let result = description;
+            if(description.length > maxLength){
+                result = description.slice(0, maxLength) + '...';
+            }
+            return result;
+        },
         hide(){
             this.isActive = !this.isActive;
         },

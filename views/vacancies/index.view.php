@@ -274,7 +274,7 @@
                         <div class="mask rounded" style="background-color: rgba(66, 66, 66, 0.2);"></div>
                         </a>
                     </div> -->
-                    <div class="vacancy-information">
+                    <div class="vacancy-information" @click="goVacancyPage">
                         <div class="vacancy-title">
                             <div class="vacancy-name">{{vacancy.name}}</div>
                             <div class="organization-name">{{vacancy.name_organization}}</div>
@@ -283,7 +283,7 @@
                     </div>
 
                     <div class="vacancy-description">  
-                        {{ vacancy.description }}
+                        {{ getDescription(vacancy.description, 100) }}
                     </div>
 
                     <div class="feedback">
