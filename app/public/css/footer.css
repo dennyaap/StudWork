@@ -1,0 +1,12 @@
+hr{
+    width: 85px; 
+    background-color: #fff; 
+    min-height: 4px
+}
+footer{
+    background-color: #5860AC
+}
+
+.footer-section{
+    background:  rgba(255, 151, 151, 0.8);;
+}

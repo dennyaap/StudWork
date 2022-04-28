@@ -79,6 +79,7 @@
             </div>
         </div>
     </div>
+    <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/app/components/footer_component.php' ?>
 </div>
 
 <script src="https://unpkg.com/vue@next"></script>
