@@ -13,15 +13,16 @@
         <?php endforeach ?>
       </ul>
             </div>
-      <div class="about-user">
+      <div class="about-user d-flex">
 
+       
         <?php if (!$_SESSION['isAuth']) : ?>
-          <a href="/app/controllers/student-panel/create-resume/"><button class="btn" id="btn-resume">Создать резюме</button></a>
+          <a href="<?php if($_SESSION['isAuth'] == true && $_SESSION['role'] == 'student') : ?><?='/app/controllers/student-panel/create-resume/'?><?php else :?><?='/app/controllers/auth-form/'?><?php endif?>"><button class="btn" id="btn-resume">Создать резюме</button></a>
           <a href="/app/controllers/auth-form/"><button class="btn" id="btn-auth">Войти</button></a>
       
         <?php else : ?>
           <div class="navbar-nav ms-auto d-flex align-items-center">
-                <a class="nav-link fw-bold d-flex align-items-center" href="<?php if($_SESSION['role'] == 'employer') : ?>/app/controllers/employer-panel/create-vacancy/<?php else : ?>/app/controllers/student-panel/create-resume/<?php endif ?>">
+                <a class="nav-link fw-bold d-flex align-items-center" href="<?php if($_SESSION['role'] == 'employer') : ?><?='/app/controllers/employer-panel/create-vacancy/'?><?php else : ?><?='/app/controllers/student-panel/create-resume/'?><?php endif ?>">
                                 
                                 <!-- <i class="fas fa-user me-2">fddfdf</i>
                                -->
@@ -29,15 +30,21 @@
                                 <?= $_SESSION['user']->full_name ?>
                                 <div class="d-flex justify-content-center align-items-center navbar-avatar"
       alt="Avatar">
+      
     <i class="fas fa-user text-info"></i>
+    
     
     </div>
     
-    <a href="/app/controllers/logout/" class="text-danger fw-bold btn-logout"><i class="fas fa-arrow-right-from-bracket me-2"></i></a>
+    <!-- <a href="/app/controllers/logout/" class="text-danger fw-bold btn-logout"><i class="fas fa-arrow-right-from-bracket me-2"></i></a> -->
                             </a>
+    
+                            <?php if($_SESSION['role'] == 'student') :?><a href="/app/controllers/student-panel/create-resume/"><button class="btn" id="btn-resume">Создать резюме</button></a><?php else :?><a href="/app/controllers/employer-panel/create-vacancy/"><button class="btn" id="btn-resume">Создать вакансию</button></a><?php endif?>
                             
                     </div>
+                    
         <?php endif ?>
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
               <span class="navbar-toggler-icon"></span>
             </button>

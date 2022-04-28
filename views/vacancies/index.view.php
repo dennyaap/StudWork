@@ -287,7 +287,7 @@
                     </div>
 
                     <div class="feedback">
-                        <button class="btn btn-primary btn-feedback" @click="goVacancyPage">Откликнуться</button>
+                        <button class="btn btn-primary btn-feedback" @click="goVacancyPage"><?php if ($_SESSION['role'] == 'student' || $_SESSION['role'] == '') : ?>Откликнуться<?php elseif ($_SESSION['role'] == 'employer'):?>Посмотреть<?php endif ?></button>
                         <div class="vacancy-date">{{ vacancy.created_at }}</div>
                     </div>
                 </div>

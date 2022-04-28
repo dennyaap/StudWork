@@ -32,9 +32,11 @@
                         <div class="col-md-6 feedback">
                         <div class="feedback-container">
                                 <h4 class="name-organization">{{ vacancy.name_organization }}</h4>
-                                <div class="btn-feedback" <?php if ($_SESSION['role'] == 'student') :?>@click="feedback"<?php endif ?>>
-                                    Откликнуться
-                                </div>
+                                <?php if($_SESSION['role'] == 'student' || $_SESSION['role'] == '') :?>
+                                    <div class="btn-feedback">
+                                        Откликнуться
+                                    </div>
+                                <?php endif ?>
                             </div>
                         </div>
                         <div class="col-md-6">
