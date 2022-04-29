@@ -85,8 +85,10 @@ const App = {
         //     console.log(this.errors);
             
         // },
-        async renderResponses(){
-            this.responses = await Response.getResponses();
+        async renderResponses(e){
+            let vacancy_id = e.target.closest('.vacancy-card').dataset.id;
+            console.log(vacancy_id);
+            this.responses = await Response.getResponses(vacancy_id);
         },
         async renderVacancies(){
             this.vacancies = await Vacancy.getVacanciesEmployer();
