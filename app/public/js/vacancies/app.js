@@ -35,7 +35,7 @@ const App = {
         getNumberPage(){
             let param = window.location.search;
             return param.split('=')[1];
-        }
+        },
     },
     created(){
         let number_page = this.getNumberPage();

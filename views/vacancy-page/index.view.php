@@ -17,29 +17,64 @@
 <body>
 <div id="app">
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/app/components/navbar_component.php' ?>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Выберите резюме</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div class="col categories-container add-panel">
+              <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th class="td-center">N</th>
+                          <th>Дата создания</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody id="categoriesContainer">
+                        <tr class="resume-card" v-for="(resume, index) in resumeList" :data-id="resume.id">
+                          <td class="td-center">{{ index + 1 }}</td>
+                          <td>{{ resume.created_at }}</td>
+                          <td><input type="radio" name="resume" :checked='resume.id == selectedResumeId' @click="selectResume"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    </div>
+                    <div class="alert alert-success" role="alert" v-show="showSuccessAlert">
+        Вы успешно оставили свое резюме. В ближайшее время ждите ответа!
+        </div>
+        <div class="alert alert-danger" role="alert" v-show="showDangerAlert">
+       Вы уже оставляли резюме на данную вакансию. В ближайшее время ждите ответа!
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-primary btn-sendResume" @click="sendResume">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div>
 <main class="container">
     <div class="mt-5">
         <div class="row">
             <div class="col-md-7">
                 <div class="vacancy-container">
                     <div class="row">
-                        <h3 class="vacancy-title">{{ vacancy.name }}</h3>
-                    </div>
-                    <div class="row">
-                        <h5>От {{ getSalary(vacancy.salary) }} руб</h5>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 feedback">
-                        <div class="feedback-container">
-                                <h4 class="name-organization">{{ vacancy.name_organization }}</h4>
-                                <?php if($_SESSION['role'] == 'student' || $_SESSION['role'] == '') :?>
-                                    <div class="btn-feedback">
-                                        Откликнуться
-                                    </div>
-                                <?php endif ?>
+                        <div class="col-md-12 d-flex align-items-center justify-content-between">
+                            <div class="vacancy-title-container">
+                                <h3 class="vacancy-title">{{ vacancy.name }}</h3>
+                                <h5>От {{ getSalary(vacancy.salary) }} руб</h5>
+                                <div class="graph-container">
+                                    <p>График работы: {{ vacancy.graph_name }}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
+                        
                             <div class="vacancy-photo">
                                 <div class="vacancy-photo-container">
                                     без фото
@@ -47,12 +82,26 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="row">
-                        <p>График работы: {{ vacancy.graph_name }}</p>
+                        <div class="col-md-6 feedback">
+                            <div class="feedback-container">
+                                <h4 class="name-organization">{{ vacancy.name_organization }}</h4>
+                                <?php if($_SESSION['role'] == 'student' || $_SESSION['role'] == '') :?>
+                                    <button class="btn-feedback" data-bs-toggle="modal" data-bs-target="#exampleModal2" @click="renderResumeStudent">
+                                        Оставить резюме
+                                    </button>
+                                <?php endif ?>
+                            </div>
+                        </div>
+                        
                     </div>
+                    
                     <div class="row">
-                        <h4>Описание</h4>
-                        <p>{{ vacancy.description }}</p>
+                       <div class="description">
+                            <h4>Описание</h4>
+                            <p>{{ vacancy.description }}</p>
+                       </div>
                     </div>
                 </div>
             </div>
@@ -80,7 +129,9 @@
   
     <script src="https://unpkg.com/vue@next"></script>
     <script src="/app/public/js/fetch.js"></script>
+    <script src="/app/public/js/vacancy-page/Validation.js"></script>
     <script src="/app/public/js/vacancy-page/Vacancy.js"></script>
+    <script src="/app/public/js/vacancy-page/Resume.js"></script>
     <script src="/app/public/js/vacancy-page/app.js"></script>
 
 </body>

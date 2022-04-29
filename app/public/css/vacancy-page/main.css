@@ -18,7 +18,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 0px 0px 12px 0px;
+    
 }
 .vacancy-information{
     display: flex;
@@ -39,14 +39,14 @@ body{
     font-size: 22px;
 }
 .vacancy-description{
-    margin: 10px 0px 10px 0px;
+   
 }
 .btn-feedback{
     border: none;
     display: flex;
     justify-content: center;
     color: #fff;
-    padding: 7px;
+    padding: 8px 18px 8px 18px;
     background: #828EFF;
     border-radius: 12px;
 }
@@ -104,7 +104,30 @@ a{
     color: #828EFF;
 }
 .feedback{
+    
+  
+}
+
+.graph-container{
+   
+}
+
+.vacancy-title-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+}
+.feedback-container{
+   
+}
+.description{
+    margin: 22px 0px 0px 0px;
+}
+
+.btn.btn-sendResume{
+    background: #828EFF;
+    border: #828EFF;
+}
+.btn-sendResume:hover{
+    opacity: 0.9
 }

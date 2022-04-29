@@ -27,7 +27,7 @@
                                 <!-- <i class="fas fa-user me-2">fddfdf</i>
                                -->
                                
-                                <?= $_SESSION['user']->full_name ?>
+                                <?= explode(' ', $_SESSION['user']->full_name)[1] ?>
                                 <div class="d-flex justify-content-center align-items-center navbar-avatar"
       alt="Avatar">
       
@@ -51,9 +51,9 @@
       </div>
           </div>
         </nav>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal modal1 fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content">
+    <div class="modal-content modal-content1">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">User</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

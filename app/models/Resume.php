@@ -51,4 +51,27 @@ class Resume
         $res = $stmt->fetch();
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
+    public static function sendResume($data){
+        $stmt = self::pdo()->prepare("INSERT INTO responses (resume_id, vacancy_id, status)
+            VALUES (:resume_id, :vacancy_id, :status)");
+            $stmt->execute(
+                [
+                    'resume_id' => $data->resume_id,
+                    'vacancy_id' => $data->vacancy_id,
+                    'status' => $data->status
+                ]
+            );
+            $res = 'OK';
+            echo json_encode($res, JSON_UNESCAPED_UNICODE);
+    }
+    public static function checkResume($vacancy_id){
+        $find = false;
+        $stmt = self::pdo()->prepare('SELECT responses.vacancy_id FROM responses WHERE vacancy_id = :vacancy_id');
+        $stmt->execute(['vacancy_id' => $vacancy_id]);
+        $res = $stmt->fetch();
+        if(!empty($res)){
+            $find = true;
+        }
+        echo json_encode($find, JSON_UNESCAPED_UNICODE);
+    }
 }
