@@ -86,7 +86,7 @@ const App = {
         },
         async editVacancy(){
             this.errors = Validation.checkErrors(this.vacancyNameEdit, this.current_description);
-            console.log(this.current_description);
+
             if(this.errors.length == 0){
                 await Vacancy.editVacancy({ 'vacancy_id': this.selectedVacancy.id, 'name': this.vacancyNameEdit, 'photo': 'link', 'category_id': this.selectedCategory.id, 'salary': this.currentSalary, 'description': this.current_description, 'work_graph': this.selectedGraph });
                 this.renderVacancies();

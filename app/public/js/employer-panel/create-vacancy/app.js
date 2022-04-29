@@ -18,6 +18,7 @@ const App = {
             selectedGraph: 1,
 
             currentDate: '',
+            showAlertSuccess: false,
         }
     },
     methods: {
@@ -57,9 +58,11 @@ const App = {
             if(this.errors.length == 0){
                 this.currentDate = new Date().toISOString();
                 
-                console.log(this.currentDate);
+               
                 await Vacancy.addVacancy({ 'name': this.vacancyName, 'photo': 'link', 'category_id': this.selectedCategoryId, 'salary': this.currentSalary, 'description': this.description, 'work_graph': this.selectedGraph , 'created_at': this.currentDate})
                 this.clearLabels();
+                this.showAlertSuccess = true;
+                setTimeout(()=> this.showAlertSuccess = false, 2000);
             }
             
         },

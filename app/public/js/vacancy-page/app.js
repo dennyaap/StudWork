@@ -28,7 +28,9 @@ const App = {
             this.selectedResumeId = this.resumeList[0].id;
         },
         async sendResume(){
-            if(!await Validation.checkResume(this.currentVacancyId)){
+            this.showDangerAlert = false;
+            this.showSuccessAlert = false;
+            if(!await Validation.checkResume({'vacancy_id': this.currentVacancyId, 'resume_id': this.selectedResumeId})){
                 await Resume.sendResume({'resume_id': this.selectedResumeId, 'vacancy_id': this.currentVacancyId, 'status': this.statusResponse});
                 this.showSuccessAlert = true;
             }

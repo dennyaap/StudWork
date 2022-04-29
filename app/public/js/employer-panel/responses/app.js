@@ -11,7 +11,20 @@ const App = {
 
             responses: [],
             vacancies: [],
+            showAlert: false,
+            showAlertVacancies: false,
 
+            selectedResume: {},
+            statusList: [],
+            selectedStatus: 1,
+
+            message: '',
+            showMessageBox: false,
+            
+            selectedResumeId: '',
+            showAlertResponse: false,
+
+            selectedVacancyId: '',
         }
     },
     methods: {
@@ -85,19 +98,58 @@ const App = {
         //     console.log(this.errors);
             
         // },
-        async renderResponses(e){
-            let vacancy_id = e.target.closest('.vacancy-card').dataset.id;
-            console.log(vacancy_id);
+        async selectVacancy(e){
+            this.selectedVacancyId = e.target.closest('.vacancy-card').dataset.id;
+            this.renderResponses(this.selectedVacancyId);
+        },
+        async renderResponses(vacancy_id){
+            this.showAlert = false;
+            this.showAlertVacancies = false;
+           
             this.responses = await Response.getResponses(vacancy_id);
+
+            if(this.responses.length == 0){
+                this.showAlert = true;
+            }
+            
         },
         async renderVacancies(){
             this.vacancies = await Vacancy.getVacanciesEmployer();
+            if(this.vacancies.length == 0){
+                this.showAlertVacancies = true;
+            }
+        },
+        async selectResume(e){
+            this.selectedResumeId = e.target.closest('.resume-card').dataset.id;
+            this.selectedResume = await Resume.getResume(this.selectedResumeId);
+        },
+        async renderStatuses(){
+            this.statusList = await Status.getStatuses();
+          
+        },
+        checkSelectedStatus(){
+            if(this.selectedStatus == 2){
+                this.showMessageBox = true;
+            } else {
+                this.showMessageBox = false;
+            }
+        },
+        async sendResponse(){
+            await Response.sendResponse({'message': this.message, 'status': this.selectedStatus, 'resume_id': this.selectedResumeId});
+            await this.renderResponses(this.selectedVacancyId);
+            this.showAlertResponse = true;
+            setTimeout(()=> this.showAlertResponse = false, 2000);
+        },
+        getStyleStatus(status){
+            let colors = ['#828EFF', '#4CD47D', '#FF9797']
+            return colors[status - 1];
         }
-    
     },
     created(){
     //    this.renderResponses();
     this.renderVacancies();
+    this.renderStatuses();
+   
     }
   }
   const app = Vue.createApp(App);

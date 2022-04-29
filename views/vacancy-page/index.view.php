@@ -40,6 +40,7 @@
                         <tr class="resume-card" v-for="(resume, index) in resumeList" :data-id="resume.id">
                           <td class="td-center">{{ index + 1 }}</td>
                           <td>{{ resume.created_at }}</td>
+                          <td>Подробнее</td>
                           <td><input type="radio" name="resume" :checked='resume.id == selectedResumeId' @click="selectResume"></td>
                         </tr>
                       </tbody>
@@ -54,7 +55,7 @@
       </div>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-secondary btnClose" data-bs-dismiss="modal">Закрыть</button>
         <button type="button" class="btn btn-primary btn-sendResume" @click="sendResume">Отправить</button>
       </div>
     </div>

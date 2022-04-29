@@ -3,6 +3,7 @@ const App = {
         return {
             isToggledNavbar: false,
             showSuccessAlert: false,
+            showWarningAlert: false,
             errors: [],
 
             selectedResume: {},
@@ -33,6 +34,11 @@ const App = {
 
         async renderResumeStudent(){
             this.resumeList = await Resume.getResumeStudent();
+            if(this.resumeList.length == 0){
+                this.showWarningAlert = true;
+            } else {
+                this.showWarningAlert = false;
+            }
         },
        async showEditResume(e){
             this.selectedResume = await this.getSelectResume(e.target.closest('.resume-id').dataset.id);
@@ -57,6 +63,14 @@ const App = {
         },
         async acceptDeleteResume(){
 
+        },
+        showDeleteResume(e){
+            this.deleteResumeId = e.target.closest('.resume-id').dataset.id;
+            console.log(this.deleteResumeId)
+        },
+        async deleteResume(){
+            await Resume.deleteResume(this.deleteResumeId);
+            this.renderResumeStudent();
         }
     },
     created(){

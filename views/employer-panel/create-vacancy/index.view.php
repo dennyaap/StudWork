@@ -133,6 +133,9 @@
             <button type="submit" class="btn btn-primary" @click="addVacancy" id="addVacancy">Создать</button>
         </div>
     </div>
+    <div class="alert alert-success" role="alert" id="alert" v-show="showAlertSuccess">
+                  Вы успешно создали вакансию
+              </div>
     <div class="alert-container" id="dangerAlertContainer">
               <div class="alert alert-danger" role="alert" id="alert" v-for="error in errors">
                   {{error}}   

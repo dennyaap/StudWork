@@ -39,12 +39,14 @@ class Vacancy
         $res = $stmt->fetchAll();
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
-    public static function getVacanciesLimit($number_page){
-        $stmt = self::pdo()->prepare('SELECT vacancies.*, employers.name_organization FROM vacancies INNER JOIN employers ON vacancies.employer_id = employers.id LIMIT 10 OFFSET :number_page');
-        $stmt->bindValue(':number_page', $number_page, self::pdo()::PARAM_INT);
+    public static function getVacanciesLimit($data){
+        $stmt = self::pdo()->prepare('SELECT vacancies.*, employers.name_organization FROM vacancies INNER JOIN employers ON vacancies.employer_id = employers.id WHERE vacancies.name LIKE :like_word LIMIT 10 OFFSET :number_page');
+        $stmt->bindValue(':number_page', $data->number_page, self::pdo()::PARAM_INT);
+        $stmt->bindValue(':like_word', $data->like_word, self::pdo()::PARAM_STR);
         $stmt->execute();
         $res = $stmt->fetchAll();
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
+        
     }
     public static function getVacanciesEmployer($employer_id){
         $stmt = self::pdo()->prepare('SELECT * FROM vacancies WHERE employer_id = :employer_id');
@@ -81,4 +83,16 @@ class Vacancy
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
 
+    public static function getVacanciesStudent($student_id){
+        $stmt = self::pdo()->prepare('SELECT resume.*, vacancies.*, responses.*, status.id AS status_id, status.name AS status_name FROM resume INNER JOIN responses ON resume.id = responses.resume_id INNER JOIN vacancies ON responses.vacancy_id = vacancies.id INNER JOIN status ON responses.status = status.id WHERE user_id = :user_id');
+        $stmt->execute(['user_id' => $student_id]);
+        $res = $stmt->fetchAll();
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
+    }
+
+    public static function getCountVacancies(){
+        $stmt = self::pdo()->query('SELECT count(*) AS count_vacancies FROM vacancies');
+        $res = $stmt->fetch();
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
+    }
 }

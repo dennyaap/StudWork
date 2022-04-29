@@ -131,3 +131,7 @@ a{
 .btn-sendResume:hover{
     opacity: 0.9
 }
+.btn.btnClose{
+    background: #FF9797;
+    border: #FF9797;
+}

@@ -246,23 +246,12 @@
                   <div class="col-md-4 search-container">
                     <div class="select-box">
                       <div class="options-container" :class="{active : isActive}">
-                        <div class="option category">
-                            1
-                        </div>
-                        <div class="option category">
-                            2
-                        </div>
-                        <div class="option category">
-                            3
-                        </div>
-                        <div class="option category">
-                            1
-                        </div>
+                        
                       
                         
                       </div>
                       <div class="search-box">
-                          <input @click="hide" type="text" placeholder="Название категории..."/>
+                          <input type="text" placeholder="Название категории..." @input="renderVacancies" v-model="like_word"/>
                           <i class="fa-solid fa-magnifying-glass"></i>
                       </div>
                     </div>
@@ -288,7 +277,7 @@
 
                     <div class="feedback">
                         <button class="btn btn-primary btn-feedback" @click="goVacancyPage"><?php if ($_SESSION['role'] == 'student' || $_SESSION['role'] == '') : ?>Откликнуться<?php elseif ($_SESSION['role'] == 'employer'):?>Посмотреть<?php endif ?></button>
-                        <div class="vacancy-date">{{ vacancy.created_at }}</div>
+                        <div class="vacancy-date">{{ getDate(vacancy.created_at) }}</div>
                     </div>
                 </div>
 
@@ -302,11 +291,7 @@
                     <li class="page-item" @click="changePage(-1)">
                     <span class="page-link"><i class="fa-solid fa-chevron-left"></i></span>
                     </li>
-                    <li class="page-item active"><a class="page-link number-page" href="#">1</a></li>
-                    <li class="page-item" aria-current="page">
-                    <span class="page-link number-page">2</span>
-                    </li>
-                    <li class="page-item number-page"><a class="page-link number-page" href="#">3</a></li>
+                    <li class="page-item" v-for="numberPage in countPages" :class="{active: numberPage == currentPage}"><a class="page-link number-page" :href="'/app/controllers/vacancies/?number_page=' + numberPage">{{ numberPage }}</a></li>
                     <li class="page-item">
                     <span class="page-link" @click="changePage(1)"><i class="fa-solid fa-chevron-right"></i></span>
                     </li>

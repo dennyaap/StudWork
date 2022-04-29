@@ -64,14 +64,30 @@ class Resume
             $res = 'OK';
             echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
-    public static function checkResume($vacancy_id){
+    public static function checkResume($data){
         $find = false;
-        $stmt = self::pdo()->prepare('SELECT responses.vacancy_id FROM responses WHERE vacancy_id = :vacancy_id');
-        $stmt->execute(['vacancy_id' => $vacancy_id]);
+        $stmt = self::pdo()->prepare('SELECT responses.vacancy_id, responses.resume_id FROM responses INNER JOIN resume ON responses.resume_id = resume.id WHERE vacancy_id = :vacancy_id AND resume.user_id = :user_id');
+        $stmt->execute(['vacancy_id' => $data->vacancy_id, 'user_id' => $_SESSION['user']->id]);
         $res = $stmt->fetch();
         if(!empty($res)){
             $find = true;
         }
         echo json_encode($find, JSON_UNESCAPED_UNICODE);
+    }
+    public static function deleteResume($resume_id){
+        $stmt = self::pdo()->prepare('DELETE FROM resume WHERE id = :resume_id');
+        $stmt->execute(
+            [
+                'resume_id' => $resume_id
+            ]
+        );
+        $stmt = self::pdo()->prepare('DELETE FROM responses WHERE  resume_id LIKE :resume_id');
+        $stmt->execute(
+            [
+                'resume_id' => $resume_id
+            ]
+        );
+        $res = 'OK';
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
 }

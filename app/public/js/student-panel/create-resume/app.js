@@ -8,6 +8,8 @@ const App = {
             errors: [],
 
             currentDate: '',
+            
+            showAlertSuccess: false
         }
     },
     methods: {
@@ -28,8 +30,10 @@ const App = {
             if(this.errors.length == 0){
                 this.currentDate = new Date().toISOString();
                 
-                console.log(this.currentDate);
+                
                 await Resume.createResume({ 'phone': this.phone, 'photo': 'link', 'about': this.about, 'created_at': this.currentDate})
+                this.showAlertSuccess = true;
+                setTimeout(()=> this.showAlertSuccess = false, 2000);
                 this.clearLabels();
             }
             

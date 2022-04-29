@@ -8,8 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" href="/app/public/css/employer-panel/vacancies/main.css" />
-    <link rel="stylesheet" href="/app/public/css/employer-panel/create-vacancy/scrollable.css" />
-    <link rel="stylesheet" href="/app/public/css/employer-panel/navbar-panel.css" />
+    <link rel="stylesheet" href="/app/public/css/student-panel/create-resume/main.css" />
+    <link rel="stylesheet" href="/app/public/css/student-panel/navbar-panel.css" />
     <title><?= $title ?></title>
 </head>
 
@@ -81,11 +81,11 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            Вы действительно хотите удалить резюме ?
+            Вы действительно хотите удалить резюме ? 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-            <button type="button" class="btn btn-primary" id="btnDeleteCategory" data-bs-dismiss="modal" @click="acceptDeleteResume">Удалить</button>
+            <button type="button" class="btn btn-primary" id="btnDeleteCategory" data-bs-dismiss="modal" @click="deleteResume">Удалить</button>
           </div>
         </div>
       </div>
@@ -123,8 +123,10 @@
                         </tr>
                       </tbody>
                     </table>
+                    <div class="alert alert-warning" role="alert" v-show="showWarningAlert">
+  Вы пока-что не создали ни одного резюме
+</div>
                     </div>
-                    
                 </div>
             </div>
         </div>

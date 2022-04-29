@@ -1,6 +1,3 @@
-.categories-container{
-    width: 650px;
-}
 #salary::-webkit-slider-thumb {
     appearance: none;
     background: #828EFF;
@@ -230,10 +227,26 @@
 }
 
 
+.preview{
+  color: #FF9797;
+  font-size: large;
+  font-weight: bold;
+}
+
 #description{
   height: 260px;
 }
 
-.resum-status{
+.btn-renderResponses{
+    cursor: pointer;
+}
+
+.modal-title-resume{
+  padding: 0px 0px 12px 10px;
+}
+.status{
   font-weight: bold;
+}
+.fa-message{
+  color: #828EFF;
 }

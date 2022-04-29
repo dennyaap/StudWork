@@ -20,4 +20,10 @@ class Resume{
         let result = await postDataResponse(route, resume_id);
         return result;
     }
+    static async deleteResume(resume_id){
+        let route = '/app/controllers/student-panel/resume/deleteResume.php';
+
+        let result = await postDataResponse(route, resume_id);
+        return result;
+    }
 }
