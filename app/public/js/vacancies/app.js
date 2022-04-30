@@ -6,7 +6,7 @@ const App = {
             currentPage: '',
             like_word: '',
             countPages: '',
-
+            graphList: '',
         }
     },
     methods: {
@@ -53,12 +53,19 @@ const App = {
             let month = currentDate[1];
             let year = currentDate[0];
             return `${day}.${month}.${year}`;
+        },
+        async getGraphs(){
+            this.graphList = await Graph.getGraphs();
+        },
+        setGraphFilter(){
+            
         }
     },
     created(){
         this.currentPage = this.getNumberPage();
         this.renderVacancies();
         this.getCountPages();
+        this.getGraphs();
     }
   }
   const app = Vue.createApp(App);

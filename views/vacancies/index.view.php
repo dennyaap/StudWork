@@ -67,24 +67,10 @@
                 <section class="mb-4 filter-section" data-filter="condition">
                   <h6 class="font-weight-bold mb-3 filter-name">График работы</h6>
 
-                  <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="new" id="condition-checkbox">
-                    <label class="form-check-label text-uppercase small text-muted" for="condition-checkbox">
-                      Полный день
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="used" id="condition-checkbox2">
+                  <div class="form-check mb-3" v-for="graph in graphList">
+                    <input class="form-check-input" type="checkbox" value="used" id="condition-checkbox2" v-model="graphListFilter">
                     <label class="form-check-label text-uppercase small text-muted" for="condition-checkbox2">
-                      Не полный день
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="collectible" id="condition-checkbox3">
-                    <label class="form-check-label text-uppercase small text-muted" for="condition-checkbox3">
-                      2/2
+                      {{ graph.name }}
                     </label>
                   </div>
 
@@ -314,6 +300,7 @@
   
     <script src="https://unpkg.com/vue@next"></script>
     <script src="/app/public/js/fetch.js"></script>
+    <script src="/app/public/js/vacancies/Graph.js"></script>
     <script src="/app/public/js/vacancies/Vacancy.js"></script>
     <script src="/app/public/js/vacancies/app.js"></script>
 
