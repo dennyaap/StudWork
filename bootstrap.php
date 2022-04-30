@@ -11,4 +11,5 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/app/models/Vacancy.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/models/Resume.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/models/Response.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/models/Status.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/app/models/User.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/services/Utils.php';
