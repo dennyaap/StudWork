@@ -14,16 +14,16 @@ const App = {
             n = Math.abs(count_vacancies) % 100;
             let declination = '';
 
-            let n1 = n % 10;
-            if (n > 10 && n < 20) { 
-                declination = 'ий'; 
-            }
-            if (n1 > 1 && n1 < 5) { 
+            if (n >= 5 && n <= 20) {
+                declination = 'ий';
+              }
+              n %= 10;
+              if (n === 1) {
+                declination = 'ия';
+              }
+              if (n >= 2 && n <= 4) {
                 declination = 'ии';
-             }
-            if (n1 == 1) { 
-                declination = 'ия'; 
-            }
+              }
             return declination;
         }
     },

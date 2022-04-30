@@ -11,14 +11,14 @@
                         <h3 class="title">Предлагаем быстрое трудоустройство</h3>
                     </div>
                    
-                   <div class="search-container">
+                   <!-- <div class="search-container">
                         <form action="#">
                             <div class="input-group">
                                 <input name="searchField" id="searchField" type="search" class="form-control" placeholder="Профессия, компания..">
                                 <button class="btn" id="btn-search" type="button" id="button-addon2"><img src="/app/public/images/search-icon.svg" alt="search-btn"></button>
                             </div>
                         </form>
-                   </div>
+                   </div> -->
                 </div>
                 <div class="col-6 header-photo-container">
                     <div class="header-photo">

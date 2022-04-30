@@ -52,3 +52,6 @@ button.btn{
 #btn-auth:hover{
     opacity: 0.8;
 }
+.navbar{
+    background: #fff;
+}

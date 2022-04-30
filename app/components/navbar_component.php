@@ -1,7 +1,7 @@
 <?php session_start() ?>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/app/config/navbar_config.php' ?>
 
-<nav class="navbar navbar-light sticky-top navbar-expand-sm bg-light">
+<nav class="navbar navbar-light sticky-top navbar-expand-sm">
           <div class="container navbar-container">
             <div class="left d-flex align-items-center">
             <span class="navbar-brand mb-0 h1">StudWork</span>

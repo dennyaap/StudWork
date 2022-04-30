@@ -85,7 +85,6 @@ class Validation{
         let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         let fullNameFormat = /[А-Яа-я]*?\s[А-Яа-я]*?\s[А-Яа-я]*/;
         
-        
         if(fullName == ''){
             errors.push('Введите ФИО');
         }
@@ -111,6 +110,7 @@ class Validation{
 
         let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         let fullNameFormat = /[А-Яа-я]*?\s[А-Яа-я]*?\s[А-Яа-я]*/;
+        let phoneFormat = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
         
         if(full_name == ''){
             errors.push('Введите ФИО');
@@ -123,6 +123,9 @@ class Validation{
         }
         else if(phone == ''){
             errors.push('Введите номер телефона');
+        }
+        else if(!phone.match(phoneFormat)){
+            errors.push('Некорректный формат телефона. Пример: +7 777 77 77 777');
         }
         else if(email == '' || password == ''){
             errors.push('Введите E-mail и пароль');
