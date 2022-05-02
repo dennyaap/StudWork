@@ -88,10 +88,16 @@
                         <div class="col-md-6 feedback">
                             <div class="feedback-container">
                                 <h4 class="name-organization">{{ vacancy.name_organization }}</h4>
-                                <?php if($_SESSION['role'] == 'student' || $_SESSION['role'] == '') :?>
+                                <?php if($_SESSION['role'] == 'student') :?>
                                     <button class="btn-feedback" data-bs-toggle="modal" data-bs-target="#exampleModal2" @click="renderResumeStudent">
                                         Оставить резюме
                                     </button>
+                                <?php elseif(!$_SESSION['isAuth']) :?>
+                                  <a href="/app/controllers/auth-form/">
+                                    <button class="btn-feedback" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                        Оставить резюме
+                                    </button>
+                                  </a>
                                 <?php endif ?>
                             </div>
                         </div>

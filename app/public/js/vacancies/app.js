@@ -8,12 +8,13 @@ const App = {
             countPages: '',
             graphList: [],
             selectedGraphs: [1, 2, 3],
+
+            sortDate: 'DESC',
         }
     },
     methods: {
         async renderVacancies(){
-            this.vacancies = await Vacancy.getVacanciesLimit({'number_page': (this.currentPage - 1) * 10, 'like_word': '%' + this.like_word + '%', 'graphs': this.selectedGraphs});
-            window.scrollTo(0, 0)
+            this.vacancies = await Vacancy.getVacanciesLimit({'number_page': (this.currentPage - 1) * 10, 'like_word': '%' + this.like_word + '%', 'graphs': this.selectedGraphs, 'sortDate': this.sortDate});
         },
         getSalary(salary){
             return Number(salary).toLocaleString();
@@ -35,12 +36,13 @@ const App = {
         },
         selectPage(value){
             this.currentPage = value;
-            console.log(this.currentPage);
             this.renderVacancies();
+            window.scrollTo(0, 0)
         },
         changePage(value){
             this.currentPage += value;
             this.renderVacancies();
+            window.scrollTo(0, 0)
         },
         async getCountPages(){
             let result = await Vacancy.getCountVacancies();
@@ -65,7 +67,7 @@ const App = {
                 );
             });
         },
-        async selectGraph(){
+        selectGraph(){
             this.currentPage = 1;
             this.selectedGraphs = this.graphList.filter(item => item.isChecked).map(item => item.id);
             if(this.selectedGraphs.length == 0){
@@ -74,6 +76,9 @@ const App = {
             this.renderVacancies();
             // .map(item => item.id);
             // this.vacancies = await Vacancy.getVacanciesLimit({'number_page': (this.currentPage - 1) * 10, 'like_word': '%' + this.like_word + '%', 'graphs': this.selectedGraphs});
+        },
+        setFilter(){
+            this.selectGraph();
         }
     },
     created(){

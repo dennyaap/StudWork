@@ -63,6 +63,7 @@
               <section id="filters" data-auto-filter="true">
                 <h5 class="d-flex align-items-center"><i class="fa-solid fa-filter"></i><div class="filter-title">Фильтры</div></h5>
 
+                <div class="filter-container">
                 <!-- Section: Condition -->
                 <section class="mb-4 filter-section" data-filter="condition">
                   <h6 class="font-weight-bold mb-3 filter-name">График работы</h6>
@@ -76,7 +77,17 @@
 
                   
                 </section>
-                <button @click="selectGraph" class="btn-filter">Применить</button>
+
+                <section class="mb-4 filter-section" data-filter="condition">
+                <h6 class="font-weight-bold mb-3 filter-name">По дате</h6>
+                <select class="form-select" aria-label="Default select example" v-model="sortDate">
+  <option value="DESC">Сначала новые</option>
+  <option value="ASC">Сначала старые</option>
+</select>
+                  
+                </section>
+                <button @click="setFilter" class="btn-filter">Применить</button>
+                </div>
                 <!-- Section: Condition -->
 
                 <!-- Section: Avg. Customer Review -->
@@ -238,7 +249,7 @@
                         
                       </div>
                       <div class="search-box">
-                          <input type="text" placeholder="Название категории..." @input="renderVacancies" v-model="like_word"/>
+                          <input type="text" placeholder="Название вакансии..." @input="renderVacancies" v-model="like_word"/>
                           <i class="fa-solid fa-magnifying-glass"></i>
                       </div>
                     </div>
@@ -284,13 +295,6 @@
                     </li>
                 </ul>
                 </nav>
-            <!-- <div class="row">
-              <div class="col-md-12 mt-3 text-center">
-                <div class="spinner-border text-primary mx-auto my-5" id="spinner" role="status" style="display: none;">
-                  <span class="sr-only">Loading...</span>
-                </div>
-              </div>
-            </div> -->
           </div>
         </div>
       </div>
