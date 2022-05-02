@@ -67,15 +67,16 @@
                 <section class="mb-4 filter-section" data-filter="condition">
                   <h6 class="font-weight-bold mb-3 filter-name">График работы</h6>
 
-                  <div class="form-check mb-3" v-for="graph in graphList">
-                    <input class="form-check-input" type="checkbox" value="used" id="condition-checkbox2" v-model="graphListFilter">
-                    <label class="form-check-label text-uppercase small text-muted" for="condition-checkbox2">
+                  <div class="form-check mb-3" v-for="(graph, index) in graphList">
+                    <input class="form-check-input" type="checkbox" v-model="graph.isChecked" :id="index">
+                    <label class="form-check-label text-uppercase small text-muted" :for="index">
                       {{ graph.name }}
                     </label>
                   </div>
 
                   
                 </section>
+                <button @click="selectGraph" class="btn-filter">Применить</button>
                 <!-- Section: Condition -->
 
                 <!-- Section: Avg. Customer Review -->
@@ -277,7 +278,7 @@
                     <li class="page-item" @click="changePage(-1)">
                     <span class="page-link"><i class="fa-solid fa-chevron-left"></i></span>
                     </li>
-                    <li class="page-item" v-for="numberPage in countPages" :class="{active: numberPage == currentPage}"><a class="page-link number-page" :href="'/app/controllers/vacancies/?number_page=' + numberPage">{{ numberPage }}</a></li>
+                    <li class="page-item" v-for="numberPage in countPages" :class="{active: numberPage == currentPage}" @click="selectPage(numberPage)"><a class="page-link number-page">{{ numberPage }}</a></li>
                     <li class="page-item">
                     <span class="page-link" @click="changePage(1)"><i class="fa-solid fa-chevron-right"></i></span>
                     </li>

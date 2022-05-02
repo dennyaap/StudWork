@@ -40,13 +40,25 @@ class Vacancy
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
     public static function getVacanciesLimit($data){
-        $stmt = self::pdo()->prepare('SELECT vacancies.*, employers.name_organization FROM vacancies INNER JOIN employers ON vacancies.employer_id = employers.id WHERE vacancies.name LIKE :like_word LIMIT 10 OFFSET :number_page');
+        $stmt = self::pdo()->prepare("SELECT vacancies.*, employers.name_organization FROM vacancies INNER JOIN employers ON vacancies.employer_id = employers.id WHERE vacancies.name LIKE :like_word AND vacancies.work_graph IN (".self::createParams($data->graphs).") LIMIT 10 OFFSET :number_page");
         $stmt->bindValue(':number_page', $data->number_page, self::pdo()::PARAM_INT);
         $stmt->bindValue(':like_word', $data->like_word, self::pdo()::PARAM_STR);
+
+        foreach ($data->graphs as $graph){
+            $stmt->bindValue(":graph_". $graph, $graph, self::pdo()::PARAM_STR);
+        }
         $stmt->execute();
         $res = $stmt->fetchAll();
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
-        
+    }
+    public static function createParams($array){
+        $params = [];
+        $str = '';
+        foreach($array as $graph){
+            array_push($params, ":graph_" . $graph);
+        }
+        $str = implode(',', $params);
+        return $str;
     }
     public static function getVacanciesEmployer($employer_id){
         $stmt = self::pdo()->prepare('SELECT * FROM vacancies WHERE employer_id = :employer_id');

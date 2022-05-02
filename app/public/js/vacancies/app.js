@@ -6,12 +6,14 @@ const App = {
             currentPage: '',
             like_word: '',
             countPages: '',
-            graphList: '',
+            graphList: [],
+            selectedGraphs: [1, 2, 3],
         }
     },
     methods: {
-        async renderVacancies(){;
-            this.vacancies = await Vacancy.getVacanciesLimit({'number_page': (this.currentPage - 1) * 10, 'like_word': '%' + this.like_word + '%'});
+        async renderVacancies(){
+            this.vacancies = await Vacancy.getVacanciesLimit({'number_page': (this.currentPage - 1) * 10, 'like_word': '%' + this.like_word + '%', 'graphs': this.selectedGraphs});
+            window.scrollTo(0, 0)
         },
         getSalary(salary){
             return Number(salary).toLocaleString();
@@ -31,16 +33,14 @@ const App = {
             let route = '/app/controllers/vacancy-page/?vacancy_id=' + vacancy_id;
             window.location.href = route;
         },
-        async changePage(value){
-            let number_page = Number(this.getNumberPage()) + value;
-            if(number_page >= 1){
-                let route = '/app/controllers/vacancies?number_page=' + number_page;
-                window.location.href = route;
-            }
+        selectPage(value){
+            this.currentPage = value;
+            console.log(this.currentPage);
+            this.renderVacancies();
         },
-        getNumberPage(){
-            let param = window.location.search;
-            return param.split('=')[1];
+        changePage(value){
+            this.currentPage += value;
+            this.renderVacancies();
         },
         async getCountPages(){
             let result = await Vacancy.getCountVacancies();
@@ -48,21 +48,36 @@ const App = {
         },
         getDate(date){
             let currentDate = date.split('-');
-            console.log(currentDate);
             let day = currentDate[2];
             let month = currentDate[1];
             let year = currentDate[0];
             return `${day}.${month}.${year}`;
         },
         async getGraphs(){
-            this.graphList = await Graph.getGraphs();
+            let graphs = await Graph.getGraphs();
+            graphs.forEach(item => {
+                this.graphList.push(
+                    {
+                        'id': item.id,
+                        'name': item.name,
+                        'isChecked': true
+                    }
+                );
+            });
         },
-        setGraphFilter(){
-            
+        async selectGraph(){
+            this.currentPage = 1;
+            this.selectedGraphs = this.graphList.filter(item => item.isChecked).map(item => item.id);
+            if(this.selectedGraphs.length == 0){
+                this.selectedGraphs = [1, 2, 3];
+            }
+            this.renderVacancies();
+            // .map(item => item.id);
+            // this.vacancies = await Vacancy.getVacanciesLimit({'number_page': (this.currentPage - 1) * 10, 'like_word': '%' + this.like_word + '%', 'graphs': this.selectedGraphs});
         }
     },
     created(){
-        this.currentPage = this.getNumberPage();
+        this.currentPage = 1;
         this.renderVacancies();
         this.getCountPages();
         this.getGraphs();
