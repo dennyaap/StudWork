@@ -67,12 +67,17 @@ class Student
     public static function createStudentAccount($student){
         $stmt = self::pdo()->prepare("INSERT users(full_name, email, password, gender)
         VALUES(:full_name, :email, :password, :gender)");
-        $stmt-> execute([
+        $stmt->execute([
             'full_name' => $student->full_name,
             'email' => $student->email,
             'password' => password_hash($student->password, PASSWORD_BCRYPT),
             'gender' => $student->gender
             ]);
+    }
+    public static function getStudents(){
+        $stmt = self::pdo()->query('SELECT * FROM users');
+        $res = $stmt->fetchAll();
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
     // public static function getUser($email){
     //     $stmt = self::pdo()->prepare('SELECT * FROM users WHERE email = :email');

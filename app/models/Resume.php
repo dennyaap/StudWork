@@ -51,6 +51,12 @@ class Resume
         $res = $stmt->fetch();
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
+    public static function getResumeList($student_id){
+        $stmt = self::pdo()->prepare('SELECT * FROM resume WHERE user_id LIKE :student_id');
+        $stmt->execute(['student_id' => $student_id]);
+        $res = $stmt->fetchAll();
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
+    }
     public static function sendResume($data){
         $stmt = self::pdo()->prepare("INSERT INTO responses (resume_id, vacancy_id, status)
             VALUES (:resume_id, :vacancy_id, :status)");

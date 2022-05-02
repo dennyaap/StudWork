@@ -55,3 +55,9 @@ button.btn{
 .navbar{
     background: #fff;
 }
+
+@media (max-width: 767px){
+    .about-user{
+        display: none;
+    }
+}
