@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" href="/app/public/css/employer-panel/responses/main.css" />
+    <link rel="stylesheet" href="/app/public/css/employer-panel/create-vacancy/scrollable.css" />
     <link rel="stylesheet" href="/app/public/css/employer-panel/navbar-panel.css" />
     <title><?= $title ?></title>
 </head>
@@ -15,7 +16,7 @@
 <body>
 <div id="app">
 
-<!-- <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -31,7 +32,7 @@
             <input type="text" class="form-control" id="vacancyName" v-model="vacancyNameEdit">
         </div>
 </div>
-              <div class="row mb-3">
+<div class="row mb-3">
       <label class="col-sm-3 col-form-label" for="categoryName">Категория:</label>
       <div class="col-sm-9">
         <div class="select-box">
@@ -57,18 +58,18 @@
               <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="nameOrganization">Организация:</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="nameOrganization" value="<?= $_SESSION['user']->name_organization ?>" disabled>
+            <input type="text" class="form-control" id="nameOrganization" v-model="selectedVacancy.name_organization" disabled>
         </div>
     </div>
-    <div class="row mb-3">
+    <!-- <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="photo">Фото:</label>
         <div class="col-sm-9">
         <div >
                 <input class="form-control" type="file" id="photo">
-                <!-- <button onclick="clearImage()" class="btn btn-primary mt-3">Click me</button> -->
-            </div>
+                 <button onclick="clearImage()" class="btn btn-primary mt-3">Click me</button>
+         </div>
         </div>
-    </div>
+    </div> -->
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="salary">Зарплата от:</label>
         <div class="col-sm-9">
@@ -109,8 +110,8 @@
           </div>
         </div>
       </div>
-    </div> -->
-    <!-- Button trigger modal -->
+    </div>
+  
 
     
     
@@ -128,12 +129,12 @@
                 <div class="row d-flex gap-3">
                 <div class="col categories-container edit-panel">
                 
-                <h2>Выберите вакансию</h2>
+                <h2>Выберите организацию</h2>
               <table class="table table-striped">
                       <thead>
                         <tr>
                           <th class="td-center">N</th>
-                          <th>Организация</th>
+                          <th>Название</th>
                           <th></th>
                         </tr>
                       </thead>
@@ -152,9 +153,28 @@
               
                 </div>
                 <div class="col categories-container add-panel">
-                <h2>Резюме</h2>
-                dff
-                    
+                <h2>Вакансии</h2>
+                <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th class="td-center">N</th>
+                          <th>Название</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody id="categoriesContainer">
+                        <tr class="vacancy-card" v-for="(vacancy, index) in vacancies" :data-id="vacancy.id">
+                          <td class="td-center">{{ index + 1 }}</td>
+                          <td>{{ vacancy.name }}</td>
+                         
+                          
+                          <td @click="selectVacancy" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap"><span class="full-text">Подробнее</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="alert alert-warning" role="alert" v-show="showAlertWarning">
+  У данного работодателя пока-что нету вакансий.
+</div>
                     </div>
                    
                 </div>
@@ -166,6 +186,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="/app/public/js/fetch.js"></script>
+    <script src="/app/public/js/admin-panel/vacancies/Graph.js"></script>
+    <script src="/app/public/js/admin-panel/vacancies/Category.js"></script>
     <script src="/app/public/js/admin-panel/vacancies/Vacancy.js"></script>
     <script src="/app/public/js/admin-panel/vacancies/Validation.js"></script>
     <script src="/app/public/js/admin-panel/vacancies/Employer.js"></script>

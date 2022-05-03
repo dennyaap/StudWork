@@ -3,6 +3,7 @@ const App = {
         return {
             vacancies: [],
             isToggledNavbar: '',
+            isActive: false,
 
             vacancyNameEdit: '',
             caregoryDeleteId: '',
@@ -11,7 +12,7 @@ const App = {
             graphList: [],
             selectedGraph: 1,
 
-            isActive: false,
+            
             
             categories: [],
             selectedCategory: {},
@@ -103,6 +104,7 @@ const App = {
     created(){
         this.renderVacancies();
         this.renderGraphs();
+        this.renderCategories();
     }
   }
   const app = Vue.createApp(App);
