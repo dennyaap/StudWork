@@ -76,4 +76,9 @@ class Employer
             'gender' => $employer->gender
             ]);
     }
+    public static function getEmployers(){
+        $stmt = self::pdo()->query('SELECT * FROM employers');
+        $res = $stmt->fetchAll();
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
+    }
 }
