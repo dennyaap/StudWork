@@ -20,3 +20,4 @@ $routes = [
     ['name' => 'Вакансии', 'link' => '/app/controllers/admin-panel/vacancies/', 'icon' => 'fa-regular fa-clipboard'] 
 ];
 
+$pathImages = $_SERVER['DOCUMENT_ROOT'] . '/uploads/images/vacancies';

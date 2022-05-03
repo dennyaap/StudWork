@@ -91,14 +91,18 @@ a{
     justify-content: right;
 }
 .vacancy-photo-container{
-    background: #e5e5e5;
     height: 120px;
     width: 120px;
+}
+.plug{
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 12px;
     color: #BBBBBB;
+    width: 100%;
+    border-radius: 12px;
+    height: 100%;
+    background: #e5e5e5;
 }
 .name-organization{
     color: #828EFF;

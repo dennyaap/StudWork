@@ -78,7 +78,10 @@
                         
                             <div class="vacancy-photo">
                                 <div class="vacancy-photo-container">
-                                    без фото
+                                    <div class="plug" v-if="imageName == ''">
+                                      Без фото
+                                    </div>
+                                    <img :src="imageName" alt="" class="img-fluid" v-else>
                                 </div>
                             </div>
                         </div>

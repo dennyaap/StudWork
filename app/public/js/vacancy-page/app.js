@@ -8,11 +8,13 @@ const App = {
             statusResponse: 1,
             showSuccessAlert: false,
             showDangerAlert: false,
+            imageName: "",
         }
     },
     methods: {
         async getVacancy(vacancy_id){
             this.vacancy = await Vacancy.getVacancy(vacancy_id);
+            this.imageName = '/uploads/images/vacancies/' + this.vacancy.photo;
         },
         getSalary(salary){
             return Number(salary).toLocaleString();
