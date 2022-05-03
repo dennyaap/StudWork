@@ -31,6 +31,7 @@ class Vacancy
                 ]
             );
             $res = 'OK';
+            
             echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
     public static function getVacancies(){
@@ -106,5 +107,18 @@ class Vacancy
         $res = $stmt->fetch();
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
-  
+    public static function uploadImage($vacancy_id, $filename){
+        $stmt = self::pdo()->prepare('UPDATE vacancies SET photo = :filename WHERE id = :vacancy_id');
+        $stmt->execute(
+            [
+                'vacancy_id' => $vacancy_id,
+                'filename' => $filename,
+            ]
+        );
+    }
+    public static function getMaxVacancyId(){
+        $stmt = self::pdo()->query('SELECT MAX(id) AS max_id FROM vacancies');
+        $vacancy_id = $stmt->fetch()->max_id;
+        return $vacancy_id;
+    }
 }

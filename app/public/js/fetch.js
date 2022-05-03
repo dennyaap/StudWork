@@ -26,6 +26,15 @@ async function postDataResponse(route, data){
     });
     return await response.json();
 }
+async function postFormData(route, formData){
+    let response = await fetch(route, {
+        method: 'POST',
+        
+        body: formData
+    });
+    console.log(response)
+    return response;
+}
 // async function postDataCategory(route, data){
 //     let response = await fetch(route, {
 //         method: 'POST',

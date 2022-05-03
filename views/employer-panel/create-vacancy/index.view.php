@@ -98,8 +98,13 @@
         <label class="col-sm-3 col-form-label" for="photo">Фото:</label>
         <div class="col-sm-9">
         <div >
-                <input class="form-control" type="file" id="photo" @change="imagePreview">
+            <form>
+                <input class="form-control" type="file" name="image" @change="selectImage">
+                </form>
                 <!-- <button onclick="clearImage()" class="btn btn-primary mt-3">Click me</button> -->
+            </div>
+            <div id="result">
+
             </div>
         </div>
     </div>
@@ -152,6 +157,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="/app/public/js/fetch.js"></script>
+
     <script src="/app/public/js/employer-panel/Validation.js"></script>
     <script src="/app/public/js/employer-panel/Vacancy.js"></script>
     <script src="/app/public/js/employer-panel/Category.js"></script>

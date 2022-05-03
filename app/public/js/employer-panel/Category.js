@@ -17,4 +17,10 @@ class Category{
         let result = await postDataResponse(route, category_id);
         return result;
     }
+    static async getFirstCategory(){
+        let route = '/app/controllers/employer-panel/create-vacancy/getFirstCategory.php';
+        
+        let result = await getData(route);
+        return result;
+    }
 }

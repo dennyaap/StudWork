@@ -110,6 +110,6 @@ class Category
     public static function getFirstCategory(){
         $stmt = self::pdo()->query('SELECT * FROM categories ORDER BY id LIMIT 1');
         $res = $stmt->fetch();
-        echo json_enode($res, JSON_UNESCAPED_UNICODE);
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
 }

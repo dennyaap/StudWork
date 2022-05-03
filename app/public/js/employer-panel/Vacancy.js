@@ -27,4 +27,9 @@ class Vacancy{
         let result = await postDataResponse(route, data);
         return result;
     }
+    static async uploadImage(formData){
+        let route = '/app/controllers/employer-panel/create-vacancy/uploadImage.php';
+        let result = await postFormData(route, formData);
+        return result;
+    }
 }

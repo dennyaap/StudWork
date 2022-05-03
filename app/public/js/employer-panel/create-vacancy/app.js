@@ -19,6 +19,9 @@ const App = {
 
             currentDate: '',
             showAlertSuccess: false,
+            formData: {},
+            currentFile: '',
+            firstCategory: {},
         }
     },
     methods: {
@@ -53,37 +56,48 @@ const App = {
         },
         async addVacancy(e){
             e.preventDefault();
-            this.errors = Validation.checkErrors(this.vacancyName, this.description);
+            this.errors = Validation.checkErrors(this.vacancyName, this.description, this.currentFile);
         
             if(this.errors.length == 0){
                 this.currentDate = new Date().toISOString();
                 
-               
-                await Vacancy.addVacancy({ 'name': this.vacancyName, 'photo': 'link', 'category_id': this.selectedCategoryId, 'salary': this.currentSalary, 'description': this.description, 'work_graph': this.selectedGraph , 'created_at': this.currentDate})
+                await Vacancy.addVacancy({ 'name': this.vacancyName, 'category_id': this.selectedCategoryId, 'salary': this.currentSalary, 'description': this.description, 'work_graph': this.selectedGraph , 'created_at': this.currentDate})
                 this.clearLabels();
                 this.showAlertSuccess = true;
                 setTimeout(()=> this.showAlertSuccess = false, 2000);
+                await Vacancy.uploadImage(this.formData);
             }
             
         },
         getSalary(salary){
             return Number(salary).toLocaleString();
         },
-        clearLabels(){
+        async clearLabels(){
             this.vacancyName = '';
             this.name_organization = '';
             this.categoryName = '';
-            this.selectedCategoryName = 'WEB-разработчик';
-            this.selectedCategoryId = ''; //добавить запрос на получения первой категории
             this.description = '';
             this.selectedGraph = 1;
             this.currentSalary = 10000;
+            this.selectedCategory = this.firstCategory;
+        },
+        async getFirstCategory(){
+            return await Category.getFirstCategory();
+        },
+        selectImage(e){
+            let files = e.target.files;
+            
+            this.formData = new FormData();
+            this.formData.append('image', files[0]);
+            this.currentFile = files[0];
         }
     },
     created(){
          //добавить запрос на получения первой категории
         this.renderCategories();
         this.renderGraphList();
+        this.firstCategory = this.getFirstCategory();
+        this.selectedCategory = this.firstCategory;
     }
   }
   const app = Vue.createApp(App);
