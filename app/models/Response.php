@@ -21,12 +21,13 @@ class Response
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
     public static function sendResponse($response){
-        $stmt = self::pdo()->prepare('UPDATE responses SET message = :message, status = :status WHERE responses.resume_id = :resume_id');
+        $stmt = self::pdo()->prepare('UPDATE responses SET message = :message, status = :status WHERE responses.resume_id = :resume_id AND responses.vacancy_id = :vacancy_id');
         $stmt->execute(
             [
                 'message' => $response->message,
                 'status' => $response->status,
-                'resume_id' => $response->resume_id
+                'resume_id' => $response->resume_id,
+                'vacancy_id' => $response->vacancy_id
             ]
         );
         $res = 'OK';

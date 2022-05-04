@@ -135,7 +135,7 @@ const App = {
             }
         },
         async sendResponse(){
-            await Response.sendResponse({'message': this.message, 'status': this.selectedStatus, 'resume_id': this.selectedResumeId});
+            await Response.sendResponse({'message': this.message, 'status': this.selectedStatus, 'resume_id': this.selectedResumeId, 'vacancy_id': this.selectedVacancyId});
             await this.renderResponses(this.selectedVacancyId);
             this.showAlertResponse = true;
             setTimeout(()=> this.showAlertResponse = false, 2000);

@@ -96,7 +96,7 @@ class Vacancy
     }
 
     public static function getVacanciesStudent($student_id){
-        $stmt = self::pdo()->prepare('SELECT resume.*, vacancies.*, responses.*, status.id AS status_id, status.name AS status_name FROM resume INNER JOIN responses ON resume.id = responses.resume_id INNER JOIN vacancies ON responses.vacancy_id = vacancies.id INNER JOIN status ON responses.status = status.id WHERE user_id = :user_id');
+        $stmt = self::pdo()->prepare('SELECT vacancies.*, responses.*, status.id AS status_id, status.name AS status_name, employers.name_organization AS name_organization FROM resume INNER JOIN responses ON resume.id = responses.resume_id INNER JOIN vacancies ON responses.vacancy_id = vacancies.id INNER JOIN status ON responses.status = status.id INNER JOIN employers ON vacancies.employer_id = employers.id WHERE user_id = :user_id');
         $stmt->execute(['user_id' => $student_id]);
         $res = $stmt->fetchAll();
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
