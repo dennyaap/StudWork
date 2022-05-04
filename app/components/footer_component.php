@@ -67,18 +67,7 @@
                 <p>
               <a href="#!" class="text-white">Список вакансий</a>
             </p>
-            <!-- <p>
-              <a href="#!" class="text-white">MDBootstrap</a>
-            </p>
-            <p>
-              <a href="#!" class="text-white">MDWordPress</a>
-            </p>
-            <p>
-              <a href="#!" class="text-white">BrandFlow</a>
-            </p>
-            <p>
-              <a href="#!" class="text-white">Bootstrap Angular</a>
-            </p> -->
+           
           </div>
           <!-- Grid column -->
 
@@ -99,9 +88,7 @@
             <p>
               <a href="#!" class="text-white">Ваши отклики</a>
             </p>
-            <!-- <p>
-              <a href="#!" class="text-white">Help</a>
-            </p> -->
+           
           </div>
           <!-- Grid column -->
 
@@ -123,9 +110,4 @@
         <!-- Grid row -->
       </div>
     </section>
-    <!-- Section: Links  -->
-
-    <!-- Copyright -->
-    
-    <!-- Copyright -->
   </footer>

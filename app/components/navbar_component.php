@@ -36,7 +36,6 @@
     
     </div>
     
-    <!-- <a href="/app/controllers/logout/" class="text-danger fw-bold btn-logout"><i class="fas fa-arrow-right-from-bracket me-2"></i></a> -->
                             </a>
     
                             <?php if($_SESSION['role'] == 'student') :?><a href="/app/controllers/student-panel/create-resume/"><button class="btn" id="btn-resume">Создать резюме</button></a><?php else :?><a href="/app/controllers/employer-panel/create-vacancy/"><button class="btn" id="btn-resume">Создать вакансию</button></a><?php endif?>

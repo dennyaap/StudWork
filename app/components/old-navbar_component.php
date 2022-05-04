@@ -29,8 +29,6 @@
                 <a class="nav-link fw-bold" href="#"
                                >
                                 
-                                <!-- <i class="fas fa-user me-2">fddfdf</i>
-                               -->
                                 <?= $_SESSION['user']->name ?>
                                 <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" class="rounded-circle" id="avatar"
   alt="Avatar" />

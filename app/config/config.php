@@ -14,8 +14,6 @@ session_start();
 
 $routes = [
     ['name' => 'Категории', 'link' => '/app/controllers/admin-panel/categories/', 'icon' => 'fa-align-left'],
-    // ['name' => 'Навыки', 'link' => '/app/controllers/admin-panel/skills/', 'icon' => 'fa-thin fa-hand-holding-heart'],
-    // ['name' => 'Языки', 'link' => '/app/controllers/admin-panel/languages/', 'icon' => 'fa-thin fa-language'], 
     ['name' => 'Резюме', 'link' => '/app/controllers/admin-panel/resume/', 'icon' => 'fa-regular fa-clipboard-user'],
     ['name' => 'Вакансии', 'link' => '/app/controllers/admin-panel/vacancies/', 'icon' => 'fa-regular fa-clipboard'] 
 ];

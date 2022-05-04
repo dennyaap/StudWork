@@ -57,20 +57,7 @@
                   {{error}}   
               </div>
             </div>
-            <!-- <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div> -->
+          
 
           </form>
           <form action="#" class="sign-up-form">
@@ -118,20 +105,7 @@
             
             <button type="submit" class="btn solid" id="employerAuthBtn" @click="createEmployerAccount"><div class="loading" id="studentSpinner" v-show="showEmployerLoader"></div><div v-show="showEmployerBtnText">Создать</div></button>
             <p class="social-text"><a href="/app/controllers/auth-form/">Уже есть учетная запись?</a></p>
-            <!-- <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div> -->
+           
           </form>
         </div>
       </div>

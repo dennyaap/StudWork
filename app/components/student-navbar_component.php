@@ -9,7 +9,6 @@
                 <a class="nav-link fw-bold d-flex align-items-center" href="#"
                                >
                                <?= explode(' ', $_SESSION['user']->full_name)[1] ?>
-                                <!-- <i class="fas fa-user me-2"></i>Viktor Sunset -->
                                 <div class="rounded-circle border d-flex justify-content-center align-items-center"
                                                 style="width:30px;height:30px;margin-left:10px;"
                                         alt="Avatar">

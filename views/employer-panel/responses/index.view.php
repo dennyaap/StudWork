@@ -138,7 +138,6 @@
                           <td>{{ response.full_name }}</td>
                           <td :style="{color: getStyleStatus(response.status_id)}" class="status">{{ response.status_name }}</td>
                           <td class="td-center" @click="selectResume" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap"><i class="fas fa-solid fa-message"></i></td>
-                          <!-- <td class="td-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-solid fa-trash"></i></td> -->
                         </tr>
                       </tbody>
                     </table>

@@ -37,21 +37,7 @@
                   {{error}}   
               </div>
             </div>
-            <!-- <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div> -->
-
+       
           </form>
           <form action="#" class="sign-up-form">
             <h2 class="title">Работодатель</h2>
@@ -61,10 +47,7 @@
               <i class="fas fa-solid fa-envelope"></i>
               <input type="text" placeholder="E-mail" v-model="employerEmail"/>
             </div>
-            <!-- <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
-            </div> -->
+            
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Пароль" v-model="employerPassword"/>
@@ -77,20 +60,7 @@
                   {{error}}   
               </div>
             </div>
-            <!-- <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div> -->
+      
           </form>
         </div>
       </div>
