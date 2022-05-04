@@ -31,15 +31,6 @@
         </div>
     </div>
     <div class="row mb-3">
-        <label class="col-sm-3 col-form-label" for="photo">Фото:</label>
-        <div class="col-sm-9">
-        <div >
-                <input class="form-control" type="file" id="photo">
-                <!-- <button onclick="clearImage()" class="btn btn-primary mt-3">Click me</button> -->
-            </div>
-        </div>
-    </div>
-    <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="description">Номер телефона:</label>
         <div class="col-sm-9">
             <input type="tel" class="form-control" v-model="phone"/>
@@ -117,7 +108,7 @@
                       <tbody id="categoriesContainer">
                         <tr class="resume-id" v-for="(resume, index) in resumeList" :data-id="resume.id">
                           <td class="td-center">{{ index + 1 }}</td>
-                          <td>{{ resume.created_at }}</td>
+                          <td>{{ getDate(resume.created_at) }}</td>
                           <td @click="showEditResume" class="td-center" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap"><i class="fas fa-solid fa-pen"></i></onclick=></td>
                           <td @click="showDeleteResume" class="td-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-solid fa-trash"></i></td>
                         </tr>

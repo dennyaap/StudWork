@@ -39,7 +39,7 @@
                       <tbody id="categoriesContainer">
                         <tr class="resume-card" v-for="(resume, index) in resumeList" :data-id="resume.id">
                           <td class="td-center">{{ index + 1 }}</td>
-                          <td>{{ resume.created_at }}</td>
+                          <td>{{ getDate(resume.created_at) }}</td>
                           <td>Подробнее</td>
                           <td><input type="radio" name="resume" :checked='resume.id == selectedResumeId' @click="selectResume"></td>
                         </tr>

@@ -99,6 +99,13 @@ const App = {
             console.log(this.errors);
             
         },
+        getDate(date){
+            let currentDate = date.split('-');
+            let day = currentDate[2];
+            let month = currentDate[1];
+            let year = currentDate[0];
+            return `${day}.${month}.${year}`;
+        },
     
     },
     created(){

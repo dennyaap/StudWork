@@ -31,20 +31,10 @@
                   <div class="col col-md-8 categories-container add-panel">
                     <h2>Заполнение</h2>
                    
-    
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="nameOrganization">ФИО:</label>
         <div class="col-sm-9">
             <input type="text" class="form-control" id="nameOrganization" value="<?= $_SESSION['user']->full_name ?>" disabled>
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label" for="photo">Фото:</label>
-        <div class="col-sm-9">
-        <div >
-                <input class="form-control" type="file" id="photo" @change="imagePreview">
-                <!-- <button onclick="clearImage()" class="btn btn-primary mt-3">Click me</button> -->
-            </div>
         </div>
     </div>
     <div class="row mb-3">

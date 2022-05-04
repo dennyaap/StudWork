@@ -17,3 +17,6 @@ a{
     display: flex;
     min-width: 100px;
 }
+.full-text{
+    cursor: pointer;
+}

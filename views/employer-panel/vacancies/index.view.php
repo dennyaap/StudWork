@@ -160,7 +160,7 @@
                         <tr class="vacancy-id" v-for="(vacancy, index) in vacancies" :data-id="vacancy.id">
                           <td class="td-center">{{ index + 1 }}</td>
                           <td>{{ vacancy.name }}</td>
-                          <td>{{ vacancy.created_at }}</td>
+                          <td>{{ getDate(vacancy.created_at) }}</td>
                           <td @click="showEditVacancy" class="td-center" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap"><i class="fas fa-solid fa-pen"></i></onclick=></td>
                           <td @click="showDeleteVacancy" class="td-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-solid fa-trash"></i></td>
                         </tr>
