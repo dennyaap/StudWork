@@ -14,4 +14,9 @@ class Resume{
         let res = postDataResponse(route, resume_id);
         return res;
     }
+    static async getResume(resume_id){
+        let route = '/app/controllers/vacancy-page/getResume.php';
+        let res = await postDataResponse(route, resume_id);
+        return res;
+    }
 }

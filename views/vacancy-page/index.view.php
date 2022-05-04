@@ -18,6 +18,84 @@
 <div id="app">
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/app/components/navbar_component.php' ?>
 <!-- Modal -->
+
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel">Выберите резюме</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div class="col categories-container add-panel">
+              <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th class="td-center">N</th>
+                          <th>Дата создания</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody id="categoriesContainer">
+                        <tr class="resume-card" v-for="(resume, index) in resumeList" :data-id="resume.id">
+                          <td class="td-center">{{ index + 1 }}</td>
+                          <td>{{ getDate(resume.created_at) }}</td>
+                          <td @click="showResume" class="text-more" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Подробнее</td>
+                          <td ><input type="radio" name="resume" :checked='resume.id == selectedResumeId' @click="selectResume"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    </div>
+                    <div class="alert alert-success" role="alert" v-show="showSuccessAlert">
+        Вы успешно оставили свое резюме. В ближайшее время ждите ответа!
+        </div>
+        <div class="alert alert-danger" role="alert" v-show="showDangerAlert">
+       Вы уже оставляли резюме на данную вакансию. В ближайшее время ждите ответа!
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btnClose" data-bs-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-primary btn-sendResume" @click="sendResume">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Резюме</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="nameOrganization">ФИО:</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="nameOrganization" v-model="selectedResume.full_name" disabled>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="description">Номер телефона:</label>
+        <div class="col-sm-9">
+            <input type="tel" class="form-control" v-model="selectedResume.phone" disabled/>
+        </div>
+    </div>
+   
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="description">О себе:</label>
+        <div class="col-sm-9">
+            <textarea rows="3" class="form-control" id="description" placeholder="" required v-model="selectedResume.about" disabled></textarea>
+        </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btnClose" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -40,7 +118,7 @@
                         <tr class="resume-card" v-for="(resume, index) in resumeList" :data-id="resume.id">
                           <td class="td-center">{{ index + 1 }}</td>
                           <td>{{ getDate(resume.created_at) }}</td>
-                          <td>Подробнее</td>
+                          <td @click="showResume" class="text-more">Подробнее</td>
                           <td><input type="radio" name="resume" :checked='resume.id == selectedResumeId' @click="selectResume"></td>
                         </tr>
                       </tbody>
@@ -60,7 +138,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <main class="container">
     <div class="mt-5">
         <div class="row">
@@ -92,10 +170,10 @@
                             <div class="feedback-container">
                                 <h4 class="name-organization">{{ vacancy.name_organization }}</h4>
                                 <?php if($_SESSION['role'] == 'student') :?>
-                                    <button class="btn-feedback" data-bs-toggle="modal" data-bs-target="#exampleModal2" @click="renderResumeStudent">
+                                    <button class="btn-feedback" data-bs-toggle="modal" href="#exampleModalToggle" @click="renderResumeStudent">
                                         Оставить резюме
                                     </button>
-                                <?php elseif(!$_SESSION['isAuth']) :?>
+                                <?php elseif($_SESSION['role'] == '') :?>
                                   <a href="/app/controllers/auth-form/">
                                     <button class="btn-feedback" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                                         Оставить резюме

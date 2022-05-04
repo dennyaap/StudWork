@@ -139,3 +139,6 @@ a{
     background: #FF9797;
     border: #FF9797;
 }
+.text-more{
+    cursor: pointer;
+}

@@ -9,6 +9,7 @@ const App = {
             showSuccessAlert: false,
             showDangerAlert: false,
             imageName: "",
+            selectedResume: {}
         }
     },
     methods: {
@@ -47,6 +48,10 @@ const App = {
             let year = currentDate[0];
             return `${day}.${month}.${year}`;
         },
+        async showResume(e){
+            let resume_id = e.target.closest('.resume-card').dataset.id;
+            this.selectedResume = await Resume.getResume(resume_id);
+        }
     },
     created(){
         
