@@ -113,6 +113,7 @@ const App = {
         async changeVacancyStatus(e){
             let vacancy_id = e.target.closest('.vacancy-id').dataset.id;
             await Status.changeVacancyStatus({'vacancy_id': vacancy_id, 'status_id': e.target.value});
+            this.vacancies = [];
             this.renderVacancies();
         },
     
