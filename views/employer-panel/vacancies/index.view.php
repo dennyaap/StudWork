@@ -163,7 +163,7 @@
                           <td>{{ vacancy.name }}</td>
                           <td>{{ getDate(vacancy.created_at) }}</td>
                           <td>
-                          <select class="form-select form-select-sm" aria-label="Default select example" @change = "changeVacancyStatus" :style="{color: vacancy.color_status}">
+                          <select class="form-select form-select-sm" @change = "changeVacancyStatus" :style="{color: vacancy.color_status}">
                             <option :value="status.id" v-for="status in vacancy_statuses" :selected="vacancy.status_id == status.id" :style="{color: status.color}" class="status-option">{{ status.name }}</option>
                           </select>
                           </td>
