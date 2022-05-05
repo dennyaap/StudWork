@@ -17,8 +17,9 @@ class Vacancy
         return $stmt->fetchAll();
     }
     public static function addVacancy($vacancy){
-        $stmt = self::pdo()->prepare("INSERT INTO vacancies (employer_id, name, category_id, salary, work_graph, description, created_at)
-            VALUES (:employer_id, :name, :category_id, :salary, :work_graph, :description, :created_at)");
+        $status = 1;
+        $stmt = self::pdo()->prepare("INSERT INTO vacancies (employer_id, name, category_id, salary, work_graph, description, created_at, status)
+            VALUES (:employer_id, :name, :category_id, :salary, :work_graph, :description, :created_at, :status)");
             $stmt->execute(
                 [
                     'employer_id' => $_SESSION['user']->id,
@@ -28,6 +29,7 @@ class Vacancy
                     'work_graph' => $vacancy->work_graph,
                     'description' => $vacancy->description,
                     'created_at' => date('Y-m-d', strtotime($vacancy->created_at)),
+                    'status' => $status
                 ]
             );
             $res = 'OK';
@@ -35,12 +37,12 @@ class Vacancy
             echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
     public static function getVacancies(){
-        $stmt = self::pdo()->query('SELECT vacancies.*, employers.name_organization FROM vacancies INNER JOIN employers ON vacancies.employer_id = employers.id');
+        $stmt = self::pdo()->query('SELECT vacancies.*, employers.name_organization FROM vacancies INNER JOIN employers ON vacancies.employer_id = employers.id WHERE status_id = 1');
         $res = $stmt->fetchAll();
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
     }
     public static function getVacanciesLimit($data){
-        $stmt = self::pdo()->prepare("SELECT vacancies.*, employers.name_organization FROM vacancies INNER JOIN employers ON vacancies.employer_id = employers.id WHERE vacancies.name LIKE :like_word AND vacancies.work_graph IN (".self::createParams($data->graphs).") ORDER BY vacancies.created_at ".$data->sortDate." LIMIT 10 OFFSET :number_page");
+        $stmt = self::pdo()->prepare("SELECT vacancies.*, employers.name_organization FROM vacancies INNER JOIN employers ON vacancies.employer_id = employers.id WHERE vacancies.name LIKE :like_word AND vacancies.work_graph IN (".self::createParams($data->graphs).") AND status_id = 1 ORDER BY vacancies.created_at ".$data->sortDate." LIMIT 10 OFFSET :number_page");
         $stmt->bindValue(':number_page', $data->number_page, self::pdo()::PARAM_INT);
         $stmt->bindValue(':like_word', $data->like_word, self::pdo()::PARAM_STR);
 
@@ -61,7 +63,7 @@ class Vacancy
         return $str;
     }
     public static function getVacanciesEmployer($employer_id){
-        $stmt = self::pdo()->prepare('SELECT * FROM vacancies WHERE employer_id = :employer_id');
+        $stmt = self::pdo()->prepare('SELECT vacancies.*, vacancy_status.id AS status_id, vacancy_status.name AS status_name, vacancy_status.color AS color_status FROM vacancies INNER JOIN vacancy_status ON vacancies.status_id = vacancy_status.id WHERE employer_id = :employer_id');
         $stmt->execute(['employer_id' => $employer_id]);
         $res = $stmt->fetchAll();
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
@@ -80,7 +82,8 @@ class Vacancy
     }
 
     public static function editVacancy($vacancy){
-        $stmt = self::pdo()->prepare('UPDATE vacancies SET name = :name, category_id = :category_id, salary = :salary, description = :description, work_graph = :work_graph WHERE id = :vacancy_id');
+        $status_id = 1;
+        $stmt = self::pdo()->prepare('UPDATE vacancies SET name = :name, category_id = :category_id, salary = :salary, description = :description, work_graph = :work_graph, status_id = :status_id WHERE id = :vacancy_id');
         $stmt->execute(
             [
                 'vacancy_id' => $vacancy->vacancy_id,
@@ -88,7 +91,8 @@ class Vacancy
                 'category_id' => $vacancy->category_id,
                 'salary' => $vacancy->salary,
                 'description' => $vacancy->description,
-                'work_graph' => $vacancy->work_graph
+                'work_graph' => $vacancy->work_graph,
+                'status_id' => $status_id
             ]
         );
         $res = 'OK';

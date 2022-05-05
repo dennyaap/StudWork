@@ -152,6 +152,7 @@
                           <th class="td-center">N</th>
                           <th>Название</th>
                           <th>Дата создания</th>
+                          <th>Статус</th>
                           <th></th>
                           <th></th>
                         </tr>
@@ -161,6 +162,11 @@
                           <td class="td-center">{{ index + 1 }}</td>
                           <td>{{ vacancy.name }}</td>
                           <td>{{ getDate(vacancy.created_at) }}</td>
+                          <td>
+                          <select class="form-select form-select-sm" aria-label="Default select example" @change = "changeVacancyStatus" :style="{color: vacancy.color_status}">
+                            <option :value="status.id" v-for="status in vacancy_statuses" :selected="vacancy.status_id == status.id" :style="{color: status.color}" class="status-option">{{ status.name }}</option>
+                          </select>
+                          </td>
                           <td @click="showEditVacancy" class="td-center" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap"><i class="fas fa-solid fa-pen"></i></onclick=></td>
                           <td @click="showDeleteVacancy" class="td-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-solid fa-trash"></i></td>
                         </tr>
@@ -184,6 +190,7 @@
     <script src="/app/public/js/employer-panel/Category.js"></script>
     <script src="/app/public/js/employer-panel/Validation.js"></script>
     <script src="/app/public/js/employer-panel/Vacancy.js"></script>
+    <script src="/app/public/js/employer-panel/vacancies/Status.js"></script>
     <script src="/app/public/js/employer-panel/vacancies/app.js"></script>
 </body>
 

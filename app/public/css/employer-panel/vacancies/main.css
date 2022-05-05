@@ -153,9 +153,6 @@
   .btn-primary{
     border: none;
   }
-  #btnClose{
-   
-  }
   #btnAccept{
     background:#828EFF;
   }
@@ -200,9 +197,6 @@
   justify-content: space-between;
   align-items: center;
 }
-.vacancy-title{
-
-}
 .vacancy-name{
   color: #828EFF;
   font-size: 22px;
@@ -235,4 +229,9 @@
 
 #description{
   height: 260px;
+}
+
+.form-select{
+  border: none;
+  font-weight: bold;
 }
